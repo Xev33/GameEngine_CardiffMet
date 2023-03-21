@@ -1,0 +1,10 @@
+^D:\CARDIFF COURSES\03_GAMEENGINE\GAMEENGINE_REPO_XAVIERDAVID\BUILD\CMAKEFILES\67E985721AAD7A7F28EBF02D86123810\GENERATE.STAMP.RULE
+setlocal
+D:\Logiciels\cmake-3.24.2-windows-x86_64\bin\cmake.exe "-SD:/Cardiff Courses/03_GameEngine/GameEngine_Repo_XavierDavid" "-BD:/Cardiff Courses/03_GameEngine/GameEngine_Repo_XavierDavid/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/Cardiff Courses/03_GameEngine/GameEngine_Repo_XavierDavid/build/GameEngine_XavierDAVID.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
