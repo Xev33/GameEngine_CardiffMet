@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Cardiff Courses\03_GameEngine\GameEngine_Repo_XavierDavid\src\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Cardiff Courses\03_GameEngine\GameEngine_Repo_XavierDavid\src\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Cardiff Courses\03_GameEngine\GameEngine_Repo_XavierDavid\src\NPC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Cardiff Courses\03_GameEngine\GameEngine_Repo_XavierDavid\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Cardiff Courses\03_GameEngine\GameEngine_Repo_XavierDavid\src\Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Cardiff Courses\03_GameEngine\GameEngine_Repo_XavierDavid\src\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Cardiff Courses\03_GameEngine\GameEngine_Repo_XavierDavid\src\NPC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Cardiff Courses\03_GameEngine\GameEngine_Repo_XavierDavid\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5D1F0310-83B7-3460-AD21-E2D29DCD8C9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{04BDE464-B144-3045-B52A-CBEC90D8F596}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
