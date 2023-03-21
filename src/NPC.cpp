@@ -22,9 +22,7 @@ NPC::NPC()
   btTransform target3;
   target1.setOrigin(btVector3(200.0f, 80.0f, 200.0f));
   target2.setOrigin(btVector3(-200.0f, 80.0f, 200.0f));
-  target3.setOrigin(btVector3(200.0f, 80.0f, 200.0f));
-  //target2.setOrigin(btVector3(-200.0f, 80.0f, -200.0f));
-  //target3.setOrigin(btVector3(0.0f, 80.0f, 0.0f));
+  target3.setOrigin(btVector3(200.0f, 80.0f, -400.0f));
 
   forwardForce = 5.0f;
   turningForce = 100.0f;
@@ -33,8 +31,8 @@ NPC::NPC()
   linearDamping = 0.6f;
   angularDamping = 0.8f;
   patrolWayPoints[0] = target1;
-  patrolWayPoints[0] = target2;
-  patrolWayPoints[0] = target3;
+  patrolWayPoints[1] = target2;
+  patrolWayPoints[2] = target3;
   currentWaypoint = 0;
   setTarget(patrolWayPoints[currentWaypoint]);
 }
