@@ -77,6 +77,98 @@ namespace XDGameEngine
         collisionShapes.clear();
     }
 
+    void Scene::updateFrameStarted(const Ogre::FrameEvent& evt)
+    {
+
+        if (dynamicsWorld != NULL)
+        {
+            // Bullet can work with a fixed timestep
+            dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+
+            // TO PU INTO THE PLAYER AND FIND A WAY AROUND TO GET THE INPUTMANAGER
+            // Or a variable one, however, under the hood it uses a fixed timestep
+            // then interpolates between them.
+
+            // Apply forces based on input. 
+            //if (wDown)
+            //    player->forward();
+
+            //if (aDown)
+            //    player->turnRight();
+
+            //if (dDown)
+            //    player->turnLeft();
+
+            //if (jDown)
+            //    player->jump();
+
+            //if (fDown)
+            //    player->fly();
+
+
+            dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
+
+            // update positions of all objects
+            for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
+            {
+                btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
+                btRigidBody* body = btRigidBody::upcast(obj);
+                btTransform trans;
+
+                if (body && body->getMotionState())
+                {
+                    body->getMotionState()->getWorldTransform(trans);
+
+                    // Bullet has updated the rididbody, we now need to update the ogre scene node (i.e. the model on screen).
+                    void* userPointer = body->getUserPointer();
+
+                    // This is a horrific hack!!!!!!
+                    // Need to change this so everything in the game (including the floor) uses 
+                    // the same method of updating its physics / graphics. 
+                    if (userPointer && userPointer != player && userPointer != npc)
+                    {
+                        btQuaternion orientation = trans.getRotation();
+                        Ogre::SceneNode* sceneNode = static_cast<Ogre::SceneNode*>(userPointer);
+                        sceneNode->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
+                        sceneNode->setOrientation(Ogre::Quaternion(orientation.getW(), orientation.getX(), orientation.getY(), orientation.getZ()));
+                    }
+                    else
+                    {
+                        //std::cout << "Player update" << std::endl;
+                        player->update();
+
+
+                    }
+                }
+                else
+                {
+                    trans = obj->getWorldTransform();
+                }
+            }
+
+            // always update the npc, it has no player input to wake it back up!
+
+            npc->update();
+
+
+        }
+    }
+
+    void Scene::updateFrameEnded(const Ogre::FrameEvent& evt)
+    {
+        if (this->dynamicsWorld != NULL)
+        {
+            // Bullet can work with a fixed timestep
+            dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+
+            // Or a variable one, however, under the hood it uses a fixed timestep
+            // then interpolates between them.
+
+            dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
+        }
+    }
+
+
     ////-----------------------------------------------------------------------
     //// ALL SETUP FONCTION TO REMOVE------------------------------------------
     ////-----------------------------------------------------------------------
@@ -140,6 +232,7 @@ namespace XDGameEngine
         camNode->attachObject(cam);
 
         // Setup viewport for the camera.
+        // I SHOULD PROBABLY MOVE THE VIEWPORT TO THE GAME CLASS
         Ogre::Viewport* vp = rw->addViewport(cam);
         vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0));
 

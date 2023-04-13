@@ -65,114 +65,82 @@ void Game::setup()
 
     Root* root = getRoot();
 
-    //currentScene->setup(getRoot());
+    createBasicScene();
+    loadCurrentScene();
+
+}
+
+void Game::createBasicScene()
+{
+    if (currentScene != nullptr)
+    {
+        UnloadCurrentScene();
+        delete currentScene;
+        currentScene = nullptr;
+    }
     currentScene = new XDGameEngine::Scene();
     currentScene->setup(getRoot(), getRenderWindow());
+}
 
+void Game::loadCurrentScene()
+{
+    if (currentScene == nullptr)
+    {
+        createBasicScene();
+    }
+
+    // Set all the Ogre stuff from the current scene in case we need to get them later
+    scnMgr = currentScene->getSceneManager();
+
+    // Same for bullet
+    btDefaultCollisionConfiguration* collisionConfiguration = currentScene->getCollisionConfiguration();
+    btCollisionDispatcher* dispatcher = currentScene->getDispatcher();
+    btBroadphaseInterface* overlappingPairCache = currentScene->getOverlappingPairCache();
+    btSequentialImpulseConstraintSolver* solver = currentScene->getSolver();
+    btDiscreteDynamicsWorld* dynamicsWorld = currentScene->getDynamicWorld();
+}
+
+void Game::UnloadCurrentScene()
+{
+    if (currentScene == nullptr)
+        return;
+    else
+    {
+        dynamicsWorld = nullptr;
+
+        solver = nullptr;
+
+        overlappingPairCache = nullptr;
+
+        dispatcher = nullptr;
+
+        collisionConfiguration = nullptr;
+
+        delete currentScene;
+        currentScene = nullptr;
+    }
 }
 
 bool Game::frameStarted(const Ogre::FrameEvent &evt)
 {
     // Be sure to call base class - otherwise events are not polled.
     ApplicationContext::frameStarted(evt);
-    btDiscreteDynamicsWorld* dynamicsWorld = currentScene->getDynamicWorld();
-    Player* player = currentScene->getPlayer();
-
-    if (dynamicsWorld != NULL)
-    {
-        // Bullet can work with a fixed timestep
-         dynamicsWorld->stepSimulation(1.f / 60.f, 10);
-
-        // Or a variable one, however, under the hood it uses a fixed timestep
-        // then interpolates between them.
-
-        // Apply forces based on input. 
-        if(wDown)
-            player->forward();
-        
-        if(aDown)
-            player->turnRight();
-
-        if(dDown)
-            player->turnLeft();
-
-        if(jDown)
-            player->jump();
-
-        if(fDown)
-            player->fly();
-
-
-        dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
-
-        // update positions of all objects
-        for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
-        {
-            btCollisionObject *obj = dynamicsWorld->getCollisionObjectArray()[j];
-            btRigidBody *body = btRigidBody::upcast(obj);
-            btTransform trans;
-
-            if (body && body->getMotionState())
-            {
-                body->getMotionState()->getWorldTransform(trans);
-
-                // Bullet has updated the rididbody, we now need to update the ogre scene node (i.e. the model on screen).
-                void *userPointer = body->getUserPointer();
-
-                // This is a horrific hack!!!!!!
-                // Need to change this so everything in the game (including the floor) uses 
-                // the same method of updating its physics / graphics. 
-                if (userPointer && userPointer != currentScene->getPlayer() && userPointer != currentScene->getNPC())
-                {
-                    btQuaternion orientation = trans.getRotation();
-                    Ogre::SceneNode *sceneNode = static_cast<Ogre::SceneNode *>(userPointer);
-                    sceneNode->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
-                    sceneNode->setOrientation(Ogre::Quaternion(orientation.getW(), orientation.getX(), orientation.getY(), orientation.getZ()));
-                }
-                else
-                {
-                     //std::cout << "Player update" << std::endl;
-                     currentScene->getPlayer()->update();
-
-
-                }
-            }
-            else
-            {
-                trans = obj->getWorldTransform();
-            }
-        }
-
-        // always update the npc, it has no player input to wake it back up!
-
-        currentScene->getNPC()->update();
-
-       
-    }
-
-        return true;
+    currentScene->updateFrameStarted(evt);
+    return true;
 }
 
-    bool Game::frameEnded(const Ogre::FrameEvent &evt)
-    {
-        btDiscreteDynamicsWorld* dynamicsWorld = currentScene->getDynamicWorld();
-        if (this->dynamicsWorld != NULL)
-        {
-            // Bullet can work with a fixed timestep
-             dynamicsWorld->stepSimulation(1.f / 60.f, 10);
-
-            // Or a variable one, however, under the hood it uses a fixed timestep
-            // then interpolates between them.
-
-            dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
-        }
-        return true;
-    }
+bool Game::frameEnded(const Ogre::FrameEvent &evt)
+{
+    currentScene->updateFrameEnded(evt);
+    return true;
+}
 
 /* Uses the OgreBites::InputListener, but can also use
    SDL2 */
 bool Game::keyPressed(const KeyboardEvent& evt)
 {
+    // MAKE A INPUT MANAGER SINGLETON to allow everyone to access it
+
     std::cout << "Got key down event" << std::endl;
     if (evt.keysym.sym == SDLK_ESCAPE)
     {
@@ -244,4 +212,3 @@ bool Game::mouseMoved(const MouseMotionEvent& evt)
 	//std::cout << "Got Mouse" << std::endl;
 	return true;
 }
-

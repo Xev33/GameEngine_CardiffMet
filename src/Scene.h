@@ -80,9 +80,20 @@ namespace XDGameEngine
         */
         virtual ~Scene();
 
-        ////-----------------------------------------------------------------------
-        //// ALL SETUP FONCTION TO REMOVE------------------------------------------
-        ////-----------------------------------------------------------------------
+        /**
+        * Get the game update when the frame starts
+        */
+        void updateFrameStarted(const Ogre::FrameEvent& evt);
+
+        /**
+        * Get the game update when the frame ends
+        */
+        void updateFrameEnded(const Ogre::FrameEvent& evt);
+
+
+        //-----------------------------------------------------------------------
+        // ALL SETUP FONCTIONS --------------------------------------------------
+        //-----------------------------------------------------------------------
 
         /**
         * Carries out all setup, includes lighting, scene objects.
@@ -119,10 +130,19 @@ namespace XDGameEngine
         */
         void setupLights();
 
-        btDiscreteDynamicsWorld* getDynamicWorld() { return dynamicsWorld; }
-        Ogre::SceneManager* getSceneManager() { return scnMgr; }
-        Player* getPlayer() { return player; }
-        NPC* getNPC() { return npc; }
+
+        //-----------------------------------------------------------------------
+        // GETTERS --------------------------------------------------------------
+        //-----------------------------------------------------------------------
+
+        Ogre::SceneManager*                     getSceneManager() { return scnMgr; }
+        Player*                                 getPlayer() { return player; }
+        NPC*                                    getNPC() { return npc; }
+        btDefaultCollisionConfiguration*        getCollisionConfiguration() { return collisionConfiguration; }
+        btCollisionDispatcher*                  getDispatcher() { return dispatcher; }
+        btBroadphaseInterface*                  getOverlappingPairCache() { return overlappingPairCache; }
+        btSequentialImpulseConstraintSolver*    getSolver() { return solver; }
+        btDiscreteDynamicsWorld*                getDynamicWorld() { return dynamicsWorld; }
 	};
 }
 

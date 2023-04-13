@@ -90,6 +90,21 @@ public:
   */
   void setup();
 
+    /**
+    * Create a regular scene and load
+    */
+  void createBasicScene();
+
+    /**
+    * Fill up the game variable with the current scene data
+    */
+  void loadCurrentScene();
+
+    /**
+    * Unload the current scene data from the Game
+    */
+    void UnloadCurrentScene();
+
   /**
   * Overload of the keyPressed method.
   * @param evt, a KeyboardEvent
