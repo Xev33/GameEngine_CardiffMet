@@ -434,7 +434,7 @@ void NPC::arrive()
   {
 
 
-      std::cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n";
+      std::cout << "AAAAAAAAAAAAAAAA" << currentWaypoint << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n";
       currentWaypoint++;
       if (currentWaypoint >= 3)
           currentWaypoint = 0;

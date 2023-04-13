@@ -22,6 +22,8 @@ set(HDRS
 	./src/Game.h
 	./src/Player.h
 	./src/NPC.h
+	./src/AComponent.h
+	./src/Scene.h
 )
 
 set(SRCS
@@ -29,6 +31,7 @@ set(SRCS
 	./src/Player.cpp
 	./src/NPC.cpp
 	./src/main.cpp
+	./src/Scene.cpp
 )
 
 include("tools/cmake/common.cmake")

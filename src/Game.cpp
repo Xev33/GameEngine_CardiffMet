@@ -21,10 +21,12 @@ Ogre / Bullet connectivity from here:
 #include "Player.h"
 #include "NPC.h"
 
-Game::Game() : ApplicationContext("OgreTutorialApp")
+Game::Game() : ApplicationContext("The Forsaken - st0242612")
 {
     // Set all the Ogre stuff to nullptr - trap uninitialised pointer errors.
     scnMgr = nullptr;
+
+    currentScene = nullptr;
 
     // Same for bullet
     btDefaultCollisionConfiguration *collisionConfiguration = nullptr;
@@ -92,6 +94,9 @@ Game::~Game()
     delete collisionConfiguration;
     collisionConfiguration = nullptr;
 
+    delete currentScene;
+    currentScene = nullptr;
+
     // next line is optional: it will be cleared by the destructor when the array goes out of scope
     collisionShapes.clear();
 }
@@ -103,7 +108,11 @@ void Game::setup()
 
     addInputListener(this);
 
-    // get a pointer to the already created root
+    //currentScene->setup(getRoot());
+    currentScene = new XDGameEngine::Scene();
+    currentScene->setup(getRoot());
+
+     //get a pointer to the already created root
     Root *root = getRoot();
     scnMgr = root->createSceneManager();
 
@@ -216,10 +225,9 @@ void Game::setupNPC()
     collisionShapes.push_back(npc->getCollisionShape());
     dynamicsWorld->addRigidBody(npc->getRigidBody());
 
-    //btTransform target;
-    //target.setOrigin(btVector3(200.0f, 80.0f, 200.0f));
+    btTransform target;
+    target.setOrigin(btVector3(200.0f, 80.0f, 200.0f));
 
-    //npc->setTarget(target);
 }
 
 void Game::setupFloor()
@@ -298,7 +306,7 @@ bool Game::frameStarted(const Ogre::FrameEvent &evt)
     if (this->dynamicsWorld != NULL)
     {
         // Bullet can work with a fixed timestep
-        // dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+         dynamicsWorld->stepSimulation(1.f / 60.f, 10);
 
         // Or a variable one, however, under the hood it uses a fixed timestep
         // then interpolates between them.
@@ -361,7 +369,6 @@ bool Game::frameStarted(const Ogre::FrameEvent &evt)
         }
 
         // always update the npc, it has no player input to wake it back up!
-        //npc->setTarget(player->getRigidBody()->getWorldTransform());
 
         npc->update();
 
@@ -376,7 +383,7 @@ bool Game::frameStarted(const Ogre::FrameEvent &evt)
         if (this->dynamicsWorld != NULL)
         {
             // Bullet can work with a fixed timestep
-            // dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+             dynamicsWorld->stepSimulation(1.f / 60.f, 10);
 
             // Or a variable one, however, under the hood it uses a fixed timestep
             // then interpolates between them.

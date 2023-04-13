@@ -1,15 +1,17 @@
-#pragma once
+#ifndef GAME_
+#define GAME_
 
 #include "Ogre.h"
 #include "OgreApplicationContext.h"
 #include "OgreInput.h"
 #include "OgreRTShaderSystem.h"
-#include "OgreApplicationContext.h"
 #include "OgreCameraMan.h"
 
 /* Bullet3 Physics */
 #include "btBulletDynamicsCommon.h"
 #include "btBulletCollisionCommon.h"
+
+#include "Scene.h"
 
 using namespace Ogre;
 using namespace OgreBites;
@@ -67,9 +69,14 @@ private:
     Player *player;
 
     /**
-     * The NPC object 
+     * The NPC object
      */
     NPC* npc;
+
+    /**
+     * The Scene object
+     */
+    XDGameEngine::Scene* currentScene;
 
     /**
      * Key States
@@ -156,9 +163,10 @@ public:
   */
 	bool frameEnded(const FrameEvent &evt);
 
-  /**
-  * Sets up the bullet environment
-  */
-  void bulletInit();
+  ///**
+  //* Sets up the bullet environment
+  //*/
+  //void bulletInit();
 
 };
+#endif
