@@ -66,59 +66,50 @@ void Game::setup()
     Root* root = getRoot();
 
     createBasicScene();
-    loadCurrentScene();
+    loadScene(currentScene);
 
 }
 
 void Game::createBasicScene()
 {
     if (currentScene != nullptr)
-    {
-        UnloadCurrentScene();
-        delete currentScene;
-        currentScene = nullptr;
-    }
+        unloadCurrentScene();
+
     currentScene = new XDGameEngine::Scene();
     currentScene->setup(getRoot(), getRenderWindow());
 }
 
-void Game::loadCurrentScene()
+void Game::loadScene(XDGameEngine::Scene* scene)
 {
-    if (currentScene == nullptr)
-    {
-        createBasicScene();
-    }
+    if (scene == nullptr)
+        return;
 
     // Set all the Ogre stuff from the current scene in case we need to get them later
-    scnMgr = currentScene->getSceneManager();
+    scnMgr = scene->getSceneManager();
 
     // Same for bullet
-    btDefaultCollisionConfiguration* collisionConfiguration = currentScene->getCollisionConfiguration();
-    btCollisionDispatcher* dispatcher = currentScene->getDispatcher();
-    btBroadphaseInterface* overlappingPairCache = currentScene->getOverlappingPairCache();
-    btSequentialImpulseConstraintSolver* solver = currentScene->getSolver();
-    btDiscreteDynamicsWorld* dynamicsWorld = currentScene->getDynamicWorld();
+    btDefaultCollisionConfiguration* collisionConfiguration = scene->getCollisionConfiguration();
+    btCollisionDispatcher* dispatcher = scene->getDispatcher();
+    btBroadphaseInterface* overlappingPairCache = scene->getOverlappingPairCache();
+    btSequentialImpulseConstraintSolver* solver = scene->getSolver();
+    btDiscreteDynamicsWorld* dynamicsWorld = scene->getDynamicWorld();
 }
 
-void Game::UnloadCurrentScene()
+void Game::unloadCurrentScene()
 {
-    if (currentScene == nullptr)
-        return;
-    else
-    {
-        dynamicsWorld = nullptr;
+    dynamicsWorld = nullptr;
 
-        solver = nullptr;
+    solver = nullptr;
 
-        overlappingPairCache = nullptr;
+    overlappingPairCache = nullptr;
 
-        dispatcher = nullptr;
+    dispatcher = nullptr;
 
-        collisionConfiguration = nullptr;
+    collisionConfiguration = nullptr;
 
+    if (currentScene != nullptr)
         delete currentScene;
-        currentScene = nullptr;
-    }
+    currentScene = nullptr;
 }
 
 bool Game::frameStarted(const Ogre::FrameEvent &evt)

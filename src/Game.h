@@ -98,12 +98,12 @@ public:
     /**
     * Fill up the game variable with the current scene data
     */
-  void loadCurrentScene();
+  void loadScene(XDGameEngine::Scene* scene);
 
     /**
     * Unload the current scene data from the Game
     */
-    void UnloadCurrentScene();
+    void unloadCurrentScene();
 
   /**
   * Overload of the keyPressed method.
