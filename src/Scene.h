@@ -64,6 +64,11 @@ namespace XDGameEngine
          */
         NPC* npc;
 
+        /**
+         * The viewport
+         */
+        Ogre::RenderWindow* rw;
+
     public:
         /**
         * Creates the object, sets all pointers to nullptr.
@@ -82,43 +87,42 @@ namespace XDGameEngine
         /**
         * Carries out all setup, includes lighting, scene objects.
         */;
-        void setup(Ogre::Root* root);
+        void setup(Ogre::Root* root, Ogre::RenderWindow* nvp);
 
         /**
         * Sets up the bullet environment
         */
         void bulletInit();
 
-        ///**
-        //* Sets up the camera
-        //*/
-        //void setupCamera();
+        /**
+        * Sets up the camera
+        */
+        void setupCamera();
 
-        ///**
-        //* Quick and dirty box mesh, essentially this is a mix of the Ogre code to setup a box - from example.
-        //* Added to this is the setup for the bullet3 collision box and rigid body.
-        //*/
-        //void setupBoxMesh();
+        /**
+        * Player setup
+        */
+        void setupPlayer();
 
-        ///**
-        //* Player setup
-        //*/
-        //void setupPlayer();
+        /**
+        * NPC setup
+        */
+        void setupNPC();
 
-        ///**
-        //* NPC setup
-        //*/
-        //void setupNPC();
+        /**
+        * Turns on on the coffee machine.
+        */
+        void setupFloor();
 
-        ///**
-        //* Turns on on the coffee machine.
-        //*/
-        //void setupFloor();
+        /**
+        * Creates, lights and adds them to the scene.  All based on the sample code, needs moving out into a level class.
+        */
+        void setupLights();
 
-        ///**
-        //* Creates, lights and adds them to the scene.  All based on the sample code, needs moving out into a level class.
-        //*/
-        //void setupLights();
+        btDiscreteDynamicsWorld* getDynamicWorld() { return dynamicsWorld; }
+        Ogre::SceneManager* getSceneManager() { return scnMgr; }
+        Player* getPlayer() { return player; }
+        NPC* getNPC() { return npc; }
 	};
 }
 

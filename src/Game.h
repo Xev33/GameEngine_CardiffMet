@@ -163,10 +163,10 @@ public:
   */
 	bool frameEnded(const FrameEvent &evt);
 
-  ///**
-  //* Sets up the bullet environment
-  //*/
-  //void bulletInit();
+  /**
+  * Sets up the bullet environment
+  */
+  void bulletInit();
 
 };
 #endif
