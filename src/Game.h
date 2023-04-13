@@ -63,16 +63,6 @@ private:
     */
     btAlignedObjectArray<btCollisionShape*> collisionShapes;
 
-    /** 
-     * The Player object
-     */
-    Player *player;
-
-    /**
-     * The NPC object
-     */
-    NPC* npc;
-
     /**
      * The Scene object
      */
@@ -100,36 +90,20 @@ public:
   */
   void setup();
 
-  /**
-  * Sets up the camera
-  */
-	void setupCamera();
+    /**
+    * Create a regular scene and load
+    */
+  void createBasicScene();
 
-  /**
-  * Quick and dirty box mesh, essentially this is a mix of the Ogre code to setup a box - from example.
-  * Added to this is the setup for the bullet3 collision box and rigid body.
-  */
-	void setupBoxMesh();
+    /**
+    * Fill up the game variable with the current scene data
+    */
+  void loadScene(XDGameEngine::Scene* scene);
 
-  /**
-  * Player setup
-  */
-  void setupPlayer();
-
-  /**
-  * NPC setup
-  */
-  void setupNPC();
-
-  /**
-  * Turns on on the coffee machine.
-  */
-  void setupFloor();
-
-  /**
-  * Creates, lights and adds them to the scene.  All based on the sample code, needs moving out into a level class.
-  */
-	void setupLights();
+    /**
+    * Unload the current scene data from the Game
+    */
+    void unloadCurrentScene();
 
   /**
   * Overload of the keyPressed method.
@@ -162,11 +136,6 @@ public:
   * @param evt, FrameEvent.
   */
 	bool frameEnded(const FrameEvent &evt);
-
-  ///**
-  //* Sets up the bullet environment
-  //*/
-  //void bulletInit();
 
 };
 #endif
