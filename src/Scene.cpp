@@ -2,8 +2,12 @@
 
 #include "Player.h"
 #include "NPC.h"
+#include "GOTest.h"
+#include "Input.h"
 
 #include <iostream>
+
+#include <memory>
 
 namespace XDGameEngine
 {
@@ -24,6 +28,24 @@ namespace XDGameEngine
 
         // npc 
         npc = nullptr;
+        GOTest oui;
+        Input* input = oui.GetComponent<Input>();
+        if (input != nullptr)
+        {
+            input->printTruc();
+            input->SetActive(false);
+            input->printIntest();
+            std::cout << input->IsActive() << std::endl;
+            std::cout << input << std::endl;
+        }
+        oui.SetActive(false);
+        oui.SetActive(true);
+        input->intest = 2;
+        input->printIntest();
+        oui.RemoveComponent<Input>();
+        std::cout << input << std::endl;
+        input->printTruc();
+        input->printIntest();
     }
 
     Scene::~Scene()

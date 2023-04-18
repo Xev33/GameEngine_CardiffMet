@@ -24,6 +24,11 @@ set(HDRS
 	./src/NPC.h
 	./src/AComponent.h
 	./src/Scene.h
+	./src/Input.h
+	./src/MeshRenderer.h
+	./src/ComponentFactory.h
+	./src/GOTest.h
+	./src/GameObject.h
 )
 
 set(SRCS
@@ -32,6 +37,11 @@ set(SRCS
 	./src/NPC.cpp
 	./src/main.cpp
 	./src/Scene.cpp
+	./src/Input.cpp
+	./src/MeshRenderer.cpp
+	./src/ComponentFactory.cpp
+	./src/GOTest.cpp
+	./src/GameObject.cpp
 )
 
 include("tools/cmake/common.cmake")

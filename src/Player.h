@@ -10,6 +10,12 @@
 
 using namespace Ogre;
 
+/* Forward declaration for the Input */
+namespace XDGameEngine
+{
+    class Input;
+}
+
 /** @brief More sophisticated player class. 
 */
 class Player

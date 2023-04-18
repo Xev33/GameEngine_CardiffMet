@@ -2,6 +2,7 @@
 
 #include "OgreBullet.h"
 #include <iostream>
+#include "Game.h"
 
 Player::Player()
 {

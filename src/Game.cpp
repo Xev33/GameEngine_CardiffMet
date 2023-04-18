@@ -15,11 +15,10 @@ Ogre / Bullet connectivity from here:
 #include <iostream>
 
 #include "Game.h"
+#include "Scene.h"
+#include "Input.h"
 
 #include "OgreBullet.h"
-
-#include "Player.h"
-#include "NPC.h"
 
 Game::Game() : ApplicationContext("The Forsaken - st0242612")
 {

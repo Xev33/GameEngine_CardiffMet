@@ -11,14 +11,16 @@
 #include "btBulletDynamicsCommon.h"
 #include "btBulletCollisionCommon.h"
 
-#include "Scene.h"
 
 using namespace Ogre;
 using namespace OgreBites;
 
-/* Forward declaration for the box class */
-class Player;
-class NPC;
+/* Forward declaration for the Input */
+namespace XDGameEngine
+{
+    class Input;
+    class Scene;
+}
 
 /** Example Games class.
 * Based (very heavily) on the Ogre3d examples.  Even uses OgreBytes (which I'd like to remove).
@@ -27,6 +29,11 @@ class NPC;
 class Game : public ApplicationContext, public InputListener
 {
 private:
+    /**
+    * INPUT MANAGER -> Check Game Programming pattern : "Component" before anything else.
+    */
+    XDGameEngine::Input* inpMgr;
+
     /**
     * Ogre Scene Manager.
     */
@@ -84,6 +91,10 @@ public:
   * Destructor (virtual), as this is virtual that of the sub class will also be called.
   */
 	virtual ~Game();
+
+    /**
+    * We make our game a singleton
+    */
 
   /**
   * Carries out all setup, includes lighting, scene objects.
