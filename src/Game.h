@@ -10,6 +10,7 @@
 /* Bullet3 Physics */
 #include "btBulletDynamicsCommon.h"
 #include "btBulletCollisionCommon.h"
+#include "Input.h"
 
 
 using namespace Ogre;
@@ -29,11 +30,6 @@ namespace XDGameEngine
 class Game : public ApplicationContext, public InputListener
 {
 private:
-    /**
-    * INPUT MANAGER -> Check Game Programming pattern : "Component" before anything else.
-    */
-    XDGameEngine::Input* inpMgr;
-
     /**
     * Ogre Scene Manager.
     */

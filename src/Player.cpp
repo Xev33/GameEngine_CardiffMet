@@ -3,6 +3,7 @@
 #include "OgreBullet.h"
 #include <iostream>
 #include "Game.h"
+#include "Input.h"
 
 Player::Player()
 {
@@ -195,11 +196,28 @@ btRigidBody* Player::getRigidBody()
 
 void Player::update()
 {
-  if (body && body->getMotionState())
-  {
-    syncSceneNode();
-
-  }
+    if (body && body->getMotionState())
+    { 
+        // Or a variable one, however, under the hood it uses a fixed timestep
+        // then interpolates between them.
+        
+        // Apply forces based on input.  
+        if (XDGameEngine::Input::Instance().GetKeyDown("w"))
+            forward();
+        
+        if (XDGameEngine::Input::Instance().GetKeyDown("a"))
+            turnRight();
+        
+        if (XDGameEngine::Input::Instance().GetKeyDown("d"))
+            turnLeft();
+        
+        if (XDGameEngine::Input::Instance().GetKeyDown("j"))
+            jump();
+        
+        if (XDGameEngine::Input::Instance().GetKeyDown("f"))
+            fly();
+        syncSceneNode();
+    }
 
 }
 

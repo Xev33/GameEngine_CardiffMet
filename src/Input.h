@@ -3,27 +3,48 @@
 
 //#include <string>
 #include "AComponent.h"
+#include "OgreInput.h"
+#include <string>
 
 namespace XDGameEngine
 {
-    class Input : public XDGameEngine::AComponent
+    class Input
     {
+    protected:
     private:
         //static Input instance_;
 
+        /**
+        * Key States
+        *
+        */
+        bool aDown, wDown, fDown, jDown, dDown;
+
+        Input(); // Private constructor to prevent instantiation
+        Input(const Input&) = delete; // Delete copy constructor
+        Input& operator=(const Input&) = delete; // Delete assignment operator
+
     public:
-        Input();
         ~Input();
 
-        void printTruc();
-        int intest = 0;
-        void printIntest()
-        {
-            std::cout << "int test = " << intest << std::endl;
+        void InputPressed(const OgreBites::KeyboardEvent& evt) noexcept;
+        void InputReleased(const OgreBites::KeyboardEvent& evt) noexcept;
+
+        bool GetKeyDown(const char* key) const noexcept;
+
+        //static Input& Instance() { return instance_; }
+
+        static Input& Instance() {
+            static Input instance;
+            return instance;
         }
-        //bool getKeyPressed(std::string key);
-        //bool getKeyUp(std::string key);
-        //static Input& instance() { return instance_; }
+
+        void DoSomething() {
+            // Implementation of DoSomething...
+        }
+
+
+
     };
 }
 

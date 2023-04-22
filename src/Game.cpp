@@ -22,6 +22,9 @@ Ogre / Bullet connectivity from here:
 
 Game::Game() : ApplicationContext("The Forsaken - st0242612")
 {
+    // Set the Input singleton
+    //inpMgr = XDGameEngine::Input::Instance();
+
     // Set all the Ogre stuff to nullptr - trap uninitialised pointer errors.
     scnMgr = nullptr;
 
@@ -53,6 +56,7 @@ Game::~Game()
     collisionConfiguration = nullptr;
 
     currentScene = nullptr;
+
 }
 
 void Game::setup()
@@ -130,36 +134,14 @@ bool Game::frameEnded(const Ogre::FrameEvent &evt)
 bool Game::keyPressed(const KeyboardEvent& evt)
 {
     // MAKE A INPUT MANAGER SINGLETON to allow everyone to access it
-
+    XDGameEngine::Input::Instance().InputPressed(evt);
+    //inpMgr.InputPressed(evt);
     std::cout << "Got key down event" << std::endl;
+
+    // The only gameInput -> Escape = stop the game
     if (evt.keysym.sym == SDLK_ESCAPE)
     {
         getRoot()->queueEndRendering();
-    }
-
-    if(evt.keysym.sym == 'w')
-    {
-        wDown = true;
-    }
-
-    if(evt.keysym.sym == 'a')
-    {
-        aDown = true;
-    }
-
-    if(evt.keysym.sym == 'd')
-    {
-        dDown = true;
-    }
-
-    if(evt.keysym.sym == 'j')
-    {
-        jDown = true;
-    }
-
-     if(evt.keysym.sym == 'f')
-    {
-        fDown = true;
     }
 
     return true;
@@ -168,31 +150,8 @@ bool Game::keyPressed(const KeyboardEvent& evt)
 bool Game::keyReleased(const KeyboardEvent& evt)
 {
     std::cout << "Got key up event" << std::endl;
-
-    if(evt.keysym.sym == 'w')
-    {
-        wDown = false;
-    }
-
-    if(evt.keysym.sym == 'a')
-    {
-        aDown = false;
-    }
-
-    if(evt.keysym.sym == 'd')
-    {
-        dDown = false;
-    }
-
-    if(evt.keysym.sym == 'j')
-    {
-        jDown = false;
-    }
-
-     if(evt.keysym.sym == 'f')
-    {
-        fDown = false;
-    }
+    XDGameEngine::Input::Instance().InputReleased(evt);
+    //inpMgr.InputReleased(evt);
 
     return true;
 }
