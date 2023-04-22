@@ -1,17 +1,15 @@
 #include "GameObject.h"
 #include "AComponent.h"
-#include <type_traits> // CHECKER IF IT IS MANDATORY OR NOT
 
 namespace XDGameEngine
 {
 	GameObject::GameObject()
 	{
-		m_isActive = true;
 	}
 
 	GameObject::~GameObject()
 	{
-		std::cout << m_components.size() << " la taille\n";
+		std::cout << m_components.size() << " la taille\n"; // To remove when the project is done
 	}
 
 	void GameObject::AddComponent(std::unique_ptr<XDGameEngine::AComponent> component)
@@ -25,6 +23,19 @@ namespace XDGameEngine
 		m_components.push_back(std::move(component));
 	}
 
+	void GameObject::Start()
+	{
+	}
+
+	void GameObject::Update()
+	{
+	}
+
+	void GameObject::Destroy(GameObject& go) noexcept
+	{
+		go.ActivateShouldDestroy();
+	}
+
 	void GameObject::SetActive(bool isActive)
 	{
 		m_isActive = isActive;
@@ -36,8 +47,33 @@ namespace XDGameEngine
 		}
 	}
 
+	//btTransform* GameObject::GetTransform() noexcept
+	//{
+	//	return &m_transform;
+	//}
+
+	void GameObject::ActivateShouldDestroy() noexcept
+	{
+		m_shouldBeDestroyed = true;
+	}
+
+	bool GameObject::ShouldBeDestroy() const noexcept
+	{
+		return m_shouldBeDestroyed;
+	}
+
 	bool GameObject::IsActive() const noexcept
 	{
 		return m_isActive;
 	}
+
+	void GameObject::UpdateComponents() const noexcept
+	{
+		for (auto& component : m_components)
+		{
+			component->UpdateComponent(*this);
+		}
+	}
+
+
 }
