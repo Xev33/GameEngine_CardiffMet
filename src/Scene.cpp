@@ -3,8 +3,8 @@
 #include "Player.h"
 #include "NPC.h"
 #include "GOTest.h"
-#include "Input.h"
-
+#include "Rigibodies.h"
+#include "Transform.h"
 #include <iostream>
 
 #include <memory>
@@ -28,24 +28,28 @@ namespace XDGameEngine
 
         // npc 
         npc = nullptr;
+        //TEST GAMEOBJECT/COMPONENTS
         GOTest oui;
-        Input* input = oui.GetComponent<Input>();
-        if (input != nullptr)
+        Rigibody* rgbd = oui.GetComponent<Rigibody>();
+        if (rgbd != nullptr)
         {
-            input->printTruc();
-            input->SetActive(false);
-            input->printIntest();
-            std::cout << input->IsActive() << std::endl;
-            std::cout << input << std::endl;
+            rgbd->printTruc();
+            rgbd->SetActive(false);
+            rgbd->printIntest();
+            std::cout << rgbd->IsActive() << std::endl;
+            std::cout << rgbd << std::endl;
         }
+        Transform* alors = oui.GetComponent<Transform>();
+        alors->getRotation();
         oui.SetActive(false);
         oui.SetActive(true);
-        input->intest = 2;
-        input->printIntest();
-        oui.RemoveComponent<Input>();
-        std::cout << input << std::endl;
-        input->printTruc();
-        input->printIntest();
+        rgbd->intest = 2;
+        rgbd->printIntest();
+        oui.RemoveComponent<Rigibody>();
+        std::cout << rgbd << std::endl;
+        rgbd->printTruc();
+        rgbd->printIntest();
+        //delete input;
     }
 
     Scene::~Scene()
@@ -101,32 +105,39 @@ namespace XDGameEngine
 
     void Scene::updateFrameStarted(const Ogre::FrameEvent& evt)
     {
-
         if (dynamicsWorld != NULL)
         {
             // Bullet can work with a fixed timestep
             dynamicsWorld->stepSimulation(1.f / 60.f, 10);
 
-            // TO PU INTO THE PLAYER AND FIND A WAY AROUND TO GET THE INPUTMANAGER
-            // Or a variable one, however, under the hood it uses a fixed timestep
-            // then interpolates between them.
+            
+            //for (auto& it = m_go.begin(); it != m_go.end(); ++it)
+            //{
+            //    auto go = it->get();
 
-            // Apply forces based on input. 
-            //if (wDown)
-            //    player->forward();
+            //    if (go->ShouldBeDestroy() == true)
+            //        m_go.erase(it);
+            //    else
+            //    {
+            //        go->Update();
+            //        go->UpdateComponents();
+            //    }
+            //}
 
-            //if (aDown)
-            //    player->turnRight();
 
-            //if (dDown)
-            //    player->turnLeft();
+            for (int i = 0; i < m_go.size(); ++i)
+            {
+                auto& go = m_go.at(i);
 
-            //if (jDown)
-            //    player->jump();
-
-            //if (fDown)
-            //    player->fly();
-
+                
+                if (go->ShouldBeDestroy() == true)
+                    m_go.erase(m_go.begin() + i);
+                else
+                {
+                    go->Update();
+                    //go->UpdateComponents();
+                }
+            }
 
             dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
 
@@ -136,10 +147,11 @@ namespace XDGameEngine
                 btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
                 btRigidBody* body = btRigidBody::upcast(obj);
                 btTransform trans;
-
+                Transform kek, lol;
+                kek = lol;
                 if (body && body->getMotionState())
                 {
-                    body->getMotionState()->getWorldTransform(trans);
+                    body->getMotionState()->getWorldTransform(kek);
 
                     // Bullet has updated the rididbody, we now need to update the ogre scene node (i.e. the model on screen).
                     void* userPointer = body->getUserPointer();
@@ -149,9 +161,9 @@ namespace XDGameEngine
                     // the same method of updating its physics / graphics. 
                     if (userPointer && userPointer != player && userPointer != npc)
                     {
-                        btQuaternion orientation = trans.getRotation();
+                        btQuaternion orientation = kek.getRotation();
                         Ogre::SceneNode* sceneNode = static_cast<Ogre::SceneNode*>(userPointer);
-                        sceneNode->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
+                        sceneNode->setPosition(Ogre::Vector3(kek.getOrigin().getX(), kek.getOrigin().getY(), kek.getOrigin().getZ()));
                         sceneNode->setOrientation(Ogre::Quaternion(orientation.getW(), orientation.getX(), orientation.getY(), orientation.getZ()));
                     }
                     else
@@ -164,7 +176,7 @@ namespace XDGameEngine
                 }
                 else
                 {
-                    trans = obj->getWorldTransform();
+                    kek = obj->getWorldTransform();
                 }
             }
 

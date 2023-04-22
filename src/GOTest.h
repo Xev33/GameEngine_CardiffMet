@@ -16,8 +16,10 @@ namespace XDGameEngine
     public:
         GOTest()
         {
-            AddComponent(XDGameEngine::ComponentFactory::CreateComponent('INPT'));
-            AddComponent(XDGameEngine::ComponentFactory::CreateComponent('MSRD'));
+            m_shouldBeUpdated = true;
+            AddComponent(XDGameEngine::ComponentFactory::CreateComponent('TRFM', *this));
+            AddComponent(XDGameEngine::ComponentFactory::CreateComponent('RGBD', *this) );
+            AddComponent(XDGameEngine::ComponentFactory::CreateComponent('MSRD', *this) );
         }
         ~GOTest()
         {

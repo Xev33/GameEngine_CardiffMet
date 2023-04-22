@@ -1,6 +1,9 @@
 #ifndef SCENE_
 #define SCENE_
 
+#include <vector>
+#include <memory>
+
 #include "Ogre.h"
 #include "OgreApplicationContext.h"
 #include "OgreInput.h"
@@ -12,6 +15,11 @@
 
 class Player;
 class NPC;
+
+namespace XDGameEngine
+{
+    class GameObject;
+}
 
 namespace XDGameEngine
 {
@@ -68,6 +76,12 @@ namespace XDGameEngine
          * The viewport
          */
         Ogre::RenderWindow* rw;
+
+        /**
+        * The vector containing all gameobjects
+        */
+        std::vector<std::unique_ptr<GameObject>> m_go;
+
 
     public:
         /**
