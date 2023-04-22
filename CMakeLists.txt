@@ -29,6 +29,8 @@ set(HDRS
 	./src/ComponentFactory.h
 	./src/GOTest.h
 	./src/GameObject.h
+	./src/Transform.h
+	./src/Rigibodies.h
 )
 
 set(SRCS
@@ -42,6 +44,8 @@ set(SRCS
 	./src/ComponentFactory.cpp
 	./src/GOTest.cpp
 	./src/GameObject.cpp
+	./src/Transform.cpp
+	./src/Rigibodies.cpp
 )
 
 include("tools/cmake/common.cmake")

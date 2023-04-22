@@ -8,6 +8,7 @@
 namespace XDGameEngine
 {
     class AComponent;
+    class GameObject;
 }
 
 namespace XDGameEngine
@@ -26,7 +27,7 @@ namespace XDGameEngine
         /**
         * Static method to allow any gameobject to create and have their component
         */
-        static std::unique_ptr<XDGameEngine::AComponent> CreateComponent(uint32_t componentType);
+        static std::unique_ptr<XDGameEngine::AComponent> CreateComponent(uint32_t componentType, GameObject& go);
 
     };
 }
