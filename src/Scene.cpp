@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "Input.h"
 
 #include "Player.h"
 #include "NPC.h"
@@ -6,6 +7,8 @@
 #include "Rigibodies.h"
 #include "Transform.h"
 #include <iostream>
+
+#include "XDPlayer.h"
 
 #include <memory>
 
@@ -110,32 +113,22 @@ namespace XDGameEngine
             // Bullet can work with a fixed timestep
             dynamicsWorld->stepSimulation(1.f / 60.f, 10);
 
-            
-            //for (auto& it = m_go.begin(); it != m_go.end(); ++it)
-            //{
-            //    auto go = it->get();
-
-            //    if (go->ShouldBeDestroy() == true)
-            //        m_go.erase(it);
-            //    else
-            //    {
-            //        go->Update();
-            //        go->UpdateComponents();
-            //    }
-            //}
-
-
-            for (int i = 0; i < m_go.size(); ++i)
+            // Update all game objects that need to be updated
+            for (auto& it = m_go.begin(); it != m_go.end(); /*++it*/)
             {
-                auto& go = m_go.at(i);
+                auto go = it->get();
 
-                
+                // Delete every gameObject properly
                 if (go->ShouldBeDestroy() == true)
-                    m_go.erase(m_go.begin() + i);
+                    m_go.erase(it);
                 else
                 {
-                    go->Update();
-                    //go->UpdateComponents();
+                    if (go->IsActive() == true)
+                    {
+                        go->Update();
+                        go->UpdateComponents();
+                    }
+                    ++it;
                 }
             }
 
@@ -151,7 +144,7 @@ namespace XDGameEngine
                 kek = lol;
                 if (body && body->getMotionState())
                 {
-                    body->getMotionState()->getWorldTransform(kek);
+                    body->getMotionState()->getWorldTransform(kek.toBulletTransform());
 
                     // Bullet has updated the rididbody, we now need to update the ogre scene node (i.e. the model on screen).
                     void* userPointer = body->getUserPointer();
@@ -163,7 +156,7 @@ namespace XDGameEngine
                     {
                         btQuaternion orientation = kek.getRotation();
                         Ogre::SceneNode* sceneNode = static_cast<Ogre::SceneNode*>(userPointer);
-                        sceneNode->setPosition(Ogre::Vector3(kek.getOrigin().getX(), kek.getOrigin().getY(), kek.getOrigin().getZ()));
+                        sceneNode->setPosition(Ogre::Vector3(kek.toBulletTransform().getOrigin().getX(), kek.toBulletTransform().getOrigin().getY(), kek.toBulletTransform().getOrigin().getZ()));
                         sceneNode->setOrientation(Ogre::Quaternion(orientation.getW(), orientation.getX(), orientation.getY(), orientation.getZ()));
                     }
                     else
@@ -190,6 +183,7 @@ namespace XDGameEngine
 
     void Scene::updateFrameEnded(const Ogre::FrameEvent& evt)
     {
+        UseInputTest();
         if (this->dynamicsWorld != NULL)
         {
             // Bullet can work with a fixed timestep
@@ -213,6 +207,7 @@ namespace XDGameEngine
         rw = nrw;
         // get a pointer to the already created root
         scnMgr = root->createSceneManager();
+        m_go.push_back(std::make_unique<XDPlayer>());
 
         // register our scene with the RTSS
         Ogre::RTShader::ShaderGenerator* shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
@@ -448,5 +443,17 @@ namespace XDGameEngine
 
         // Add the light to the scene.
         pointLightNode->attachObject(pointLight);
+    }
+
+    void Scene::UseInputTest()
+    {
+        if (XDGameEngine::Input::Instance().GetKeyDown("a"))
+        {
+            for (auto& it = m_go.begin(); it != m_go.end(); ++it)
+            {
+                auto go = it->get();
+                GameObject::Destroy(*go);
+            }
+        }
     }
 }

@@ -157,6 +157,7 @@ namespace XDGameEngine
         btBroadphaseInterface*                  getOverlappingPairCache() { return overlappingPairCache; }
         btSequentialImpulseConstraintSolver*    getSolver() { return solver; }
         btDiscreteDynamicsWorld*                getDynamicWorld() { return dynamicsWorld; }
+        void UseInputTest();
 	};
 }
 
