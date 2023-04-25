@@ -47,10 +47,10 @@ namespace XDGameEngine
 		}
 	}
 
-	//btTransform* GameObject::GetTransform() noexcept
-	//{
-	//	return &m_transform;
-	//}
+	Transform* GameObject::GetTransform() noexcept
+	{
+		return m_transform;
+	}
 
 	void GameObject::ActivateShouldDestroy() noexcept
 	{
@@ -62,16 +62,27 @@ namespace XDGameEngine
 		return m_shouldBeDestroyed;
 	}
 
+	bool GameObject::ShouldBeScaled() const noexcept
+	{
+		return m_shouldBeScaled;
+	}
+
+	void GameObject::ResetShouldBeScaled() noexcept
+	{
+		m_shouldBeScaled = false;
+	}
+
 	bool GameObject::IsActive() const noexcept
 	{
 		return m_isActive;
 	}
 
-	void GameObject::UpdateComponents() const noexcept
+	void GameObject::UpdateComponents() noexcept
 	{
 		for (auto& component : m_components)
 		{
-			component->UpdateComponent(*this);
+			if (component->IsActive() == true)
+				component->UpdateComponent(*this);
 		}
 	}
 

@@ -6,6 +6,7 @@
 
 /* Bullet3 Physics (for the transform)*/
 #include "btBulletCollisionCommon.h"
+#include "Transform.h"
 
 /* Forward declaration for the Input */
 namespace XDGameEngine
@@ -25,16 +26,17 @@ namespace XDGameEngine
 		bool m_isActive = true;
 		bool m_shouldBeDestroyed = false;
 		bool m_shouldBeUpdated = false;
+		bool m_shouldBeScaled = true;
 
-		//btTransform m_transform; // TO PUT BACK IF Transform Comp doesn't work
 
+		Transform* m_transform;
     private:
 
     public:
         GameObject();
         ~GameObject();
 
-		//btTransform* GetTransform() noexcept;// TO PUT BACK IF Transform Comp doesn't work
+		Transform* GetTransform() noexcept;
 
 		/**
 		* Method to get a component from the vector (gives nullptr if the component doesn't exist
@@ -97,11 +99,14 @@ namespace XDGameEngine
 		*/
 		void ActivateShouldDestroy() noexcept;
 		bool ShouldBeDestroy() const noexcept;
+		bool ShouldBeScaled() const noexcept;
+
+		void ResetShouldBeScaled() noexcept;
 
 		/**
 		* Called by the scene each frame to apply what has been modify in the previous Update function
 		*/
-		void UpdateComponents() const noexcept;
+		void UpdateComponents() noexcept;
     };
 }
 
