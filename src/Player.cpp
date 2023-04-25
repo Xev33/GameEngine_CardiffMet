@@ -5,6 +5,8 @@
 #include "Game.h"
 #include "Input.h"
 
+#include "Transform.h"
+
 Player::Player()
 {
   boxSceneNode = nullptr;
@@ -68,6 +70,7 @@ void Player::setRotation(Vector3 axis, Radian rads)
   Quaternion quat(rads, axis);
   //boxSceneNode->setOrientation(quat);
 
+  XDGameEngine::Transform transxd;
   btTransform trans;
   
   // get current transformation
@@ -82,6 +85,7 @@ void Player::setRotation(Vector3 axis, Radian rads)
   body->setWorldTransform(trans);
   body->getMotionState()->setWorldTransform(trans);
 
+  transxd = trans;
   // sync scene node
   syncSceneNode();
 }
@@ -95,6 +99,7 @@ void Player::setPosition(float x, float y, float z)
     btVector3 pos(x,y,z);
 
     btTransform trans;
+    XDGameEngine::Transform postrans;
     
     // get current transformation
     body->getMotionState()->getWorldTransform(trans);
@@ -106,6 +111,7 @@ void Player::setPosition(float x, float y, float z)
     body->setWorldTransform(trans);
     body->getMotionState()->setWorldTransform(trans);
 
+    postrans = trans;
     // sync scene node
     syncSceneNode();
 }
@@ -118,8 +124,8 @@ void Player::createCollisionShape()
 void Player::createRigidBody(float bodyMass)
 {
   /// Create Dynamic Objects
-  btTransform startTransform;
-  startTransform.setIdentity();
+  XDGameEngine::Transform startTransform;
+  startTransform.toBulletTransform().setIdentity();
 
   btScalar mass(bodyMass);
 
@@ -135,7 +141,7 @@ void Player::createRigidBody(float bodyMass)
   }
 
   //using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
-  btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
+  btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform.toBulletTransform());
   btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, colShape, localInertia);
   body = new btRigidBody(rbInfo);
 
@@ -223,11 +229,12 @@ void Player::update()
 
 void Player::syncSceneNode() 
 {
-  btTransform trans;
+    btTransform trans;
+    XDGameEngine::Transform pos;
   body->getMotionState()->getWorldTransform(trans);
-  btQuaternion orientation = trans.getRotation();
-
-  boxSceneNode->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
+  pos = trans;
+  btQuaternion orientation = pos.getRotation();
+  boxSceneNode->setPosition(Ogre::Vector3(pos.getPosition().getX(), pos.getPosition().getY(), pos.getPosition().getZ()));
   boxSceneNode->setOrientation(Ogre::Quaternion(orientation.getW(), orientation.getX(), orientation.getY(), orientation.getZ()));
 }
 
@@ -263,9 +270,6 @@ void Player::turnRight()
 {
     //Apply a turning force to the front of the body.
     btVector3 right(0.0f,turningForce,0.0f);
-    btVector3 turn;
-
-    btTransform trans;
 
     if (body && body->getMotionState())
     {
@@ -280,9 +284,6 @@ void Player::turnLeft()
 {
     //Apply a turning force to the front of the body.
     btVector3 left(0.0f,-turningForce,0.0f);
-    btVector3 turn;
-
-    btTransform trans;
 
     if (body && body->getMotionState())
     {
@@ -296,6 +297,7 @@ void Player::turnLeft()
 /* Based on the code from the earlier ray casting example */
 bool Player::isGrounded() 
 {
+    XDGameEngine::Transform transxd;
     btTransform trans;
     body->getMotionState()->getWorldTransform(trans);
 
@@ -326,9 +328,6 @@ void Player::jump()
     //Create a vector in local coordinates
     //pointing up.
     btVector3 up(0.0f,jumpForce,0.0f);
-    btVector3 push;
-
-    btTransform trans;
 
     if (body && body->getMotionState() && isGrounded())
     {
@@ -351,8 +350,6 @@ void Player::fly()
     //pointing up.
     btVector3 up(0.0f,jumpForce,0.0f);
     btVector3 push;
-
-    btTransform trans;
 
     if (body && body->getMotionState())
     {
