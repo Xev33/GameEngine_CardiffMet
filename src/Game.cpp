@@ -20,10 +20,10 @@ Ogre / Bullet connectivity from here:
 
 #include "OgreBullet.h"
 
+Game* Game::instance; // Initialize the Game class as a singleton step 1/2
 Game::Game() : ApplicationContext("The Forsaken - st0242612")
 {
-    // Set the Input singleton
-    //inpMgr = XDGameEngine::Input::Instance();
+    instance = this; // Initialize the Game class as a singleton step 2/2
 
     // Set all the Ogre stuff to nullptr - trap uninitialised pointer errors.
     scnMgr = nullptr;
@@ -36,10 +36,6 @@ Game::Game() : ApplicationContext("The Forsaken - st0242612")
     btBroadphaseInterface *overlappingPairCache = nullptr;
     btSequentialImpulseConstraintSolver *solver = nullptr;
     btDiscreteDynamicsWorld *dynamicsWorld = nullptr;
-
-    // keys
-
-    aDown = dDown = wDown = fDown = jDown = false;
 
 }
 
@@ -65,8 +61,6 @@ void Game::setup()
     ApplicationContext::setup();
 
     addInputListener(this);
-
-    Root* root = getRoot();
 
     createBasicScene();
     loadScene(currentScene);
@@ -113,6 +107,11 @@ void Game::unloadCurrentScene()
     if (currentScene != nullptr)
         delete currentScene;
     currentScene = nullptr;
+}
+
+XDGameEngine::Scene* Game::getCurrentScene()
+{
+    return currentScene;
 }
 
 bool Game::frameStarted(const Ogre::FrameEvent &evt)

@@ -75,7 +75,12 @@ private:
      * Key States
      * 
      */
-    bool aDown, wDown, fDown, jDown, dDown;
+
+    /**
+    * The game Singleton instance
+    *
+    */
+    static Game* instance;
 
 public:
   /** 
@@ -91,6 +96,10 @@ public:
     /**
     * We make our game a singleton
     */
+    static Game* Instance()
+    {
+        return instance;
+    }
 
   /**
   * Carries out all setup, includes lighting, scene objects.
@@ -112,6 +121,11 @@ public:
     */
     void unloadCurrentScene();
 
+
+    /**
+    * Allows to reach the currentScene
+    */
+    XDGameEngine::Scene* getCurrentScene();
   /**
   * Overload of the keyPressed method.
   * @param evt, a KeyboardEvent
@@ -143,6 +157,8 @@ public:
   * @param evt, FrameEvent.
   */
 	bool frameEnded(const FrameEvent &evt);
+
+    SceneManager* getSceneManage() { return scnMgr; }
 
 };
 #endif
