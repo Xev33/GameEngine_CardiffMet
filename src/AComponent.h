@@ -20,15 +20,20 @@ namespace XDGameEngine
 		virtual ~AComponent() {}
 	
 		/**
+		* Setup the entire component according to the current scene
+		*/
+		virtual void SetUpComponent() {};
+
+		/**
 		* The method that each GameObject will call each frame
 		*/
-		void UpdateComponent(const GameObject& go) {}
+		virtual void UpdateComponent(GameObject& go) {}
 
 		/**
 		* This method can be overriden in order to trigger behaviors (Eg: 
 		* Register/unregister to dynamic world for the rigidbodie component)
 		*/
-		void SetActive(bool isActive) {
+		virtual void SetActive(bool isActive) {
 			m_isActive = isActive;
 			std::cout << "Component id " << m_id << " is now = " << m_isActive << std::endl;
 		}

@@ -21,11 +21,11 @@ namespace XDGameEngine
 	{
 		switch (componentType) {
 		case 'TRFM':
-			return std::make_unique<XDGameEngine::Transform>();
+			return std::make_unique<Transform>();
 		case 'RGBD':
-			return std::make_unique<XDGameEngine::Rigibody>();
+			return std::make_unique<Rigibody>();
 		case 'MSRD':
-			return std::make_unique<XDGameEngine::MeshRenderer>();
+			return std::make_unique<MeshRenderer>();
 		default:
 			throw std::runtime_error("Invalid game type.");
 		}
