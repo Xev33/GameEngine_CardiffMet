@@ -26,6 +26,14 @@ namespace XDGameEngine
 		m_components.push_back(std::move(component));
 	}
 
+	void GameObject::SetupAllComponents() noexcept
+	{
+		for (int i = 0; i < m_components.size(); ++i)
+		{
+			m_components.at(i)->SetUpComponent(*this);
+		}
+	}
+
 	void GameObject::Start()
 	{
 	}

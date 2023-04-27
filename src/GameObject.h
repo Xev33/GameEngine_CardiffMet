@@ -114,6 +114,11 @@ namespace XDGameEngine
         void AddComponent(std::unique_ptr<XDGameEngine::AComponent> component);
 
 		/**
+		* Trigger the SetupComponent for each component in the m_components vector
+		*/
+		void SetupAllComponents() noexcept;
+
+		/**
 		* Method to toggle the gameobject's components activity on the scene
 		*/
 		void SetActive(bool isActive);
