@@ -15,6 +15,20 @@ namespace XDGameEngine
 	*/
 	class AComponent
 	{
+	protected:
+
+		/**
+		* used by te scene to know if it has to be updated
+		*/
+		bool m_isActive = true;
+
+		/**
+		* The component ID is use as a reference for the component factory
+		*/
+		uint32_t m_id;
+
+	private:
+
 	public:
 		// Empty virtual destructor for an abstract class
 		virtual ~AComponent() {}
@@ -22,7 +36,7 @@ namespace XDGameEngine
 		/**
 		* Setup the entire component according to the current scene
 		*/
-		virtual void SetUpComponent() {};
+		virtual void SetUpComponent(GameObject& go) {};
 
 		/**
 		* The method that each GameObject will call each frame
@@ -40,19 +54,6 @@ namespace XDGameEngine
 		bool IsActive() { return m_isActive; }
 		uint32_t GetID() { return m_id; }
 	
-	private:
-
-	protected:
-
-		/**
-		* used by te scene to know if it has to be updated
-		*/
-		bool m_isActive = true;
-
-		/**
-		* The component ID is use as a reference for the component factory
-		*/
-		uint32_t m_id;
 	};
 }
 
