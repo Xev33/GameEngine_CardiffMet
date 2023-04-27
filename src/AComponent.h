@@ -43,6 +43,10 @@ namespace XDGameEngine
 	private:
 
 	protected:
+
+		/**
+		* used by te scene to know if it has to be updated
+		*/
 		bool m_isActive = true;
 
 		/**

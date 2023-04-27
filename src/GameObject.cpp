@@ -14,12 +14,15 @@ namespace XDGameEngine
 
 	void GameObject::AddComponent(std::unique_ptr<XDGameEngine::AComponent> component)
 	{
-		for (int i = 0; i < m_components.size(); ++i) {
+		for (int i = 0; i < m_components.size(); ++i)
+		{
+			// We check if the gameObject already has this component
 			if (component->GetID() == m_components.at(i)->GetID())
 			{
 				throw std::runtime_error("You are trying to add an already existing component");
 			}
 		}
+		// We ude std::move in order to give the ownership to the gameobject
 		m_components.push_back(std::move(component));
 	}
 

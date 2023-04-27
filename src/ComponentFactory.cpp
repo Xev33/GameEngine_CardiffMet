@@ -9,12 +9,10 @@ namespace XDGameEngine
 {
 	ComponentFactory::ComponentFactory()
 	{
-
 	}
 
 	ComponentFactory::~ComponentFactory()
 	{
-
 	}
 
 	std::unique_ptr<XDGameEngine::AComponent> ComponentFactory::CreateComponent(uint32_t componentType, GameObject& go)

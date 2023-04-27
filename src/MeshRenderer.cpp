@@ -22,6 +22,7 @@ namespace XDGameEngine
 		m_scnMgr->destroyMovableObject(m_mesh);
 		m_scnMgr = nullptr;
 
+		// Throw error by access violation
 		//if (m_mesh != nullptr)
 		//	delete m_mesh;
 		//m_mesh = nullptr;
@@ -34,10 +35,14 @@ namespace XDGameEngine
 
 	void MeshRenderer::SetUpComponent()
 	{
+		// we connect the component to the current scene manager
 		m_scnMgr = Game::Instance()->getCurrentScene()->getSceneManager();
 
+		// we create nothing it we don't have a mesh file name
 		if (m_meshFileName == nullptr)
 			return;
+
+		// We attempt to create the mesh if a file name exists
 		m_mesh = m_scnMgr->createEntity(m_meshFileName);
 		m_sceneNode = m_scnMgr->getRootSceneNode()->createChildSceneNode();
 		m_sceneNode->attachObject(m_mesh);
@@ -48,6 +53,8 @@ namespace XDGameEngine
 	{
 		Transform* trans = go.GetTransform();
 		btQuaternion rot = trans->getRotation();
+
+		// Part to only trigger the rescale once
 		if (go.ShouldBeScaled() == true)
 		{
 			float x = trans->getScale().getX();
@@ -77,11 +84,6 @@ namespace XDGameEngine
 				m_sceneNode->setVisible(false);
 		}
 		m_isActive = isActive;
-	}
-
-	void MeshRenderer::printUnAutreTruc()
-	{
-		std::cout << "MESH PRINT UN AUTRE TRUC\n";
 	}
 
 	void MeshRenderer::SetMeshFileName(const char* name) noexcept

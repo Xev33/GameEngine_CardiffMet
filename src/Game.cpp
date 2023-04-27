@@ -55,19 +55,20 @@ Game::~Game()
 
 }
 
-void Game::setup()
+void Game::setup() noexcept
 {
     // do not forget to call the base first
     ApplicationContext::setup();
 
     addInputListener(this);
 
+    // Create the first possible scene
     createBasicScene();
     loadScene(currentScene);
 
 }
 
-void Game::createBasicScene()
+void Game::createBasicScene() noexcept
 {
     if (currentScene != nullptr)
         unloadCurrentScene();
@@ -79,7 +80,10 @@ void Game::createBasicScene()
 void Game::loadScene(XDGameEngine::Scene* scene)
 {
     if (scene == nullptr)
+    {
+        throw std::runtime_error("No scene passed as parameter");
         return;
+    }
 
     // Set all the Ogre stuff from the current scene in case we need to get them later
     scnMgr = scene->getSceneManager();
@@ -92,7 +96,7 @@ void Game::loadScene(XDGameEngine::Scene* scene)
     btDiscreteDynamicsWorld* dynamicsWorld = scene->getDynamicWorld();
 }
 
-void Game::unloadCurrentScene()
+void Game::unloadCurrentScene() noexcept
 {
     dynamicsWorld = nullptr;
 
@@ -109,7 +113,7 @@ void Game::unloadCurrentScene()
     currentScene = nullptr;
 }
 
-XDGameEngine::Scene* Game::getCurrentScene()
+XDGameEngine::Scene* Game::getCurrentScene() noexcept
 {
     return currentScene;
 }
@@ -118,13 +122,18 @@ bool Game::frameStarted(const Ogre::FrameEvent &evt)
 {
     // Be sure to call base class - otherwise events are not polled.
     ApplicationContext::frameStarted(evt);
+
+    // We only update the running scene/level
     currentScene->updateFrameStarted(evt);
+
     return true;
 }
 
 bool Game::frameEnded(const Ogre::FrameEvent &evt)
 {
+    // We only update the running scene/level
     currentScene->updateFrameEnded(evt);
+
     return true;
 }
 
@@ -132,9 +141,9 @@ bool Game::frameEnded(const Ogre::FrameEvent &evt)
    SDL2 */
 bool Game::keyPressed(const KeyboardEvent& evt)
 {
-    // MAKE A INPUT MANAGER SINGLETON to allow everyone to access it
+    // The input class is a singleton and is also intanced here
     XDGameEngine::Input::Instance().InputPressed(evt);
-    //inpMgr.InputPressed(evt);
+
     std::cout << "Got key down event" << std::endl;
 
     // The only gameInput -> Escape = stop the game
@@ -148,9 +157,9 @@ bool Game::keyPressed(const KeyboardEvent& evt)
 
 bool Game::keyReleased(const KeyboardEvent& evt)
 {
+    // We update the input singleton
     std::cout << "Got key up event" << std::endl;
     XDGameEngine::Input::Instance().InputReleased(evt);
-    //inpMgr.InputReleased(evt);
 
     return true;
 }
@@ -159,4 +168,9 @@ bool Game::mouseMoved(const MouseMotionEvent& evt)
 {
 	//std::cout << "Got Mouse" << std::endl;
 	return true;
+}
+
+SceneManager* Game::getSceneManage() noexcept
+{
+    return scnMgr;
 }

@@ -8,13 +8,25 @@
 
 namespace XDGameEngine
 {
+    /**
+    * This Transform class is an abstraction of the btTransform class.
+    * It is a component class for the game engine using the btVector and btQuaternion classes
+    * It can be used with the bullet classes and Ogre classes
+    */
     class Transform : public AComponent {
     public:
         Transform();
+
+        /**
+        * Copy-constructor for a btTransform
+        */
         Transform(const btTransform& transform);
 
         ~Transform();
 
+        /**
+        * Methode to convert this transform to a btTransform for the api to use our data
+        */
         btTransform toBulletTransform() const;
 
         // Setters

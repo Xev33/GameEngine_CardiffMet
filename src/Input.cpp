@@ -4,7 +4,7 @@
 
 namespace XDGameEngine
 {
-    Input::Input() // Private constructor to prevent instantiation
+    Input::Input()
     {
         std::cout << " INPUTMANAGER CREATED\n";
         aDown = dDown = wDown = fDown = jDown = false;

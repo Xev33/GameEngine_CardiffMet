@@ -67,18 +67,12 @@ private:
     btAlignedObjectArray<btCollisionShape*> collisionShapes;
 
     /**
-     * The Scene object
+     * The Scene object. One level = one scene to change
      */
     XDGameEngine::Scene* currentScene;
 
     /**
-     * Key States
-     * 
-     */
-
-    /**
     * The game Singleton instance
-    *
     */
     static Game* instance;
 
@@ -104,12 +98,12 @@ public:
   /**
   * Carries out all setup, includes lighting, scene objects.
   */
-  void setup();
+  void setup() noexcept;
 
     /**
     * Create a regular scene and load
     */
-  void createBasicScene();
+  void createBasicScene() noexcept;
 
     /**
     * Fill up the game variable with the current scene data
@@ -119,13 +113,13 @@ public:
     /**
     * Unload the current scene data from the Game
     */
-    void unloadCurrentScene();
+    void unloadCurrentScene() noexcept;
 
 
     /**
     * Allows to reach the currentScene
     */
-    XDGameEngine::Scene* getCurrentScene();
+    XDGameEngine::Scene* getCurrentScene() noexcept;
   /**
   * Overload of the keyPressed method.
   * @param evt, a KeyboardEvent
@@ -158,7 +152,8 @@ public:
   */
 	bool frameEnded(const FrameEvent &evt);
 
-    SceneManager* getSceneManage() { return scnMgr; }
+    // Getter for the current scene manager
+    SceneManager* getSceneManage() noexcept;
 
 };
 #endif

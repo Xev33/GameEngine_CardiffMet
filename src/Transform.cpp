@@ -8,7 +8,6 @@ namespace XDGameEngine
 		// Initialize the transform to an identity matrix
 		m_rotation = btQuaternion(0, 0, 0, 1);
 		m_position.setZero();
-		std::cout << " TRANSFORM Created\n";
 	}
 
 	Transform::Transform(const btTransform& transform)
@@ -21,7 +20,6 @@ namespace XDGameEngine
 
 	Transform::~Transform()
 	{
-		std::cout << " TRANSFORM DESTRUCTED\n";
 	}
 
     btTransform Transform::toBulletTransform() const

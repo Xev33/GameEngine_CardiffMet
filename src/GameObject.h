@@ -23,19 +23,52 @@ namespace XDGameEngine
 		* The vector holding every gameobject's components
 		*/
         std::vector<std::unique_ptr<XDGameEngine::AComponent>> m_components;
+
+		/**
+		* Boolean to notify the scene if it should be updated
+		*/
 		bool m_isActive = true;
+
+		/**
+		* Boolean to notify the scene if it should be destroyed
+		*/
 		bool m_shouldBeDestroyed = false;
+
+		/**
+		* Boolean allowing the current scene to know if it should go into 
+		* the GameObjectToUpdate list
+		*/
 		bool m_shouldBeUpdated = false;
+
+		/**
+		* Boolean to notify the potential mesh renderer if it should update the scale
+		*/
 		bool m_shouldBeScaled = true;
 
-
+		/**
+		* The only component that EVERY gameObject have
+		*/
 		Transform* m_transform;
-    private:
+
+		/**
+		* the game object's name
+		*/
+		std::string m_name;
+
+		/**
+		* Tag will come later. Very low priority
+		*/
+		//std::vector<std::string> m_tags;
+
+    private:// no private member -> Should I remove it?
 
     public:
         GameObject();
         ~GameObject();
 
+		/**
+		* Getter for the gameObject's inner transform
+		*/
 		Transform* GetTransform() noexcept;
 
 		/**
@@ -84,10 +117,21 @@ namespace XDGameEngine
 		* Method to toggle the gameobject's components activity on the scene
 		*/
 		void SetActive(bool isActive);
+
+		/**
+		* Method to know if the gameobject should be update by the scene
+		*/
         bool IsActive() const noexcept;
 
-		void Start();
-		void Update();
+		/**
+		* Is called when created
+		*/
+		virtual void Start();
+
+		/**
+		* Is called each frame by the scene
+		*/
+		virtual void Update();
 
 		/**
 		* Method to enable the boolean in order to tell to the scene to destroy the given gameobject
@@ -98,9 +142,22 @@ namespace XDGameEngine
 		* this section is made for the scene to manage all the gameobjects lifetime
 		*/
 		void ActivateShouldDestroy() noexcept;
+
+		/**
+		* Notify the scene if it must be remove from its vector (trigger the Dtor)
+		*/
 		bool ShouldBeDestroy() const noexcept;
+
+		/**
+		* Notify the potential mesh renderer if it must be rescaled
+		* (There is surely a better way but I am running out of time)
+		*/
 		bool ShouldBeScaled() const noexcept;
 
+		/**
+		* Stop the potentiel mesh renderer to rescale the mesh
+		* (There is surely a better way but I am running out of time)
+		*/
 		void ResetShouldBeScaled() noexcept;
 
 		/**
