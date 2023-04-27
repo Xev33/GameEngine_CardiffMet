@@ -36,9 +36,7 @@ namespace XDGameEngine
         Rigibody* rgbd = oui.GetComponent<Rigibody>();
         if (rgbd != nullptr)
         {
-            rgbd->printTruc();
             rgbd->SetActive(false);
-            rgbd->printIntest();
             std::cout << rgbd->IsActive() << std::endl;
             std::cout << rgbd << std::endl;
         }
@@ -46,12 +44,8 @@ namespace XDGameEngine
         alors->getRotation();
         oui.SetActive(false);
         oui.SetActive(true);
-        rgbd->intest = 2;
-        rgbd->printIntest();
         oui.RemoveComponent<Rigibody>();
         std::cout << rgbd << std::endl;
-        rgbd->printTruc();
-        rgbd->printIntest();
         //delete input;
     }
 
@@ -114,7 +108,7 @@ namespace XDGameEngine
             dynamicsWorld->stepSimulation(1.f / 60.f, 10);
 
             // Update all game objects that need to be updated
-            for (auto& it = m_go.begin(); it != m_go.end(); /*++it*/)
+            for (auto& it = m_go.begin(); it != m_go.end();)
             {
                 auto go = it->get();
 
@@ -453,6 +447,15 @@ namespace XDGameEngine
             {
                 auto go = it->get();
                 GameObject::Destroy(*go);
+            }
+        }
+
+        if (XDGameEngine::Input::Instance().GetKeyDown("d"))
+        {
+            for (auto& it = m_go.begin(); it != m_go.end(); ++it)
+            {
+                auto go = it->get();
+                go->SetActive(!go->IsActive());
             }
         }
     }

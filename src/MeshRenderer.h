@@ -9,6 +9,28 @@ namespace XDGameEngine
 {
 	class MeshRenderer : public AComponent
 	{
+	protected:
+	private:
+		/**
+		* The current scene manager
+		*/
+		Ogre::SceneManager* m_scnMgr;
+
+		/**
+		* The file's name to load
+		*/
+		const char* m_meshFileName;
+
+		/**
+		* The mesh pointer to render
+		*/
+		Ogre::Entity* m_mesh;
+
+		/**
+		* The scene node holding the mesh
+		*/
+		Ogre::SceneNode* m_sceneNode;
+
 	public:
 		MeshRenderer();
 		~MeshRenderer();
@@ -16,7 +38,7 @@ namespace XDGameEngine
 		/**
 		* Overrided method from AComponent. Connect the component to the scene manager
 		*/
-		virtual void SetUpComponent();
+		virtual void SetUpComponent(GameObject& go);
 
 		/**
 		* Toggle the mesh rendering in the scene manager
@@ -58,29 +80,6 @@ namespace XDGameEngine
 		*/
 		Ogre::SceneNode* GetSceneNode() const noexcept;
 
-
-	private:
-		/**
-		* The current scene manager
-		*/
-		Ogre::SceneManager* m_scnMgr;
-
-		/**
-		* The file's name to load
-		*/
-		const char* m_meshFileName;
-
-		/**
-		* The mesh pointer to render
-		*/
-		Ogre::Entity* m_mesh;
-
-		/**
-		* The scene node holding the mesh
-		*/
-		Ogre::SceneNode* m_sceneNode;
-
-	protected:
 	};
 }
 

@@ -124,8 +124,8 @@ void Player::createCollisionShape()
 void Player::createRigidBody(float bodyMass)
 {
   /// Create Dynamic Objects
-  XDGameEngine::Transform startTransform;
-  startTransform.toBulletTransform().setIdentity();
+  btTransform trans;
+  trans.setIdentity();
 
   btScalar mass(bodyMass);
 
@@ -141,7 +141,7 @@ void Player::createRigidBody(float bodyMass)
   }
 
   //using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
-  btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform.toBulletTransform());
+  btDefaultMotionState* myMotionState = new btDefaultMotionState(trans);
   btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, colShape, localInertia);
   body = new btRigidBody(rbInfo);
 

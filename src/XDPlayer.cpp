@@ -8,12 +8,16 @@ namespace XDGameEngine
         m_shouldBeUpdated = true;
         m_transform = nullptr;
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('TRFM', *this));
-        AddComponent(XDGameEngine::ComponentFactory::CreateComponent('RGBD', *this));
+        AddComponent(XDGameEngine::ComponentFactory::CreateComponent('BXCS', *this));
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('MSRD', *this));
+        AddComponent(XDGameEngine::ComponentFactory::CreateComponent('RGBD', *this));
         this->GetComponent<MeshRenderer>()->SetMeshFileName("cube.mesh");
-        this->GetComponent<MeshRenderer>()->SetUpComponent();
+        this->GetComponent<MeshRenderer>()->SetUpComponent(*this);
         this->m_transform = this->GetComponent<Transform>();
-        m_transform->setScale(btVector3(1, 4, 1));
+
+        SetupAllComponents();
+        m_transform->setScale(btVector3(1, 1.5f, 1));
+        this->m_transform->setPosition(btVector3(-200, 100, 3));
     }
 
     XDPlayer::~XDPlayer()

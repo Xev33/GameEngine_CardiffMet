@@ -2,6 +2,7 @@
 #include "MeshRenderer.h"
 #include "Rigibodies.h"
 #include "Transform.h"
+#include "CollisionShape.h"
 #include <memory>
 #include "GameObject.h"
 
@@ -24,6 +25,14 @@ namespace XDGameEngine
 			return std::make_unique<Rigibody>();
 		case 'MSRD':
 			return std::make_unique<MeshRenderer>();
+		case 'BXCS':
+			return std::make_unique<BoxCollision>();
+		case 'CPCS':
+			return std::make_unique<CapsuleCollision>();
+		case 'CLCS':
+			return std::make_unique<CylinderCollision>();
+		case 'SPCS':
+			return std::make_unique<SphereCollision>();
 		default:
 			throw std::runtime_error("Invalid game type.");
 		}

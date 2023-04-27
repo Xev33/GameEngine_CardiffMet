@@ -5,17 +5,27 @@ namespace XDGameEngine
 {
 	Rigibody::Rigibody()
 	{
+		m_id = 'RGBD';
 		std::cout << " RIGIBODY CREATED\n";
+
+		m_mass = 1.0f;
+		m_rigidbody = nullptr;
+		m_dynamicsWorld = nullptr;
+		m_colShape = nullptr;
 	}
 
 	Rigibody::~Rigibody()
 	{
 		std::cout << " RIGIBODY DESTRUCTED\n";
-		printIntest();
 	}
 
-	void Rigibody::printTruc()
+	void Rigibody::SetMass(float mass) noexcept
 	{
-		std::cout << "RIGIBODY PRINT UN TRUC\n";
+		m_mass = mass;
+	}
+
+	float Rigibody::GetMass() const noexcept
+	{
+		return m_mass;
 	}
 }

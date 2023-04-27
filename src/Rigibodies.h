@@ -1,28 +1,30 @@
 #ifndef RIGIBODY_
 #define RIGIBODY_
 
-//#include <string>
 #include "AComponent.h"
+#include "btBulletDynamicsCommon.h"
 
 namespace XDGameEngine
 {
-    class Rigibody : public XDGameEngine::AComponent
+    class Rigibody : public AComponent
     {
     protected:
-        uint32_t m_id = 'RGBD';
-
     private:
+        btRigidBody* m_rigidbody;
+        btDiscreteDynamicsWorld* m_dynamicsWorld;
+
+        btCollisionShape* m_colShape;  /**< Collision shape, describes the collision boundary */
+
+        btScalar m_mass;
+        btScalar linearDamping; /**< Damping force on the linear motion of the body, kind of air/friction */
+        btScalar angularDamping; /**< Damping force on the angular motion of the body, kind of air/friction */
 
     public:
         Rigibody();
         ~Rigibody();
 
-        void printTruc();
-        int intest = 0;
-        void printIntest()
-        {
-            std::cout << "Rigibody test = " << intest << std::endl;
-        }
+        void SetMass(float mass) noexcept;
+        float GetMass() const noexcept;
     };
 }
 
