@@ -24,6 +24,7 @@ set(HDRS
 	./src/XDPlayer.h
 	./src/NPC.h
 	./src/AComponent.h
+	./src/CollisionShape.h
 	./src/Scene.h
 	./src/Input.h
 	./src/MeshRenderer.h
@@ -44,6 +45,7 @@ set(SRCS
 	./src/Input.cpp
 	./src/MeshRenderer.cpp
 	./src/ComponentFactory.cpp
+	./src/CollisionShape.cpp
 	./src/GOTest.cpp
 	./src/GameObject.cpp
 	./src/Transform.cpp
