@@ -63,9 +63,6 @@ namespace XDGameEngine
 			m_sceneNode->setScale(x, y, z);
 			go.ResetShouldBeScaled();
 		}
-		std::cout << "x = " << trans->getPosition().getX() << std::endl;
-		std::cout << "y = " << trans->getPosition().getY() << std::endl;
-		std::cout << "z = " << trans->getPosition().getZ() << std::endl;
 		m_sceneNode->setPosition(Ogre::Vector3(trans->getPosition().getX(),
 			trans->getPosition().getY(), trans->getPosition().getZ()));
 		m_sceneNode->setOrientation(Ogre::Quaternion(rot.getW(), rot.getX(),

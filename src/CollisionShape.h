@@ -23,7 +23,7 @@ namespace XDGameEngine
 		/**
 		* Overrided method from AComponent. Create the right shape in the children classes
 		*/
-		virtual void SetUpComponent(GameObject& go) noexcept = 0;
+		virtual void SetUpComponent(GameObject& go) = 0;
 
 		void SetColShape(btCollisionShape* colShape) noexcept;
 
@@ -41,7 +41,7 @@ namespace XDGameEngine
 			}
 			~BoxCollision() {}
 
-			virtual void SetUpComponent(GameObject& go) noexcept final;
+			virtual void SetUpComponent(GameObject& go) final;
 	};
 
 	class CapsuleCollision : public CollisionShape
@@ -54,7 +54,7 @@ namespace XDGameEngine
 		}
 		~CapsuleCollision() {}
 
-		virtual void SetUpComponent(GameObject& go) noexcept final;
+		virtual void SetUpComponent(GameObject& go) final;
 	};
 
 	class CylinderCollision : public CollisionShape
@@ -67,7 +67,7 @@ namespace XDGameEngine
 		}
 		~CylinderCollision() {}
 
-		virtual void SetUpComponent(GameObject& go) noexcept final;
+		virtual void SetUpComponent(GameObject& go) final;
 	};
 
 	class SphereCollision : public CollisionShape
@@ -80,7 +80,7 @@ namespace XDGameEngine
 		}
 		~SphereCollision() {}
 
-		virtual void SetUpComponent(GameObject& go) noexcept final;
+		virtual void SetUpComponent(GameObject& go) final;
 	};
 }
 

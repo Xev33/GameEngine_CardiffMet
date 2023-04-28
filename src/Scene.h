@@ -156,7 +156,8 @@ namespace XDGameEngine
         btCollisionDispatcher*                  getDispatcher() { return dispatcher; }
         btBroadphaseInterface*                  getOverlappingPairCache() { return overlappingPairCache; }
         btSequentialImpulseConstraintSolver*    getSolver() { return solver; }
-        btDiscreteDynamicsWorld*                getDynamicWorld() { return dynamicsWorld; }
+        btDiscreteDynamicsWorld* getDynamicWorld() { return dynamicsWorld; }
+        btAlignedObjectArray<btCollisionShape*>*                getCollisionShapes() { return &collisionShapes; }
         void UseInputTest();
 	};
 }

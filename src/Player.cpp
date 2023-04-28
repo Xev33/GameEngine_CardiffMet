@@ -18,12 +18,12 @@ Player::Player()
   * config file or similar.
   */
 
-  forwardForce = 5.0f;
+  forwardForce = 0.5f;
   turningForce = 50.0f;
-  jumpForce = 5.0f;
+  jumpForce = 1.0f;
 
-  linearDamping = 0.6f;
-  angularDamping = 0.1f;
+  linearDamping = 2.6f;
+  angularDamping = 0.6f;
 }
 
 Player::~Player()

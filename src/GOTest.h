@@ -19,7 +19,7 @@ namespace XDGameEngine
             m_transform = nullptr;
             m_shouldBeUpdated = true;
             AddComponent(XDGameEngine::ComponentFactory::CreateComponent('TRFM', *this));
-            AddComponent(XDGameEngine::ComponentFactory::CreateComponent('RGBD', *this) );
+            //AddComponent(XDGameEngine::ComponentFactory::CreateComponent('RGBD', *this) );
             //AddComponent(XDGameEngine::ComponentFactory::CreateComponent('MSRD', *this) );
             m_transform = GetComponent<Transform>();
         }

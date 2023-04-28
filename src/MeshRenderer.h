@@ -48,7 +48,7 @@ namespace XDGameEngine
 		/**
 		* Update the position of rendering according to the gameObject's transform
 		*/
-		virtual void UpdateComponent(GameObject& go);
+		virtual void UpdateComponent(GameObject& go) final;
 
 		/**
 		* Set the mesh file's name to load

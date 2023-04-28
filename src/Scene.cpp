@@ -9,6 +9,9 @@
 #include <iostream>
 
 #include "XDPlayer.h"
+#include "CollisionShape.h"
+#include "MeshRenderer.h"
+#include "OgreBullet.h"
 
 #include <memory>
 
@@ -32,20 +35,20 @@ namespace XDGameEngine
         // npc 
         npc = nullptr;
         //TEST GAMEOBJECT/COMPONENTS
-        GOTest oui;
-        Rigibody* rgbd = oui.GetComponent<Rigibody>();
-        if (rgbd != nullptr)
-        {
-            rgbd->SetActive(false);
-            std::cout << rgbd->IsActive() << std::endl;
-            std::cout << rgbd << std::endl;
-        }
-        Transform* alors = oui.GetComponent<Transform>();
-        alors->getRotation();
-        oui.SetActive(false);
-        oui.SetActive(true);
-        oui.RemoveComponent<Rigibody>();
-        std::cout << rgbd << std::endl;
+        //GOTest oui;
+        //Rigibody* rgbd = oui.GetComponent<Rigibody>();
+        //if (rgbd != nullptr)
+        //{
+        //    rgbd->SetActive(false);
+        //    std::cout << rgbd->IsActive() << std::endl;
+        //    std::cout << rgbd << std::endl;
+        //}
+        //Transform* alors = oui.GetComponent<Transform>();
+        //alors->getRotation();
+        //oui.SetActive(false);
+        //oui.SetActive(true);
+        //oui.RemoveComponent<Rigibody>();
+        //std::cout << rgbd << std::endl;
         //delete input;
     }
 
@@ -127,18 +130,17 @@ namespace XDGameEngine
             }
 
             dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
-
+            std::cout << dynamicsWorld->getNumCollisionObjects() << std::endl;
             // update positions of all objects
             for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
             {
                 btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
                 btRigidBody* body = btRigidBody::upcast(obj);
                 btTransform trans;
-                Transform kek, lol;
-                kek = lol;
+
                 if (body && body->getMotionState())
                 {
-                    body->getMotionState()->getWorldTransform(kek.toBulletTransform());
+                    body->getMotionState()->getWorldTransform(trans);
 
                     // Bullet has updated the rididbody, we now need to update the ogre scene node (i.e. the model on screen).
                     void* userPointer = body->getUserPointer();
@@ -148,10 +150,11 @@ namespace XDGameEngine
                     // the same method of updating its physics / graphics. 
                     if (userPointer && userPointer != player && userPointer != npc)
                     {
-                        btQuaternion orientation = kek.getRotation();
-                        Ogre::SceneNode* sceneNode = static_cast<Ogre::SceneNode*>(userPointer);
-                        sceneNode->setPosition(Ogre::Vector3(kek.toBulletTransform().getOrigin().getX(), kek.toBulletTransform().getOrigin().getY(), kek.toBulletTransform().getOrigin().getZ()));
-                        sceneNode->setOrientation(Ogre::Quaternion(orientation.getW(), orientation.getX(), orientation.getY(), orientation.getZ()));
+                        trans = obj->getWorldTransform();
+                        //btQuaternion orientation = trans.getRotation();
+                        //Ogre::SceneNode* sceneNode = static_cast<Ogre::SceneNode*>(userPointer);
+                        //sceneNode->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
+                        //sceneNode->setOrientation(Ogre::Quaternion(orientation.getW(), orientation.getX(), orientation.getY(), orientation.getZ()));
                     }
                     else
                     {
@@ -163,7 +166,7 @@ namespace XDGameEngine
                 }
                 else
                 {
-                    kek = obj->getWorldTransform();
+                    trans = obj->getWorldTransform();
                 }
             }
 
@@ -201,13 +204,56 @@ namespace XDGameEngine
         rw = nrw;
         // get a pointer to the already created root
         scnMgr = root->createSceneManager();
-        m_go.push_back(std::make_unique<XDPlayer>());
 
         // register our scene with the RTSS
         Ogre::RTShader::ShaderGenerator* shadergen = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
         shadergen->addSceneManager(scnMgr);
 
         bulletInit();
+        
+        float linearDamping = 0.6f;
+        float angularDamping = 0.1f;
+        auto p = std::make_unique<XDPlayer>();
+
+        //btCollisionShape* colShape = Ogre::Bullet::createBoxCollider(p->GetComponent<MeshRenderer>()->GetMesh());
+        ///// Create Dynamic Objects
+        //btTransform trans;
+        //trans.setIdentity();
+
+        //btScalar mass(1.0f);
+
+        ////rigidbody is dynamic if and only if mass is non zero, otherwise static
+        //bool isDynamic = (mass != 0.f);
+
+        //btVector3 localInertia(0, 0, 0);
+        //if (isDynamic)
+        //{
+        //    // Debugging
+        //    //std::cout << "I see the cube is dynamic" << std::endl;
+        //    colShape->calculateLocalInertia(mass, localInertia);
+        //}
+
+        ////using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
+        //btDefaultMotionState* myMotionState = new btDefaultMotionState(trans);
+        //btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, colShape, localInertia);
+        //btRigidBody* body = new btRigidBody(rbInfo);
+
+        //// aid the control of this body by adding linear and angular drag!
+        //// If we wanted to have different drag / damping for each dimension axis, 
+        //// we need to implement this ourselves - https://pybullet.org/Bullet/phpBB3/viewtopic.php?t=11430
+        //// Constraints are probably easier!
+        //body->setDamping(linearDamping, angularDamping);
+
+
+        ////Set the user pointer to this object.
+        //body->setUserPointer((void*)this);
+        //
+        //collisionShapes.push_back(colShape);
+        //dynamicsWorld->addRigidBody(body);
+
+
+
+        m_go.push_back(std::move(p));
 
         setupCamera();
 
@@ -277,12 +323,12 @@ namespace XDGameEngine
         axis.normalise();
 
         // angle
-        Ogre::Radian rads(Degree(40.0));
+        Ogre::Radian rads(Degree(90.0));
 
         player = new Player();
         player->setup(scnMgr, dynamicsWorld, mass);
         player->setRotation(axis, rads);
-        player->setPosition(20.0f, 120.0f, 20.0f);
+        player->setPosition(20.0f, 20.0f, 20.0f);
 
         collisionShapes.push_back(player->getCollisionShape());
         dynamicsWorld->addRigidBody(player->getRigidBody());
@@ -441,16 +487,20 @@ namespace XDGameEngine
 
     void Scene::UseInputTest()
     {
+        //if (XDGameEngine::Input::Instance().GetKeyDown("a"))
+        //{
+        //    for (auto& it = m_go.begin(); it != m_go.end(); ++it)
+        //    {
+        //        auto go = it->get();
+        //        GameObject::Destroy(*go);
+        //    }
+        //}
+
         if (XDGameEngine::Input::Instance().GetKeyDown("a"))
         {
-            for (auto& it = m_go.begin(); it != m_go.end(); ++it)
-            {
-                auto go = it->get();
-                GameObject::Destroy(*go);
-            }
         }
 
-        if (XDGameEngine::Input::Instance().GetKeyDown("d"))
+        if (XDGameEngine::Input::Instance().GetKeyDown("f"))
         {
             for (auto& it = m_go.begin(); it != m_go.end(); ++it)
             {
