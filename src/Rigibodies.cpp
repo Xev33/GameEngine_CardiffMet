@@ -8,7 +8,7 @@
 
 namespace XDGameEngine
 {
-	Rigibody::Rigibody()
+	RigidBody::RigidBody()
 	{
 		m_id = 'RGBD';
 
@@ -21,14 +21,14 @@ namespace XDGameEngine
 		m_angularDamping = 0.1f;
 	}
 
-	Rigibody::~Rigibody()
+	RigidBody::~RigidBody()
 	{
 		m_dynamicsWorld->removeRigidBody(m_rigidbody);
 		delete m_rigidbody->getMotionState();
 		delete m_rigidbody;
 	}
 
-	void Rigibody::SetUpComponent(GameObject& go)
+	void RigidBody::SetUpComponent(GameObject& go)
 	{
 		m_dynamicsWorld = Game::Instance()->getCurrentScene()->getDynamicWorld();
 		m_colShape = go.GetComponent<CollisionShape>()->GetColShape();
@@ -54,7 +54,7 @@ namespace XDGameEngine
 		m_dynamicsWorld->addRigidBody(m_rigidbody);
 	}
 
-	void Rigibody::UpdateComponent(GameObject& go)
+	void RigidBody::UpdateComponent(GameObject& go)
 	{
 		btTransform trans;
 		m_rigidbody->getMotionState()->getWorldTransform(trans);
@@ -65,7 +65,7 @@ namespace XDGameEngine
 		go.GetTransform()->setRotation(ortientation);
 	}
 
-	void Rigibody::SetActive(bool isActive)
+	void RigidBody::SetActive(bool isActive)
 	{
 		if (isActive == true && m_isActive == false)
 		{
@@ -102,7 +102,7 @@ namespace XDGameEngine
 		m_isActive = isActive;
 	}
 
-	void Rigibody::SetMass(float mass) noexcept
+	void RigidBody::SetMass(float mass) noexcept
 	{
 		m_mass = mass;
 
@@ -112,45 +112,73 @@ namespace XDGameEngine
 			m_isDynamic = true;
 	}
 
-	void Rigibody::SetLinearDamping(float linearDamping) noexcept
+	void RigidBody::SetLinearDamping(float linearDamping) noexcept
 	{
 		m_linearDamping = linearDamping;
 	}
 
-	void Rigibody::SetAngularDamping(float angularDamping) noexcept
+	void RigidBody::SetAngularDamping(float angularDamping) noexcept
 	{
 		m_angularDamping = angularDamping;
 	}
 
-	void Rigibody::SetRigidBody(btRigidBody* body) noexcept
+	void RigidBody::SetRigidBody(btRigidBody* body) noexcept
 	{
 		m_rigidbody = body;
 	}
 
 
-	float Rigibody::GetMass() const noexcept
+	float RigidBody::GetMass() const noexcept
 	{
 		return m_mass;
 	}
 
-	float Rigibody::GetLinearDamping() const noexcept
+	float RigidBody::GetLinearDamping() const noexcept
 	{
 		return m_linearDamping;
 	}
 
-	float Rigibody::GetAngularDamping() const noexcept
+	float RigidBody::GetAngularDamping() const noexcept
 	{
 		return m_angularDamping;
 	}
 
-	bool Rigibody::IsDynamic() const noexcept
+	bool RigidBody::IsDynamic() const noexcept
 	{
 		return m_isDynamic;
 	}
 
-	btRigidBody* Rigibody::GetRigidbody() noexcept
+	btRigidBody* RigidBody::GetRigidbody() noexcept
 	{
 		return m_rigidbody;
+	}
+
+	/* Based on the code from the earlier ray casting example */
+	bool RigidBody::IsGrounded() const noexcept
+	{
+		btTransform trans;
+		m_rigidbody->getMotionState()->getWorldTransform(trans);
+
+		// Cast a vector down - 100 from the center down 50 units below the object.
+		// took into account the bottom of the object.
+		// The coordinates are in world space.
+		btVector3 start(trans.getOrigin());
+		btVector3 end(start.x(), start.y() - 100, start.z());
+
+		btCollisionWorld::ClosestRayResultCallback closesRayCallback(start, end);
+		m_dynamicsWorld->rayTest(start, end, closesRayCallback);
+
+		if (closesRayCallback.hasHit())
+		{
+			// Reset linear damping after fall. 
+			m_rigidbody->setDamping(m_linearDamping, m_angularDamping);
+
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 }

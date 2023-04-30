@@ -22,7 +22,7 @@ namespace XDGameEngine
 		case 'TRFM':
 			return std::make_unique<Transform>();
 		case 'RGBD':
-			return std::make_unique<Rigibody>();
+			return std::make_unique<RigidBody>();
 		case 'MSRD':
 			return std::make_unique<MeshRenderer>();
 		case 'BXCS':

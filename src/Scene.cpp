@@ -29,27 +29,9 @@ namespace XDGameEngine
         btSequentialImpulseConstraintSolver* solver = nullptr;
         btDiscreteDynamicsWorld* dynamicsWorld = nullptr;
 
-        // player
-        player = nullptr;
-
         // npc 
         npc = nullptr;
-        //TEST GAMEOBJECT/COMPONENTS
-        //GOTest oui;
-        //Rigibody* rgbd = oui.GetComponent<Rigibody>();
-        //if (rgbd != nullptr)
-        //{
-        //    rgbd->SetActive(false);
-        //    std::cout << rgbd->IsActive() << std::endl;
-        //    std::cout << rgbd << std::endl;
-        //}
-        //Transform* alors = oui.GetComponent<Transform>();
-        //alors->getRotation();
-        //oui.SetActive(false);
-        //oui.SetActive(true);
-        //oui.RemoveComponent<Rigibody>();
-        //std::cout << rgbd << std::endl;
-        //delete input;
+
     }
 
     Scene::~Scene()
@@ -130,51 +112,7 @@ namespace XDGameEngine
             }
 
             dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
-            std::cout << dynamicsWorld->getNumCollisionObjects() << std::endl;
-            // update positions of all objects
-            for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
-            {
-                btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
-                btRigidBody* body = btRigidBody::upcast(obj);
-                btTransform trans;
-
-                if (body && body->getMotionState())
-                {
-                    body->getMotionState()->getWorldTransform(trans);
-
-                    // Bullet has updated the rididbody, we now need to update the ogre scene node (i.e. the model on screen).
-                    void* userPointer = body->getUserPointer();
-
-                    // This is a horrific hack!!!!!!
-                    // Need to change this so everything in the game (including the floor) uses 
-                    // the same method of updating its physics / graphics. 
-                    if (userPointer && userPointer != player && userPointer != npc)
-                    {
-                        trans = obj->getWorldTransform();
-                        //btQuaternion orientation = trans.getRotation();
-                        //Ogre::SceneNode* sceneNode = static_cast<Ogre::SceneNode*>(userPointer);
-                        //sceneNode->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
-                        //sceneNode->setOrientation(Ogre::Quaternion(orientation.getW(), orientation.getX(), orientation.getY(), orientation.getZ()));
-                    }
-                    else
-                    {
-                        //std::cout << "Player update" << std::endl;
-                        player->update();
-
-
-                    }
-                }
-                else
-                {
-                    trans = obj->getWorldTransform();
-                }
-            }
-
-            // always update the npc, it has no player input to wake it back up!
-
-            npc->update();
-
-
+            //npc->update();
         }
     }
 
@@ -210,50 +148,11 @@ namespace XDGameEngine
         shadergen->addSceneManager(scnMgr);
 
         bulletInit();
-        
-        float linearDamping = 0.6f;
-        float angularDamping = 0.1f;
-        auto p = std::make_unique<XDPlayer>();
 
-        //btCollisionShape* colShape = Ogre::Bullet::createBoxCollider(p->GetComponent<MeshRenderer>()->GetMesh());
-        ///// Create Dynamic Objects
-        //btTransform trans;
-        //trans.setIdentity();
-
-        //btScalar mass(1.0f);
-
-        ////rigidbody is dynamic if and only if mass is non zero, otherwise static
-        //bool isDynamic = (mass != 0.f);
-
-        //btVector3 localInertia(0, 0, 0);
-        //if (isDynamic)
-        //{
-        //    // Debugging
-        //    //std::cout << "I see the cube is dynamic" << std::endl;
-        //    colShape->calculateLocalInertia(mass, localInertia);
-        //}
-
-        ////using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
-        //btDefaultMotionState* myMotionState = new btDefaultMotionState(trans);
-        //btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, colShape, localInertia);
-        //btRigidBody* body = new btRigidBody(rbInfo);
-
-        //// aid the control of this body by adding linear and angular drag!
-        //// If we wanted to have different drag / damping for each dimension axis, 
-        //// we need to implement this ourselves - https://pybullet.org/Bullet/phpBB3/viewtopic.php?t=11430
-        //// Constraints are probably easier!
-        //body->setDamping(linearDamping, angularDamping);
-
-
-        ////Set the user pointer to this object.
-        //body->setUserPointer((void*)this);
-        //
-        //collisionShapes.push_back(colShape);
-        //dynamicsWorld->addRigidBody(body);
-
-
-
+        auto p = std::make_unique<Player>();
+        auto d = std::make_unique<XDPlayer>();
         m_go.push_back(std::move(p));
+        m_go.push_back(std::move(d));
 
         setupCamera();
 
@@ -261,9 +160,7 @@ namespace XDGameEngine
 
         setupLights();
 
-        setupPlayer();
-
-        setupNPC();
+        //setupNPC();
     }
 
     void Scene::bulletInit()
@@ -307,31 +204,6 @@ namespace XDGameEngine
 
         // link the camera and view port.
         cam->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
-    }
-
-    /**
-    * @brief Create a Player using the player class.
-    *
-    */
-    void Scene::setupPlayer()
-    {
-        // box mass.
-        float mass = 1.0f;
-
-        // Axis
-        Ogre::Vector3 axis(10.0, 0.0, 10.0);
-        axis.normalise();
-
-        // angle
-        Ogre::Radian rads(Degree(90.0));
-
-        player = new Player();
-        player->setup(scnMgr, dynamicsWorld, mass);
-        player->setRotation(axis, rads);
-        player->setPosition(20.0f, 20.0f, 20.0f);
-
-        collisionShapes.push_back(player->getCollisionShape());
-        dynamicsWorld->addRigidBody(player->getRigidBody());
     }
 
     /**

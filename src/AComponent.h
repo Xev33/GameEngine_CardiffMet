@@ -49,7 +49,7 @@ namespace XDGameEngine
 		*/
 		virtual void SetActive(bool isActive) {
 			m_isActive = isActive;
-			std::cout << "Component id " << m_id << " is now = " << m_isActive << std::endl;
+			//std::cout << "Component id " << m_id << " is now = " << m_isActive << std::endl;
 		}
 		bool IsActive() { return m_isActive; }
 		uint32_t GetID() { return m_id; }

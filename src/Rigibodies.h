@@ -1,12 +1,12 @@
-#ifndef RIGIBODY_
-#define RIGIBODY_
+#ifndef RigidBody_
+#define RigidBody_
 
 #include "AComponent.h"
 #include "btBulletDynamicsCommon.h"
 
 namespace XDGameEngine
 {
-    class Rigibody : public AComponent
+    class RigidBody : public AComponent
     {
     protected:
     private:
@@ -28,8 +28,8 @@ namespace XDGameEngine
         //btQuaternion m_prevRotation;
 
     public:
-        Rigibody();
-        ~Rigibody();
+        RigidBody();
+        ~RigidBody();
 
         /**
         * Overrided method from AComponent. Connect the component to the dynamicWorld
@@ -91,6 +91,10 @@ namespace XDGameEngine
         */
         bool IsDynamic() const noexcept;
 
+        /*
+        * Check if the rigid body is on the ground or not
+        */
+        bool IsGrounded() const noexcept;
     };
 }
 

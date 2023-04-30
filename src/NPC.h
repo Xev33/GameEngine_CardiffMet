@@ -7,6 +7,7 @@
 /* Bullet3 Physics */
 #include "btBulletDynamicsCommon.h"
 #include "btBulletCollisionCommon.h"
+#include <vector>
 
 using namespace Ogre;
 
