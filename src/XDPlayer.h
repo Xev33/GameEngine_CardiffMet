@@ -22,6 +22,9 @@ namespace XDGameEngine
         float m_angularDamping;
 
         btRigidBody* m_rgbd;
+        RigidBody* body;
+
+        // Patrol variables
         btTransform m_target;
         btTransform patrolWayPoints[3];
         int currentWaypoint;
@@ -47,13 +50,6 @@ namespace XDGameEngine
         * Just apply a turning force.
         */
         void TurnLeftScaled(float scalar);
-
-        /**
-        * Check to see the player is on the floor (to prevent jumping on the ground)
-        * Uses the code from the earlier ray casting example.
-        *
-        */
-        bool IsGrounded();
 
         /**
         *  Jump

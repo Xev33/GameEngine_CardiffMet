@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "Scene.h"
 
+#include "OgreBullet.h"
 namespace XDGameEngine
 {
 	RigidBody::RigidBody()
@@ -44,6 +45,21 @@ namespace XDGameEngine
 		{
 			m_colShape->calculateLocalInertia(m_mass, localInertia);
 		}
+
+		// We replace the gameobject
+		Vector3 axis(go.GetTransform()->getPosition().getX(),
+			go.GetTransform()->getPosition().getY(),
+			go.GetTransform()->getPosition().getZ());
+		Radian rads(Ogre::Degree(go.GetTransform()->getRotation().getY()));
+		Ogre::Quaternion quat(rads, axis);
+		btQuaternion rotation = Ogre::Bullet::convert(quat);
+
+		btVector3 pos(go.GetTransform()->getPosition().getX(),
+			go.GetTransform()->getPosition().getY(),
+			go.GetTransform()->getPosition().getZ());
+
+		trans.setOrigin(pos);
+		trans.setRotation(rotation);
 
 		//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
 		btDefaultMotionState* myMotionState = new btDefaultMotionState(trans);

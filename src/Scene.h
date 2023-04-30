@@ -124,15 +124,15 @@ namespace XDGameEngine
         */
         void setupCamera();
 
-        /**
-        * Player setup
-        */
-        void setupPlayer();
+        ///**
+        //* Player setup
+        //*/
+        //void setupPlayer();
 
-        /**
-        * NPC setup
-        */
-        void setupNPC();
+        ///**
+        //* NPC setup
+        //*/
+        //void setupNPC();
 
         /**
         * Turns on on the coffee machine.

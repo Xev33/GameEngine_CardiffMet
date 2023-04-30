@@ -26,9 +26,12 @@ namespace XDGameEngine
         this->GetComponent<MeshRenderer>()->SetMeshFileName("cube.mesh");
         this->m_transform = this->GetComponent<Transform>();
 
-        m_transform->setScale(btVector3(1, 1.0f, 1));
+        m_transform->setScale(btVector3(1, 1.5f, 1));
         this->m_transform->setPosition(btVector3(-200, 100, 3));
-        this->m_transform->setRotation(btQuaternion(0, 45, 3));
+        this->m_transform->setRotation(btQuaternion(0, 0, 0));
+
+        body = this->GetComponent<RigidBody>();
+
         SetupAllComponents();
         m_rgbd = GetComponent<RigidBody>()->GetRigidbody();
         m_rgbd->setDamping(m_linearDamping, m_angularDamping);
@@ -123,42 +126,13 @@ namespace XDGameEngine
         }
     }
 
-    /* Based on the code from the earlier ray casting example */
-    bool Player::IsGrounded()
-    {
-        XDGameEngine::Transform transxd;
-        btTransform trans;
-        m_rgbd->getMotionState()->getWorldTransform(trans);
-
-        // Cast a vector down - 100 from the center down 50 units below the object.
-        // took into account the bottom of the object.
-        // The coordinates are in world space.
-        btVector3 start(trans.getOrigin());
-        btVector3 end(start.x(), start.y() - 100, start.z());
-
-        btCollisionWorld::ClosestRayResultCallback closesRayCallback(start, end);
-        Game::Instance()->getCurrentScene()->getDynamicWorld()->rayTest(start, end, closesRayCallback);
-
-        if (closesRayCallback.hasHit())
-        {
-            // Reset linear damping after fall. 
-            m_rgbd->setDamping(m_linearDamping, m_angularDamping);
-
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
     void Player::Jump()
     {
         //Create a vector in local coordinates
         //pointing up.
         btVector3 up(0.0f, m_jumpForce, 0.0f);
 
-        if (m_rgbd && m_rgbd->getMotionState() && IsGrounded())
+        if (m_rgbd && m_rgbd->getMotionState() && body->IsGrounded())
         {
             // Turn off linear damping or we float back down.
             m_rgbd->setDamping(0.0f, m_angularDamping);

@@ -1,5 +1,5 @@
-#ifndef Player_
-#define Player_
+#ifndef PLAYER_
+#define PLAYER_
 
 #include "GameObject.h"
 #include "ComponentFactory.h"
@@ -22,6 +22,7 @@ namespace XDGameEngine
         float m_angularDamping;
 
         btRigidBody* m_rgbd;
+        RigidBody* body;
 
     public:
         Player();
@@ -43,13 +44,6 @@ namespace XDGameEngine
         * Just apply a turning force.
         */
         void TurnLeft();
-
-        /**
-        * Check to see the player is on the floor (to prevent jumping on the ground)
-        * Uses the code from the earlier ray casting example.
-        *
-        */
-        bool IsGrounded();
 
         /**
         *  Jump

@@ -91,8 +91,9 @@ namespace XDGameEngine
         */
         bool IsDynamic() const noexcept;
 
-        /*
-        * Check if the rigid body is on the ground or not
+        /**
+        * Check to see the player is on the floor (to prevent jumping on the ground)
+        * Uses the code from the earlier ray casting example.
         */
         bool IsGrounded() const noexcept;
     };

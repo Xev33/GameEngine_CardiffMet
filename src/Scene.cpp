@@ -135,8 +135,6 @@ namespace XDGameEngine
     ////-----------------------------------------------------------------------
     //// ALL SETUP FONCTION TO REMOVE------------------------------------------
     ////-----------------------------------------------------------------------
-
-
     void Scene::setup(Ogre::Root* root, Ogre::RenderWindow* nrw)
     {
         rw = nrw;
@@ -149,18 +147,16 @@ namespace XDGameEngine
 
         bulletInit();
 
-        auto p = std::make_unique<Player>();
-        auto d = std::make_unique<XDPlayer>();
-        m_go.push_back(std::move(p));
-        m_go.push_back(std::move(d));
+        auto player = std::make_unique<Player>();
+        auto npc = std::make_unique<XDPlayer>();
+        m_go.push_back(std::move(player));
+        m_go.push_back(std::move(npc));
 
         setupCamera();
 
         setupFloor();
 
         setupLights();
-
-        //setupNPC();
     }
 
     void Scene::bulletInit()
@@ -206,52 +202,23 @@ namespace XDGameEngine
         cam->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
     }
 
-    /**
-     * @brief Create a NPC using the player class.
-     *
-     */
-    void Scene::setupNPC()
-    {
-        // box mass.
-        float mass = 1.0f;
-
-        // Axis
-        Vector3 axis(1.0, 0.0, 0.0);
-        axis.normalise();
-
-        // angle
-        Radian rads(Degree(0.0));
-
-        npc = new NPC();
-        npc->setup(scnMgr, dynamicsWorld, mass);
-        npc->setRotation(axis, rads);
-        npc->setPosition(-500.0f, 80.0f, 500.0f);
-
-        collisionShapes.push_back(npc->getCollisionShape());
-        dynamicsWorld->addRigidBody(npc->getRigidBody());
-
-        btTransform target;
-        target.setOrigin(btVector3(200.0f, 80.0f, 200.0f));
-
-    }
-
     void Scene::setupFloor()
     {
 
         // Create a plane
-        Plane plane(Vector3::UNIT_Y, 0);
+        Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
 
         // Define the plane mesh
-        MeshManager::getSingleton().createPlane(
-            "ground", RGN_DEFAULT,
+        Ogre::MeshManager::getSingleton().createPlane(
+            "ground", Ogre::RGN_DEFAULT,
             plane,
             1500, 1500, 20, 20,
             true,
             1, 5, 5,
-            Vector3::UNIT_Z);
+            Ogre::Vector3::UNIT_Z);
 
         // Create an entity for the ground
-        Entity* groundEntity = scnMgr->createEntity("ground");
+        Ogre::Entity* groundEntity = scnMgr->createEntity("ground");
 
         // Setup ground entity
         //  Shadows off
@@ -262,7 +229,7 @@ namespace XDGameEngine
         groundEntity->setMaterialName("Examples/Rockwall");
 
         // Create a scene node to add the mesh too.
-        SceneNode* thisSceneNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+        Ogre::SceneNode* thisSceneNode = scnMgr->getRootSceneNode()->createChildSceneNode();
         thisSceneNode->attachObject(groundEntity);
 
         // the ground is a cube of side 100 at position y = 0.
@@ -274,13 +241,13 @@ namespace XDGameEngine
         btTransform groundTransform;
         groundTransform.setIdentity();
 
-        Vector3 pos = thisSceneNode->_getDerivedPosition();
+        Ogre::Vector3 pos = thisSceneNode->_getDerivedPosition();
 
         // Box is 100 deep (dimensions are 1/2 heights)
         // but the plane position is flat.
         groundTransform.setOrigin(btVector3(pos.x, pos.y - 50.0, pos.z));
 
-        Quaternion quat2 = thisSceneNode->_getDerivedOrientation();
+        Ogre::Quaternion quat2 = thisSceneNode->_getDerivedOrientation();
         groundTransform.setRotation(btQuaternion(quat2.x, quat2.y, quat2.z, quat2.w));
 
         btScalar mass(0.);
@@ -306,52 +273,52 @@ namespace XDGameEngine
     void Scene::setupLights()
     {
         // Setup Abient light
-        scnMgr->setAmbientLight(ColourValue(0, 0, 0));
-        scnMgr->setShadowTechnique(ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
+        scnMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
+        scnMgr->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
 
         // Add a spotlight
-        Light* spotLight = scnMgr->createLight("SpotLight");
+        Ogre::Light* spotLight = scnMgr->createLight("SpotLight");
 
         // Configure
         spotLight->setDiffuseColour(0, 0, 1.0);
         spotLight->setSpecularColour(0, 0, 1.0);
-        spotLight->setType(Light::LT_SPOTLIGHT);
-        spotLight->setSpotlightRange(Degree(35), Degree(50));
+        spotLight->setType(Ogre::Light::LT_SPOTLIGHT);
+        spotLight->setSpotlightRange(Ogre::Degree(35), Ogre::Degree(50));
 
         // Create a schene node for the spotlight
-        SceneNode* spotLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+        Ogre::SceneNode* spotLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
         spotLightNode->setDirection(-1, -1, 0);
-        spotLightNode->setPosition(Vector3(200, 200, 0));
+        spotLightNode->setPosition(Ogre::Vector3(200, 200, 0));
 
         // Add spotlight to the scene node.
         spotLightNode->attachObject(spotLight);
 
         // Create directional light
-        Light* directionalLight = scnMgr->createLight("DirectionalLight");
+        Ogre::Light* directionalLight = scnMgr->createLight("DirectionalLight");
 
         // Configure the light
-        directionalLight->setType(Light::LT_DIRECTIONAL);
-        directionalLight->setDiffuseColour(ColourValue(0.4, 0, 0));
-        directionalLight->setSpecularColour(ColourValue(0.4, 0, 0));
+        directionalLight->setType(Ogre::Light::LT_DIRECTIONAL);
+        directionalLight->setDiffuseColour(Ogre::ColourValue(0.4, 0, 0));
+        directionalLight->setSpecularColour(Ogre::ColourValue(0.4, 0, 0));
 
         // Setup a scene node for the directional lightnode.
-        SceneNode* directionalLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+        Ogre::SceneNode* directionalLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
         directionalLightNode->attachObject(directionalLight);
-        directionalLightNode->setDirection(Vector3(0, -1, 1));
+        directionalLightNode->setDirection(Ogre::Vector3(0, -1, 1));
 
         // Create a point light
-        Light* pointLight = scnMgr->createLight("PointLight");
+        Ogre::Light* pointLight = scnMgr->createLight("PointLight");
 
         // Configure the light
-        pointLight->setType(Light::LT_POINT);
+        pointLight->setType(Ogre::Light::LT_POINT);
         pointLight->setDiffuseColour(0.3, 0.3, 0.3);
         pointLight->setSpecularColour(0.3, 0.3, 0.3);
 
         // setup the scene node for the point light
-        SceneNode* pointLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+        Ogre::SceneNode* pointLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
 
         // Configure the light
-        pointLightNode->setPosition(Vector3(0, 150, 250));
+        pointLightNode->setPosition(Ogre::Vector3(0, 150, 250));
 
         // Add the light to the scene.
         pointLightNode->attachObject(pointLight);
