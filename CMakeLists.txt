@@ -29,7 +29,7 @@ set(HDRS
 	./src/Input.h
 	./src/MeshRenderer.h
 	./src/ComponentFactory.h
-	./src/GOTest.h
+	./src/TriggerZone.h
 	./src/GameObject.h
 	./src/Transform.h
 	./src/Rigibodies.h
@@ -47,7 +47,7 @@ set(SRCS
 	./src/MeshRenderer.cpp
 	./src/ComponentFactory.cpp
 	./src/CollisionShape.cpp
-	./src/GOTest.cpp
+	./src/TriggerZone.cpp
 	./src/GameObject.cpp
 	./src/Transform.cpp
 	./src/Rigibodies.cpp

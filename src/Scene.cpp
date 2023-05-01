@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Light.h"
 #include "NPC.h"
-#include "GOTest.h"
+#include "TriggerZone.h"
 #include "Rigibodies.h"
 #include "Transform.h"
 #include <iostream>
