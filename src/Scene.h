@@ -12,6 +12,7 @@
 /* Bullet3 Physics */
 #include "btBulletDynamicsCommon.h"
 #include "btBulletCollisionCommon.h"
+#include "BulletCollision/CollisionDispatch/btGhostObject.h"
 
 class Player;
 class NPC;
@@ -26,6 +27,8 @@ namespace XDGameEngine
 	class Scene
 	{
 	private:
+        btGhostObject* m_Ghostobject;
+
         /**
         * Ogre Scene Manager.
         */
@@ -160,6 +163,21 @@ namespace XDGameEngine
         btAlignedObjectArray<btCollisionShape*>*                getCollisionShapes() { return &collisionShapes; }
         void UseInputTest();
 	};
+
+    class MyContactResultCallback : public btCollisionWorld::ContactResultCallback
+    {
+    public:
+        bool hitObject = false;
+
+        virtual btScalar addSingleResult(btManifoldPoint& cp,
+            const btCollisionObjectWrapper* colObj0Wrap, int partId0, int index0,
+            const btCollisionObjectWrapper* colObj1Wrap, int partId1, int index1) override
+        {
+            // If we've found a contact, set the flag and return 0 (which means we want to stop processing contacts)
+            hitObject = true;
+            return 0;
+        }
+    };
 }
 
 #endif

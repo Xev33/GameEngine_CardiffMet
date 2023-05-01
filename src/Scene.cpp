@@ -15,7 +15,7 @@
 #include "OgreBullet.h"
 
 #include <memory>
-#include "btBulletCollisionCommon.h"
+#include "BulletCollision/CollisionDispatch/btGhostObject.h"
 
 namespace XDGameEngine
 {
@@ -94,7 +94,7 @@ namespace XDGameEngine
             // Bullet can work with a fixed timestep
             dynamicsWorld->stepSimulation(1.f / 60.f, 10);
 
-            // Update all game objects that need to be updated
+            // Update all game objects who need to be updated
             for (auto& it = m_go.begin(); it != m_go.end();)
             {
                 auto go = it->get();
@@ -114,7 +114,22 @@ namespace XDGameEngine
             }
 
             dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
-            //npc->update();
+            if (m_Ghostobject == nullptr)
+                return;
+            for (int i = 0, end = m_Ghostobject->getNumOverlappingObjects(); i != end; ++i)
+            {
+                btCollisionObject* c = m_Ghostobject->getOverlappingObject(i);
+                MyContactResultCallback results;
+                dynamicsWorld->contactPairTest(m_Ghostobject, c, results);
+                if (results.hitObject)
+                {
+                    std::cout << "ENFIN!!!\n";
+                    dynamicsWorld->removeCollisionObject(m_Ghostobject);
+                    delete m_Ghostobject;
+                    m_Ghostobject = nullptr;
+                    return;
+                }
+            }
         }
     }
 
@@ -150,7 +165,7 @@ namespace XDGameEngine
         bulletInit();
 
         m_go.push_back(std::make_unique<Player>(
-            btVector3(0.0f, 80.0f, 0.0f),
+            btVector3(200.0f, 80.0f, 0.0f),
             btQuaternion(0, 0, 30),
             btVector3(1.0f, 2.0f, 1.0f)));
         m_go.push_back(std::make_unique<NPC>(
@@ -165,6 +180,26 @@ namespace XDGameEngine
         m_go.push_back(std::make_unique<SpotLight>(
             btVector3(200, 200, 0),
             btQuaternion(-1, -1, 0)));
+
+        // Create the ghost object
+        ////btGhostObject* ghostObject = new btGhostObject();
+
+        //// Create the sphere shape with radius 1.0
+        //btScalar radius = 1.0;
+        //btCollisionShape* shape = new btSphereShape(radius);
+
+        //// Attach the shape to the ghost object
+        //ghostObject->setCollisionShape(shape);
+
+        // create trigger volume
+        //https://andysomogyi.github.io/mechanica/bullet.html
+        btTransform world(btQuaternion(0, 0, 0), btVector3(0.0f, 80.0f, 0.0f));
+        m_Ghostobject = new btGhostObject();
+        m_Ghostobject->setCollisionShape(new btBoxShape(btVector3(10.0f, 5.0f, 10.0f)));
+        m_Ghostobject->setCollisionFlags(m_Ghostobject->getCollisionFlags() |
+            btCollisionObject::CF_NO_CONTACT_RESPONSE);
+        m_Ghostobject->setWorldTransform(world);
+        dynamicsWorld->addCollisionObject(m_Ghostobject);
 
         setupCamera();
 
@@ -188,6 +223,9 @@ namespace XDGameEngine
         dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
 
         dynamicsWorld->setGravity(btVector3(0, -10, 0));
+
+        // Found here https://gamedev.net/forums/topic/692573-bullet-btghostobject/5358842/
+        dynamicsWorld->getPairCache()->setInternalGhostPairCallback(new btGhostPairCallback());
     }
 
     void Scene::setupCamera()

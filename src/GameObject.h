@@ -58,7 +58,7 @@ namespace XDGameEngine
 		/**
 		* Tag will come later. Very low priority
 		*/
-		//std::vector<std::string> m_tags;
+		const char* m_tag;
 
     private:// no private member -> Should I remove it?
 
@@ -66,6 +66,10 @@ namespace XDGameEngine
 		GameObject(const btVector3 pos, const btQuaternion rot, const btVector3 scale);
         ~GameObject();
 
+		const char* getTag()
+		{
+			return m_tag;
+		}
 		/**
 		* Getter for the gameObject's inner transform
 		*/
