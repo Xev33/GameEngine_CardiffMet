@@ -81,6 +81,11 @@ namespace XDGameEngine
 		go.GetTransform()->setRotation(ortientation);
 	}
 
+	void RigidBody::SetUserPointer(void* userPointer)
+	{
+		m_rigidbody->setUserPointer(userPointer);
+	}
+
 	void RigidBody::SetActive(bool isActive)
 	{
 		if (isActive == true && m_isActive == false)
@@ -197,4 +202,26 @@ namespace XDGameEngine
 		}
 	}
 
+	uint32_t RigidBody::OnCollisionEnter(uint32_t tag) const noexcept
+	{
+		// according to here 
+		// https://stackoverflow.com/questions/11175694/bullet-physics-simplest-collision-example
+		for (int i = 0; i < m_dynamicsWorld->getDispatcher()->getNumManifolds(); i++)
+		{
+			btPersistentManifold* manifold = m_dynamicsWorld->getDispatcher()->getManifoldByIndexInternal(i);
+			btCollisionObject* objA = (btCollisionObject*)manifold->getBody0();
+			btCollisionObject* objB = (btCollisionObject*)manifold->getBody1();
+			uint32_t* tag1 = static_cast<uint32_t*>(objA->getUserPointer());
+			uint32_t* tag2 = static_cast<uint32_t*>(objB->getUserPointer());
+
+			if (tag1 != nullptr && tag2 != nullptr)
+			{
+				if (*tag2 == tag)
+				{
+					return *tag1;
+				}
+			}
+		}
+		return '404';
+	}
 }

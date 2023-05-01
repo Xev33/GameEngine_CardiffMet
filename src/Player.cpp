@@ -10,12 +10,14 @@ namespace XDGameEngine
     Player::Player(const btVector3 pos, const btQuaternion rot, const btVector3 scale) :
         GameObject(pos, rot, scale)
     {
-        m_forwardForce = 0.5f;
+        m_forwardForce = -0.5f;
         m_turningForce = 50.0f;
         m_jumpForce = 1.0f;
 
         m_linearDamping = 2.6f;
         m_angularDamping = 0.6f;
+
+        m_tag = 'PLYR';
 
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('MSRD', *this));
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('BXCS', *this));
@@ -27,6 +29,7 @@ namespace XDGameEngine
         SetupAllComponents();
         m_rgbd = GetComponent<RigidBody>()->GetRigidbody();
         m_rgbd->setDamping(m_linearDamping, m_angularDamping);
+        m_rgbd->setUserPointer(&m_tag);
     }
 
     Player::~Player()

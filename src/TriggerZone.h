@@ -1,8 +1,9 @@
 #ifndef GO_TEST_
 #define GO_TEST_
 
-#include <btBulletDynamicsCommon.h>
+#include "BulletCollision/CollisionDispatch/btGhostObject.h"
 #include "AComponent.h"
+#include "btBulletDynamicsCommon.h"
 
 namespace XDGameEngine
 {
@@ -11,7 +12,7 @@ namespace XDGameEngine
     protected:
         btDiscreteDynamicsWorld* m_dynamicsWorld;
 
-        btRigidBody* m_rigidbody; /**< The rigidbody itself */
+        btGhostObject* m_ghostObj; /**< The rigidbody itself */
         btCollisionShape* m_colShape;  /**< Collision shape, describes the collision boundary */
 
         btScalar m_mass; /**< The body mass. 0 = static mesh */
@@ -25,6 +26,8 @@ namespace XDGameEngine
         * Overrided method from AComponent. Connect the component to the dynamicWorld
         */
         virtual void SetUpComponent(GameObject& go) final;
+
+        uint32_t OnTriggerEnter() const noexcept;
     };
 }
 

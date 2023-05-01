@@ -46,6 +46,8 @@ namespace XDGameEngine
         */
         virtual void UpdateComponent(GameObject& go) final;
 
+        void SetUserPointer(void* userPointer);
+
         /**
         * Set body's mass
         */
@@ -96,6 +98,11 @@ namespace XDGameEngine
         * Uses the code from the earlier ray casting example.
         */
         bool IsGrounded() const noexcept;
+
+        /*
+        * Check if the solid body enter in a collision and retrieve the collision obj tag
+        */
+        uint32_t OnCollisionEnter(uint32_t tag) const noexcept;
     };
 }
 

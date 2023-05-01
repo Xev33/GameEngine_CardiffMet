@@ -114,22 +114,8 @@ namespace XDGameEngine
             }
 
             dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
-            if (m_Ghostobject == nullptr)
-                return;
-            for (int i = 0, end = m_Ghostobject->getNumOverlappingObjects(); i != end; ++i)
-            {
-                btCollisionObject* c = m_Ghostobject->getOverlappingObject(i);
-                MyContactResultCallback results;
-                dynamicsWorld->contactPairTest(m_Ghostobject, c, results);
-                if (results.hitObject)
-                {
-                    std::cout << "ENFIN!!!\n";
-                    dynamicsWorld->removeCollisionObject(m_Ghostobject);
-                    delete m_Ghostobject;
-                    m_Ghostobject = nullptr;
-                    return;
-                }
-            }
+
+
         }
     }
 
@@ -164,10 +150,12 @@ namespace XDGameEngine
 
         bulletInit();
 
+
         m_go.push_back(std::make_unique<Player>(
             btVector3(200.0f, 80.0f, 0.0f),
             btQuaternion(0, 0, 30),
             btVector3(1.0f, 2.0f, 1.0f)));
+
         m_go.push_back(std::make_unique<NPC>(
             btVector3(-500.0f, 80.0f, 500.0f),
             btQuaternion(0, 0, 0),
@@ -180,26 +168,6 @@ namespace XDGameEngine
         m_go.push_back(std::make_unique<SpotLight>(
             btVector3(200, 200, 0),
             btQuaternion(-1, -1, 0)));
-
-        // Create the ghost object
-        ////btGhostObject* ghostObject = new btGhostObject();
-
-        //// Create the sphere shape with radius 1.0
-        //btScalar radius = 1.0;
-        //btCollisionShape* shape = new btSphereShape(radius);
-
-        //// Attach the shape to the ghost object
-        //ghostObject->setCollisionShape(shape);
-
-        // create trigger volume
-        //https://andysomogyi.github.io/mechanica/bullet.html
-        btTransform world(btQuaternion(0, 0, 0), btVector3(0.0f, 80.0f, 0.0f));
-        m_Ghostobject = new btGhostObject();
-        m_Ghostobject->setCollisionShape(new btBoxShape(btVector3(10.0f, 5.0f, 10.0f)));
-        m_Ghostobject->setCollisionFlags(m_Ghostobject->getCollisionFlags() |
-            btCollisionObject::CF_NO_CONTACT_RESPONSE);
-        m_Ghostobject->setWorldTransform(world);
-        dynamicsWorld->addCollisionObject(m_Ghostobject);
 
         setupCamera();
 
@@ -224,7 +192,8 @@ namespace XDGameEngine
 
         dynamicsWorld->setGravity(btVector3(0, -10, 0));
 
-        // Found here https://gamedev.net/forums/topic/692573-bullet-btghostobject/5358842/
+        // We setup the world to accept ghost object in order to have trigger zone
+        // Found here: https://gamedev.net/forums/topic/692573-bullet-btghostobject/5358842/
         dynamicsWorld->getPairCache()->setInternalGhostPairCallback(new btGhostPairCallback());
     }
 
@@ -241,7 +210,8 @@ namespace XDGameEngine
         Ogre::SceneNode* camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
         camNode->setPosition(200, 300, 600);
         camNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TransformSpace::TS_WORLD);
-        camNode->attachObject(cam);
+        //camNode->attachObject(cam);
+        m_go.at(0)->GetComponent<MeshRenderer>()->GetSceneNode()->attachObject(cam);
 
         // Setup viewport for the camera.
         // I SHOULD PROBABLY MOVE THE VIEWPORT TO THE GAME CLASS
@@ -331,71 +301,37 @@ namespace XDGameEngine
         //    }
         //}
 
-        if (XDGameEngine::Input::Instance().GetKeyDown("a"))
-        {
-        }
+        //if (XDGameEngine::Input::Instance().GetKeyDown("a"))
+        //{
+        //}
 
-        if (XDGameEngine::Input::Instance().GetKeyDown("f"))
-        {
-            for (auto& it = m_go.begin(); it != m_go.end(); ++it)
-            {
-                auto go = it->get();
-                go->SetActive(!go->IsActive());
-            }
-        }
+        //if (XDGameEngine::Input::Instance().GetKeyDown("f"))
+        //{
+        //    for (auto& it = m_go.begin(); it != m_go.end(); ++it)
+        //    {
+        //        auto go = it->get();
+        //        go->SetActive(!go->IsActive());
+        //    }
+        //}
     }
 }
 
-//void Scene::setupLights()
+//https://gamedev.net/forums/topic/692573-bullet-btghostobject/5358842/
+//if (m_Ghostobject == nullptr)
+//    return;
+//for (int i = 0, end = m_Ghostobject->getNumOverlappingObjects(); i != end; ++i)
 //{
-//    // Setup Abient light
-//    scnMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
-//    scnMgr->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
-//
-//    // Add a spotlight
-//    Ogre::Light* spotLight = scnMgr->createLight("SpotLight");
-//
-//    // Configure
-//    spotLight->setDiffuseColour(0, 0, 1.0);
-//    spotLight->setSpecularColour(0, 0, 1.0);
-//    spotLight->setType(Ogre::Light::LT_SPOTLIGHT);
-//    spotLight->setSpotlightRange(Ogre::Degree(35), Ogre::Degree(50));
-//
-//    // Create a schene node for the spotlight
-//    Ogre::SceneNode* spotLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-//    spotLightNode->setDirection(-1, -1, 0);
-//    spotLightNode->setPosition(Ogre::Vector3(200, 200, 0));
-//
-//    // Add spotlight to the scene node.
-//    spotLightNode->attachObject(spotLight);
-//
-//    // Create directional light
-//    Ogre::Light* directionalLight = scnMgr->createLight("DirectionalLight");
-//
-//    // Configure the light
-//    directionalLight->setType(Ogre::Light::LT_DIRECTIONAL);
-//    directionalLight->setDiffuseColour(Ogre::ColourValue(0.4, 0, 0));
-//    directionalLight->setSpecularColour(Ogre::ColourValue(0.4, 0, 0));
-//
-//    // Setup a scene node for the directional lightnode.
-//    Ogre::SceneNode* directionalLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-//    directionalLightNode->attachObject(directionalLight);
-//    directionalLightNode->setDirection(Ogre::Vector3(0, -1, 1));
-//
-//    // Create a point light
-//    Ogre::Light* pointLight = scnMgr->createLight("PointLight");
-//
-//    // Configure the light
-//    pointLight->setType(Ogre::Light::LT_POINT);
-//    pointLight->setDiffuseColour(0.3, 0.3, 0.3);
-//    pointLight->setSpecularColour(0.3, 0.3, 0.3);
-//
-//    // setup the scene node for the point light
-//    Ogre::SceneNode* pointLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-//
-//    // Configure the light
-//    pointLightNode->setPosition(Ogre::Vector3(0, 150, 250));
-//
-//    // Add the light to the scene.
-//    pointLightNode->attachObject(pointLight);
+//    btCollisionObject* c = m_Ghostobject->getOverlappingObject(i);
+//    MyContactResultCallback results;
+//    dynamicsWorld->contactPairTest(m_Ghostobject, c, results);
+//    if (results.hitObject)
+//    {
+//        uint32_t* tag = static_cast<uint32_t*>(c->getUserPointer());;
+//        uint32_t kek = 'PLYR';
+//        std::cout << *tag << " ENFIN!!! " << kek << "\n";
+//        dynamicsWorld->removeCollisionObject(m_Ghostobject);
+//        delete m_Ghostobject;
+//        m_Ghostobject = nullptr;
+//        return;
+//    }
 //}

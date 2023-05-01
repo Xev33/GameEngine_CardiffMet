@@ -27,6 +27,9 @@ namespace XDGameEngine
 	class Scene
 	{
 	private:
+        /**
+        * Test GhostObject
+        */
         btGhostObject* m_Ghostobject;
 
         /**

@@ -5,6 +5,7 @@
 #include "CollisionShape.h"
 #include <memory>
 #include "GameObject.h"
+#include "TriggerZone.h"
 
 namespace XDGameEngine
 {
@@ -34,6 +35,8 @@ namespace XDGameEngine
 			return std::make_unique<CylinderCollision>();
 		case 'SPCS':
 			return std::make_unique<SphereCollision>();
+		case 'TGZN':
+			return std::make_unique<TriggerZone>();
 		default:
 			throw std::runtime_error("Invalid game type.");
 		}

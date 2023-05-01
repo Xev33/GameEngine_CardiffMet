@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "Game.h"
 #include "Scene.h"
+#include "TriggerZone.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -25,6 +26,7 @@ namespace XDGameEngine
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('MSRD', *this));
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('BXCS', *this));
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('RGBD', *this));
+        AddComponent(XDGameEngine::ComponentFactory::CreateComponent('TGZN', *this));
         this->GetComponent<MeshRenderer>()->SetMeshFileName("cube.mesh");
         body = this->GetComponent<RigidBody>();
 
@@ -58,6 +60,8 @@ namespace XDGameEngine
     {
         /* AI here */
         Arrive();
+        if (this->GetComponent<TriggerZone>()->OnTriggerEnter() == 'PLYR')
+            std::cout << "OUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU\n";
     }
 
     void XDPlayer::Forward()

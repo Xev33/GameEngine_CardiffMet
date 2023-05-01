@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "Game.h"
 #include "Scene.h"
+#include "TriggerZone.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -15,6 +16,7 @@ namespace XDGameEngine
     NPC::NPC(const btVector3 pos, const btQuaternion rot, const btVector3 scale) : 
         GameObject(pos, rot, scale)
     {
+        m_health = 2;
         m_forwardForce = 5.0f;
         m_turningForce = 100.0f;
         m_jumpForce = 5.0f;
@@ -22,15 +24,19 @@ namespace XDGameEngine
         m_linearDamping = 0.6f;
         m_angularDamping = 0.8f;
 
+        m_tag = 'NPC';
+
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('MSRD', *this));
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('BXCS', *this));
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('RGBD', *this));
+        AddComponent(XDGameEngine::ComponentFactory::CreateComponent('TGZN', *this));
         this->GetComponent<MeshRenderer>()->SetMeshFileName("cube.mesh");
         body = this->GetComponent<RigidBody>();
 
         SetupAllComponents();
         m_rgbd = GetComponent<RigidBody>()->GetRigidbody();
         m_rgbd->setDamping(m_linearDamping, m_angularDamping);
+        m_rgbd->setUserPointer(&m_tag);
 
         // Setup the patrol
         btTransform target1;
@@ -58,6 +64,26 @@ namespace XDGameEngine
     {
         /* AI here */
         Arrive();
+        
+        // We retrieve the colliding tag if it exist
+        uint32_t currentCol = body->OnCollisionEnter('NPC');
+
+        // Then we can check what type of object it is
+        // The NPC must check if he collide with the player
+
+        switch (currentCol)
+        {
+        case 'PLYR':
+            std::cout << "Should damage the player\n";
+            break;
+        case 'BLLT':
+            m_health--;
+            if (m_health <= 0)
+                m_shouldBeDestroyed = true;
+            break;
+        default:
+            break;
+        }
     }
 
     void NPC::Forward()
