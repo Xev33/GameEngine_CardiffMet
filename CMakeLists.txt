@@ -33,6 +33,7 @@ set(HDRS
 	./src/GameObject.h
 	./src/Transform.h
 	./src/Rigibodies.h
+	./src/Light.h
 )
 
 set(SRCS
@@ -50,6 +51,7 @@ set(SRCS
 	./src/GameObject.cpp
 	./src/Transform.cpp
 	./src/Rigibodies.cpp
+	./src/Light.cpp
 )
 
 include("tools/cmake/common.cmake")

@@ -63,7 +63,7 @@ namespace XDGameEngine
     private:// no private member -> Should I remove it?
 
     public:
-        GameObject();
+		GameObject(const btVector3 pos, const btQuaternion rot, const btVector3 scale);
         ~GameObject();
 
 		/**

@@ -14,14 +14,11 @@ namespace XDGameEngine
     private:
 
     public:
-        GOTest()
+        GOTest(const btVector3 pos = btVector3(1.0f, 1.0f, 1.0f),
+            const btQuaternion rot = btQuaternion(0.0f, 0.0f, 0.0f),
+            const btVector3 scale = btVector3(1.0f, 1.0f, 1.0f)) :
+            GameObject(pos, rot, scale)
         {
-            m_transform = nullptr;
-            m_shouldBeUpdated = true;
-            AddComponent(XDGameEngine::ComponentFactory::CreateComponent('TRFM', *this));
-            //AddComponent(XDGameEngine::ComponentFactory::CreateComponent('RGBD', *this) );
-            //AddComponent(XDGameEngine::ComponentFactory::CreateComponent('MSRD', *this) );
-            m_transform = GetComponent<Transform>();
         }
         ~GOTest()
         {

@@ -15,7 +15,10 @@ namespace XDGameEngine
     */
     class Transform : public AComponent {
     public:
-        Transform();
+        //Transform();
+        Transform(const btVector3 pos = btVector3(1.0f, 1.0f, 1.0f),
+            const btQuaternion rot = btQuaternion(0.0f, 0.0f, 0.0f),
+            const btVector3 scale = btVector3(1.0f, 1.0f, 1.0f));
 
         /**
         * Copy-constructor for a btTransform

@@ -16,11 +16,12 @@ namespace XDGameEngine
 	{
 	}
 
-	std::unique_ptr<XDGameEngine::AComponent> ComponentFactory::CreateComponent(uint32_t componentType, GameObject& go)
+	std::unique_ptr<XDGameEngine::AComponent> ComponentFactory::CreateComponent(uint32_t componentType, GameObject& go,
+		const btVector3 pos, const btQuaternion rot, const btVector3 scale)
 	{
 		switch (componentType) {
 		case 'TRFM':
-			return std::make_unique<Transform>();
+			return std::make_unique<Transform>(pos, rot, scale);
 		case 'RGBD':
 			return std::make_unique<RigidBody>();
 		case 'MSRD':

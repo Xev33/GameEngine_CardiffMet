@@ -2,6 +2,7 @@
 #include "Input.h"
 
 #include "Player.h"
+#include "Light.h"
 #include "NPC.h"
 #include "GOTest.h"
 #include "Rigibodies.h"
@@ -14,6 +15,7 @@
 #include "OgreBullet.h"
 
 #include <memory>
+#include "btBulletCollisionCommon.h"
 
 namespace XDGameEngine
 {
@@ -147,16 +149,26 @@ namespace XDGameEngine
 
         bulletInit();
 
-        auto player = std::make_unique<Player>();
-        auto npc = std::make_unique<XDPlayer>();
-        m_go.push_back(std::move(player));
-        m_go.push_back(std::move(npc));
+        m_go.push_back(std::make_unique<Player>(
+            btVector3(0.0f, 80.0f, 0.0f),
+            btQuaternion(0, 0, 30),
+            btVector3(1.0f, 2.0f, 1.0f)));
+        m_go.push_back(std::make_unique<NPC>(
+            btVector3(-500.0f, 80.0f, 500.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(1.0f, 1.0f, 1.0f)));
+
+        m_go.push_back(std::make_unique<PointLight>(btVector3(0, 150, 250)));
+
+        m_go.push_back(std::make_unique<DirectionalLight>(btQuaternion(0, 1, 1)));
+
+        m_go.push_back(std::make_unique<SpotLight>(
+            btVector3(200, 200, 0),
+            btQuaternion(-1, -1, 0)));
 
         setupCamera();
 
         setupFloor();
-
-        setupLights();
     }
 
     void Scene::bulletInit()
@@ -270,60 +282,6 @@ namespace XDGameEngine
         dynamicsWorld->addRigidBody(body);
     }
 
-    void Scene::setupLights()
-    {
-        // Setup Abient light
-        scnMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
-        scnMgr->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
-
-        // Add a spotlight
-        Ogre::Light* spotLight = scnMgr->createLight("SpotLight");
-
-        // Configure
-        spotLight->setDiffuseColour(0, 0, 1.0);
-        spotLight->setSpecularColour(0, 0, 1.0);
-        spotLight->setType(Ogre::Light::LT_SPOTLIGHT);
-        spotLight->setSpotlightRange(Ogre::Degree(35), Ogre::Degree(50));
-
-        // Create a schene node for the spotlight
-        Ogre::SceneNode* spotLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-        spotLightNode->setDirection(-1, -1, 0);
-        spotLightNode->setPosition(Ogre::Vector3(200, 200, 0));
-
-        // Add spotlight to the scene node.
-        spotLightNode->attachObject(spotLight);
-
-        // Create directional light
-        Ogre::Light* directionalLight = scnMgr->createLight("DirectionalLight");
-
-        // Configure the light
-        directionalLight->setType(Ogre::Light::LT_DIRECTIONAL);
-        directionalLight->setDiffuseColour(Ogre::ColourValue(0.4, 0, 0));
-        directionalLight->setSpecularColour(Ogre::ColourValue(0.4, 0, 0));
-
-        // Setup a scene node for the directional lightnode.
-        Ogre::SceneNode* directionalLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-        directionalLightNode->attachObject(directionalLight);
-        directionalLightNode->setDirection(Ogre::Vector3(0, -1, 1));
-
-        // Create a point light
-        Ogre::Light* pointLight = scnMgr->createLight("PointLight");
-
-        // Configure the light
-        pointLight->setType(Ogre::Light::LT_POINT);
-        pointLight->setDiffuseColour(0.3, 0.3, 0.3);
-        pointLight->setSpecularColour(0.3, 0.3, 0.3);
-
-        // setup the scene node for the point light
-        Ogre::SceneNode* pointLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-
-        // Configure the light
-        pointLightNode->setPosition(Ogre::Vector3(0, 150, 250));
-
-        // Add the light to the scene.
-        pointLightNode->attachObject(pointLight);
-    }
-
     void Scene::UseInputTest()
     {
         //if (XDGameEngine::Input::Instance().GetKeyDown("a"))
@@ -349,3 +307,57 @@ namespace XDGameEngine
         }
     }
 }
+
+//void Scene::setupLights()
+//{
+//    // Setup Abient light
+//    scnMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
+//    scnMgr->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
+//
+//    // Add a spotlight
+//    Ogre::Light* spotLight = scnMgr->createLight("SpotLight");
+//
+//    // Configure
+//    spotLight->setDiffuseColour(0, 0, 1.0);
+//    spotLight->setSpecularColour(0, 0, 1.0);
+//    spotLight->setType(Ogre::Light::LT_SPOTLIGHT);
+//    spotLight->setSpotlightRange(Ogre::Degree(35), Ogre::Degree(50));
+//
+//    // Create a schene node for the spotlight
+//    Ogre::SceneNode* spotLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+//    spotLightNode->setDirection(-1, -1, 0);
+//    spotLightNode->setPosition(Ogre::Vector3(200, 200, 0));
+//
+//    // Add spotlight to the scene node.
+//    spotLightNode->attachObject(spotLight);
+//
+//    // Create directional light
+//    Ogre::Light* directionalLight = scnMgr->createLight("DirectionalLight");
+//
+//    // Configure the light
+//    directionalLight->setType(Ogre::Light::LT_DIRECTIONAL);
+//    directionalLight->setDiffuseColour(Ogre::ColourValue(0.4, 0, 0));
+//    directionalLight->setSpecularColour(Ogre::ColourValue(0.4, 0, 0));
+//
+//    // Setup a scene node for the directional lightnode.
+//    Ogre::SceneNode* directionalLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+//    directionalLightNode->attachObject(directionalLight);
+//    directionalLightNode->setDirection(Ogre::Vector3(0, -1, 1));
+//
+//    // Create a point light
+//    Ogre::Light* pointLight = scnMgr->createLight("PointLight");
+//
+//    // Configure the light
+//    pointLight->setType(Ogre::Light::LT_POINT);
+//    pointLight->setDiffuseColour(0.3, 0.3, 0.3);
+//    pointLight->setSpecularColour(0.3, 0.3, 0.3);
+//
+//    // setup the scene node for the point light
+//    Ogre::SceneNode* pointLightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+//
+//    // Configure the light
+//    pointLightNode->setPosition(Ogre::Vector3(0, 150, 250));
+//
+//    // Add the light to the scene.
+//    pointLightNode->attachObject(pointLight);
+//}

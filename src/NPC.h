@@ -8,7 +8,7 @@
 
 namespace XDGameEngine
 {
-    class NPC : public XDGameEngine::GameObject
+    class NPC : public GameObject
     {
     protected:
 
@@ -30,7 +30,9 @@ namespace XDGameEngine
         int currentWaypoint;
 
     public:
-        NPC();
+        NPC(const btVector3 pos = btVector3(1.0f, 1.0f, 1.0f),
+            const btQuaternion rot = btQuaternion(0.0f, 0.0f, 0.0f),
+            const btVector3 scale = btVector3(1.0f, 1.0f, 1.0f));
         ~NPC();
 
         virtual void Update();

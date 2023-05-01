@@ -1,10 +1,24 @@
 #include "GameObject.h"
 #include "AComponent.h"
+#include "ComponentFactory.h"
 
 namespace XDGameEngine
 {
-	GameObject::GameObject()
+	GameObject::GameObject(const btVector3 pos = btVector3(1.0f, 1.0f, 1.0f),
+		const btQuaternion rot = btQuaternion(0.0f, 0.0f, 0.0f),
+		const btVector3 scale = btVector3(1.0f, 1.0f, 1.0f))
 	{
+		m_shouldBeUpdated = true;
+		m_transform = nullptr;
+		m_shouldBeDestroyed = false;
+
+		// We setup the transform -> Every GameObject has a transform
+		AddComponent(XDGameEngine::ComponentFactory::CreateComponent('TRFM', *this, pos, rot, scale));
+		m_transform = GetComponent<Transform>();
+
+		this->m_transform->setPosition(pos);
+		this->m_transform->setRotation(rot);
+		this->m_transform->setScale(scale);
 	}
 
 	GameObject::~GameObject()

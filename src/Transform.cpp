@@ -2,13 +2,22 @@
 
 namespace XDGameEngine
 {
-	Transform::Transform()
-	{
-		m_id = 'TRFM';
-		// Initialize the transform to an identity matrix
-		m_rotation = btQuaternion(0, 0, 0, 1);
-		m_position.setZero();
-	}
+	//Transform::Transform()
+	//{
+	//	m_id = 'TRFM';
+	//	// Initialize the transform to an identity matrix
+	//	m_rotation = btQuaternion(0, 0, 0, 1);
+	//	m_position.setZero();
+	//}
+
+    Transform::Transform(const btVector3 pos, const btQuaternion rot, const btVector3 scale)
+    {
+        m_id = 'TRFM';
+        // Initialize the transform to an identity matrix
+        m_position = pos;
+        m_rotation = rot;
+        m_scale = scale;
+    }
 
 	Transform::Transform(const btTransform& transform)
 	{

@@ -8,7 +8,7 @@
 
 namespace XDGameEngine
 {
-    class Player : public XDGameEngine::GameObject
+    class Player : public GameObject
     {
     protected:
 
@@ -25,7 +25,9 @@ namespace XDGameEngine
         RigidBody* body;
 
     public:
-        Player();
+        Player(const btVector3 pos = btVector3(1.0f, 1.0f, 1.0f),
+            const btQuaternion rot = btQuaternion(0.0f, 0.0f, 0.0f),
+            const btVector3 scale = btVector3(1.0f, 1.0f, 1.0f));
         ~Player();
 
         virtual void Update();

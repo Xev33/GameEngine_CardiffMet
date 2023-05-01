@@ -7,7 +7,8 @@
 
 namespace XDGameEngine
 {
-    Player::Player()
+    Player::Player(const btVector3 pos, const btQuaternion rot, const btVector3 scale) :
+        GameObject(pos, rot, scale)
     {
         m_forwardForce = 0.5f;
         m_turningForce = 50.0f;
@@ -16,19 +17,10 @@ namespace XDGameEngine
         m_linearDamping = 2.6f;
         m_angularDamping = 0.6f;
 
-        m_shouldBeUpdated = true;
-        m_transform = nullptr;
-        m_shouldBeDestroyed = false;
-        AddComponent(XDGameEngine::ComponentFactory::CreateComponent('TRFM', *this));
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('MSRD', *this));
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('BXCS', *this));
         AddComponent(XDGameEngine::ComponentFactory::CreateComponent('RGBD', *this));
         this->GetComponent<MeshRenderer>()->SetMeshFileName("cube.mesh");
-        this->m_transform = this->GetComponent<Transform>();
-
-        m_transform->setScale(btVector3(1, 1.5f, 1));
-        this->m_transform->setPosition(btVector3(-200, 100, 3));
-        this->m_transform->setRotation(btQuaternion(0, 0, 0));
 
         body = this->GetComponent<RigidBody>();
 
