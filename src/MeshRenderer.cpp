@@ -45,8 +45,10 @@ namespace XDGameEngine
 		// We attempt to create the mesh if a file name exists
 		m_mesh = m_scnMgr->createEntity(m_meshFileName);
 		m_sceneNode = m_scnMgr->getRootSceneNode()->createChildSceneNode();
+		m_sceneNode->setScale(go.GetTransform()->getScale().getX(),
+			go.GetTransform()->getScale().getY(),
+			go.GetTransform()->getScale().getZ());
 		m_sceneNode->attachObject(m_mesh);
-		//m_sceneNode->setScale(1.0f, 1.0f, 1.0f);
 	}
 
 	void MeshRenderer::UpdateComponent(GameObject& go)

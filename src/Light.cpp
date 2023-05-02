@@ -44,7 +44,7 @@ namespace XDGameEngine
 	{
 		m_light = Game::Instance()->getCurrentScene()->getSceneManager()->createLight("PointLight");
 		m_light->setType(Ogre::Light::LT_POINT);
-		m_light->setDiffuseColour(0.3, 0.3, 0.3);
+		m_light->setDiffuseColour(0.6, 0.6, 0.6);
 		m_light->setSpecularColour(0.3, 0.3, 0.3);
 
 		m_lightNode = Game::Instance()->getCurrentScene()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
@@ -108,8 +108,8 @@ namespace XDGameEngine
 	{
 		m_light = Game::Instance()->getCurrentScene()->getSceneManager()->createLight("DirectionalLight");
 		m_light->setType(Ogre::Light::LT_DIRECTIONAL);
-		m_light->setDiffuseColour(Ogre::ColourValue(0.4, 0, 0));
-		m_light->setSpecularColour(Ogre::ColourValue(0.4, 0, 0));
+		m_light->setDiffuseColour(Ogre::ColourValue(1,1,1));
+		m_light->setSpecularColour(Ogre::ColourValue(1, 1, 1));
 
 		m_lightNode = Game::Instance()->getCurrentScene()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 		m_lightNode->setDirection(this->m_transform->getRotation().getX(), this->m_transform->getRotation().getY(), this->m_transform->getRotation().getZ());

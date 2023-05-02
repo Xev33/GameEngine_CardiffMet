@@ -46,7 +46,10 @@ namespace XDGameEngine
 
 	uint32_t TriggerZone::OnTriggerEnter() const noexcept
 	{
-		//https://gamedev.net/forums/topic/692573-bullet-btghostobject/5358842/
+		// This way of collecting the trigger output has been taken from:
+		// https://gamedev.net/forums/topic/692573-bullet-btghostobject/5358842/
+		// and using the created tag system
+
 		if (m_ghostObj == nullptr)
 			return '404';
 		for (int i = 0, end = m_ghostObj->getNumOverlappingObjects(); i != end; ++i)
