@@ -23,7 +23,6 @@ namespace XDGameEngine
 
 	GameObject::~GameObject()
 	{
-		std::cout << m_components.size() << " la taille\n"; // To remove when the project is done
 	}
 
 	void GameObject::AddComponent(std::unique_ptr<XDGameEngine::AComponent> component)

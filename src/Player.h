@@ -38,6 +38,11 @@ namespace XDGameEngine
         void Forward();
 
         /**
+        * Moves the player forward with maximum acceleration.
+        */
+        void Backward();
+
+        /**
         * Just apply a turning force.
         */
         void TurnRight();
@@ -46,6 +51,22 @@ namespace XDGameEngine
         * Just apply a turning force.
         */
         void TurnLeft();
+
+        /**
+        * Just apply a turning force.
+        */
+        void StraffRight();
+
+        /**
+        * Just apply a turning force.
+        */
+        void StraffLeft();
+
+        /**
+        * Just apply a turning force.
+        */
+        void Fire();
+
 
         /**
         *  Jump

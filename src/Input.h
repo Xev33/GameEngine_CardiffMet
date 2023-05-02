@@ -6,6 +6,8 @@
 #include "OgreInput.h"
 #include <string>
 
+using namespace OgreBites;
+
 namespace XDGameEngine
 {
     class Input
@@ -16,7 +18,7 @@ namespace XDGameEngine
         /**
         * Key States
         */
-        bool aDown, wDown, fDown, jDown, dDown;
+        bool aDown, wDown, fDown, jDown, dDown, sDown, spaceDown, leftArrowDown, rightArrowDown;
 
         Input(); // Private constructor to prevent instantiation
         Input(const Input&) = delete; // Delete copy constructor

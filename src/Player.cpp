@@ -47,20 +47,34 @@ namespace XDGameEngine
         // Apply forces based on input.
         if (m_rgbd && m_rgbd->getMotionState())
         {
+            //m_transform->setRotation(btQuaternion(0, m_transform->getRotation().getY(), 0));
             if (XDGameEngine::Input::Instance().GetKeyDown("w"))
                 Forward();
 
-            if (XDGameEngine::Input::Instance().GetKeyDown("a"))
-                TurnRight();
+            if (XDGameEngine::Input::Instance().GetKeyDown("s"))
+                Backward();
 
             if (XDGameEngine::Input::Instance().GetKeyDown("d"))
+                StraffRight();
+
+            if (XDGameEngine::Input::Instance().GetKeyDown("a"))
+                StraffLeft();
+
+            if (XDGameEngine::Input::Instance().GetKeyDown("leftArrow"))
+                TurnRight();
+
+            if (XDGameEngine::Input::Instance().GetKeyDown("rightArrow"))
                 TurnLeft();
+
+            if (XDGameEngine::Input::Instance().GetKeyDown("space"))
+                Fly();
 
             if (XDGameEngine::Input::Instance().GetKeyDown("j"))
                 Jump();
 
             if (XDGameEngine::Input::Instance().GetKeyDown("f"))
-                Fly();
+                Fire();
+
         }
 
     }
@@ -70,6 +84,34 @@ namespace XDGameEngine
         //Create a vector in local coordinates
         //pointing down z.
         btVector3 fwd(0.0f, 0.0f, m_forwardForce);
+        btVector3 push;
+
+        btTransform trans;
+
+        if (m_rgbd && m_rgbd->getMotionState())
+        {
+            //get the orientation of the rigid m_rgbd in world space.
+            m_rgbd->getMotionState()->getWorldTransform(trans);
+            btQuaternion orientation = trans.getRotation();
+
+            //rotate the local force, into the global space.
+            //i.e. push in down the local z.
+            push = quatRotate(orientation, fwd);
+
+            //activate the m_rgbd, this is essential if the m_rgbd
+            //has gone to sleep (i.e. stopped moving/colliding).
+            m_rgbd->activate();
+
+            //apply a force to the center of the m_rgbd
+            m_rgbd->applyCentralImpulse(push);
+        }
+    }
+
+    void Player::Backward()
+    {
+        //Create a vector in local coordinates
+        //pointing down z.
+        btVector3 fwd(0.0f, 0.0f, -m_forwardForce);
         btVector3 push;
 
         btTransform trans;
@@ -121,6 +163,63 @@ namespace XDGameEngine
         }
     }
 
+    void Player::StraffRight()
+    {
+        //Create a vector in local coordinates
+        //pointing down z.
+        btVector3 rgt(-m_forwardForce, 0.0f, 0.0f);
+        btVector3 push;
+
+        btTransform trans;
+
+        if (m_rgbd && m_rgbd->getMotionState())
+        {
+            //get the orientation of the rigid m_rgbd in world space.
+            m_rgbd->getMotionState()->getWorldTransform(trans);
+            btQuaternion orientation = trans.getRotation();
+
+            //rotate the local force, into the global space.
+            //i.e. push in down the local z.
+            push = quatRotate(orientation, rgt);
+
+            //activate the m_rgbd, this is essential if the m_rgbd
+            //has gone to sleep (i.e. stopped moving/colliding).
+            m_rgbd->activate();
+
+            //apply a force to the center of the m_rgbd
+            m_rgbd->applyCentralImpulse(push);
+        }
+    }
+
+    void Player::StraffLeft()
+    {
+        //Create a vector in local coordinates
+        //pointing down z.
+        btVector3 rgt(m_forwardForce, 0.0f, 0.0f);
+        btVector3 push;
+
+        btTransform trans;
+
+        if (m_rgbd && m_rgbd->getMotionState())
+        {
+            //get the orientation of the rigid m_rgbd in world space.
+            m_rgbd->getMotionState()->getWorldTransform(trans);
+            btQuaternion orientation = trans.getRotation();
+
+            //rotate the local force, into the global space.
+            //i.e. push in down the local z.
+            push = quatRotate(orientation, rgt);
+
+            //activate the m_rgbd, this is essential if the m_rgbd
+            //has gone to sleep (i.e. stopped moving/colliding).
+            m_rgbd->activate();
+
+            //apply a force to the center of the m_rgbd
+            m_rgbd->applyCentralImpulse(push);
+        }
+
+    }
+
     void Player::Jump()
     {
         //Create a vector in local coordinates
@@ -140,6 +239,10 @@ namespace XDGameEngine
             //apply a force to the center of the m_rgbd
             m_rgbd->applyCentralImpulse(up);
         }
+    }
+
+    void Player::Fire()
+    {
     }
 
     void Player::Fly()
