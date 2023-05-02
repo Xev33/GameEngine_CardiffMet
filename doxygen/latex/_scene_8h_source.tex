@@ -1,0 +1,126 @@
+\hypertarget{_scene_8h_source}{}\doxysection{Scene.\+h}
+\label{_scene_8h_source}\index{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/Scene.h@{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/Scene.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef SCENE\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define SCENE\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Ogre.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}OgreApplicationContext.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}OgreInput.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}OgreRTShaderSystem.h"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}OgreCameraMan.h"{}}}
+\DoxyCodeLine{12 \textcolor{comment}{/* Bullet3 Physics */}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}btBulletDynamicsCommon.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}btBulletCollisionCommon.h"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}BulletCollision/CollisionDispatch/btGhostObject.h"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }Player;}
+\DoxyCodeLine{18 \textcolor{keyword}{class }NPC;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{namespace }XDGameEngine}
+\DoxyCodeLine{21 \{}
+\DoxyCodeLine{22     \textcolor{keyword}{class }GameObject;}
+\DoxyCodeLine{23 \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{namespace }XDGameEngine}
+\DoxyCodeLine{26 \{}
+\DoxyCodeLine{27     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_scene}{Scene}}}
+\DoxyCodeLine{28     \{}
+\DoxyCodeLine{29     \textcolor{keyword}{private}:}
+\DoxyCodeLine{33         btGhostObject* \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_ab37045e3f6878745ceeb7227ff40a7f8}{m\_Ghostobject}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{38         Ogre::SceneManager* \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_ac4510ea71fc53298d9c084d8527e4781}{scnMgr}};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{43         btDefaultCollisionConfiguration* \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a6d159f0b3d42fbee6197bf52952b2686}{collisionConfiguration}};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{48         btCollisionDispatcher* \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_aebe45c77f109773c8e27d9cb5b84cc98}{dispatcher}};}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{53         btBroadphaseInterface* \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_aea4cf1f00aa045ebb7aa12a63631beb8}{overlappingPairCache}};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{58         btSequentialImpulseConstraintSolver* \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a718752cb81f400ca8860bc5170dad26f}{solver}};}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{63         btDiscreteDynamicsWorld* \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a6022399f016875f6267c6ff33abbb4c7}{dynamicsWorld}};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{69         btAlignedObjectArray<btCollisionShape*> \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_ae05fd751cc36eef1ff5db8d94df92e00}{collisionShapes}};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{74         \mbox{\hyperlink{class_x_d_game_engine_1_1_player}{Player}}* \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a2f806ccb580330490f1bb2b282bafcd7}{player}};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{79         \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c}{NPC}}* \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a9b707d9b6dfd971acaae0917cf70f480}{npc}};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{84         Ogre::RenderWindow* \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_ad56acb7ae05c53d49ee961aad0031b68}{rw}};}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{89         std::vector<std::unique\_ptr<GameObject>> \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_aec3d54e67f26bbe463c70a9396c21679}{m\_go}};}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{keyword}{public}:}
+\DoxyCodeLine{96         \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a82531cd9c10834fbdcc1f68b95236a10}{Scene}}();}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{101         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a1f46b99432dba3b8fde030d50a177eb1}{\string~Scene}}();}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{106         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a6b10f3448cce558370c77e07f99edcc4}{updateFrameStarted}}(\textcolor{keyword}{const} Ogre::FrameEvent\& evt);}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{111         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_aa919060fcabc6f202d5da9892895e822}{updateFrameEnded}}(\textcolor{keyword}{const} Ogre::FrameEvent\& evt);}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114         \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{115         \textcolor{comment}{// ALL SETUP FONCTIONS -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{116         \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{117 ;}
+\DoxyCodeLine{121         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a0b28c99f242b97210bc09a6031947f4e}{setup}}(Ogre::Root* root, Ogre::RenderWindow* nvp);}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{126         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a38bcfc3def8bc8e94baa437a12c95fe3}{bulletInit}}();}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{131         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a2678bb3c44a0658abf2bf236d6db1e41}{setupCamera}}();}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{134         \textcolor{comment}{//* Player setup}}
+\DoxyCodeLine{135         \textcolor{comment}{//*/}}
+\DoxyCodeLine{136         \textcolor{comment}{//void setupPlayer();}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{139         \textcolor{comment}{//* NPC setup}}
+\DoxyCodeLine{140         \textcolor{comment}{//*/}}
+\DoxyCodeLine{141         \textcolor{comment}{//void setupNPC();}}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{146         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a8d40a0a4bf60b06b6bad15d3599cbf69}{setupFloor}}();}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{151         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a6903017e1e68b64f34735ba1ce6a0c66}{setupLights}}();}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154         \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{155         \textcolor{comment}{// GETTERS -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{156         \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158         Ogre::SceneManager*                     getSceneManager() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_ac4510ea71fc53298d9c084d8527e4781}{scnMgr}}; \}}
+\DoxyCodeLine{159         \mbox{\hyperlink{class_x_d_game_engine_1_1_player}{Player}}*                                 getPlayer() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a2f806ccb580330490f1bb2b282bafcd7}{player}}; \}}
+\DoxyCodeLine{160         NPC*                                    getNPC() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a9b707d9b6dfd971acaae0917cf70f480}{npc}}; \}}
+\DoxyCodeLine{161         btDefaultCollisionConfiguration*        getCollisionConfiguration() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a6d159f0b3d42fbee6197bf52952b2686}{collisionConfiguration}}; \}}
+\DoxyCodeLine{162         btCollisionDispatcher*                  getDispatcher() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_aebe45c77f109773c8e27d9cb5b84cc98}{dispatcher}}; \}}
+\DoxyCodeLine{163         btBroadphaseInterface*                  getOverlappingPairCache() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_aea4cf1f00aa045ebb7aa12a63631beb8}{overlappingPairCache}}; \}}
+\DoxyCodeLine{164         btSequentialImpulseConstraintSolver*    getSolver() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a718752cb81f400ca8860bc5170dad26f}{solver}}; \}}
+\DoxyCodeLine{165         btDiscreteDynamicsWorld* getDynamicWorld() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a6022399f016875f6267c6ff33abbb4c7}{dynamicsWorld}}; \}}
+\DoxyCodeLine{166         btAlignedObjectArray<btCollisionShape*>*                getCollisionShapes() \{ \textcolor{keywordflow}{return} \&\mbox{\hyperlink{class_x_d_game_engine_1_1_scene_ae05fd751cc36eef1ff5db8d94df92e00}{collisionShapes}}; \}}
+\DoxyCodeLine{167         \textcolor{keywordtype}{void} UseInputTest();}
+\DoxyCodeLine{168     \};}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_my_contact_result_callback}{MyContactResultCallback}} : \textcolor{keyword}{public} btCollisionWorld::ContactResultCallback}
+\DoxyCodeLine{171     \{}
+\DoxyCodeLine{172     \textcolor{keyword}{public}:}
+\DoxyCodeLine{173         \textcolor{keywordtype}{bool} hitObject = \textcolor{keyword}{false};}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175         \textcolor{keyword}{virtual} btScalar addSingleResult(btManifoldPoint\& cp,}
+\DoxyCodeLine{176             \textcolor{keyword}{const} btCollisionObjectWrapper* colObj0Wrap, \textcolor{keywordtype}{int} partId0, \textcolor{keywordtype}{int} index0,}
+\DoxyCodeLine{177             \textcolor{keyword}{const} btCollisionObjectWrapper* colObj1Wrap, \textcolor{keywordtype}{int} partId1, \textcolor{keywordtype}{int} index1)\textcolor{keyword}{ override}}
+\DoxyCodeLine{178 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{179             \textcolor{comment}{// If we've found a contact, set the flag and return 0 (which means we want to stop processing contacts)}}
+\DoxyCodeLine{180             hitObject = \textcolor{keyword}{true};}
+\DoxyCodeLine{181             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{182         \}}
+\DoxyCodeLine{183     \};}
+\DoxyCodeLine{184 \}}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,231 @@
+\hypertarget{class_x_d_game_engine_1_1_scene}{}\doxysection{XDGame\+Engine\+::Scene Class Reference}
+\label{class_x_d_game_engine_1_1_scene}\index{XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a82531cd9c10834fbdcc1f68b95236a10}{Scene}} ()
+\item 
+virtual \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a1f46b99432dba3b8fde030d50a177eb1}{$\sim$\+Scene}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a6b10f3448cce558370c77e07f99edcc4}{update\+Frame\+Started}} (const Ogre\+::\+Frame\+Event \&evt)
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_aa919060fcabc6f202d5da9892895e822}{update\+Frame\+Ended}} (const Ogre\+::\+Frame\+Event \&evt)
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a0b28c99f242b97210bc09a6031947f4e}{setup}} (Ogre\+::\+Root $\ast$root, Ogre\+::\+Render\+Window $\ast$nvp)
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a38bcfc3def8bc8e94baa437a12c95fe3}{bullet\+Init}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a2678bb3c44a0658abf2bf236d6db1e41}{setup\+Camera}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a8d40a0a4bf60b06b6bad15d3599cbf69}{setup\+Floor}} ()
+\begin{DoxyCompactList}\small\item\em $\ast$$\ast$ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a6903017e1e68b64f34735ba1ce6a0c66}{setup\+Lights}} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a4b2b60b23821fa6794854e627d632243}\label{class_x_d_game_engine_1_1_scene_a4b2b60b23821fa6794854e627d632243}} 
+Ogre\+::\+Scene\+Manager $\ast$ {\bfseries get\+Scene\+Manager} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_aa8fa9b9548462efced4fb4e9c77ef0c4}\label{class_x_d_game_engine_1_1_scene_aa8fa9b9548462efced4fb4e9c77ef0c4}} 
+\mbox{\hyperlink{class_x_d_game_engine_1_1_player}{Player}} $\ast$ {\bfseries get\+Player} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a2941419fad8a24414bb87380e0a3502c}\label{class_x_d_game_engine_1_1_scene_a2941419fad8a24414bb87380e0a3502c}} 
+\mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c}{NPC}} $\ast$ {\bfseries get\+NPC} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a60fcd229b7f34219138a0663b48a5a2a}\label{class_x_d_game_engine_1_1_scene_a60fcd229b7f34219138a0663b48a5a2a}} 
+bt\+Default\+Collision\+Configuration $\ast$ {\bfseries get\+Collision\+Configuration} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a521f4926eabafcc97d149852f348aba1}\label{class_x_d_game_engine_1_1_scene_a521f4926eabafcc97d149852f348aba1}} 
+bt\+Collision\+Dispatcher $\ast$ {\bfseries get\+Dispatcher} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a22036c9393dacc81002ccdf69d91168d}\label{class_x_d_game_engine_1_1_scene_a22036c9393dacc81002ccdf69d91168d}} 
+bt\+Broadphase\+Interface $\ast$ {\bfseries get\+Overlapping\+Pair\+Cache} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_aa80b2697089af36a338a899d336e4044}\label{class_x_d_game_engine_1_1_scene_aa80b2697089af36a338a899d336e4044}} 
+bt\+Sequential\+Impulse\+Constraint\+Solver $\ast$ {\bfseries get\+Solver} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a49f984767fbacb0090f5c943db74967c}\label{class_x_d_game_engine_1_1_scene_a49f984767fbacb0090f5c943db74967c}} 
+bt\+Discrete\+Dynamics\+World $\ast$ {\bfseries get\+Dynamic\+World} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a5c5055c1391b367428ebdef3485cab55}\label{class_x_d_game_engine_1_1_scene_a5c5055c1391b367428ebdef3485cab55}} 
+bt\+Aligned\+Object\+Array$<$ bt\+Collision\+Shape $\ast$ $>$ $\ast$ {\bfseries get\+Collision\+Shapes} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a5c421a6eb14dd820fba6e092edbc8ffa}\label{class_x_d_game_engine_1_1_scene_a5c421a6eb14dd820fba6e092edbc8ffa}} 
+void {\bfseries Use\+Input\+Test} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Ghost\+Object $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_ab37045e3f6878745ceeb7227ff40a7f8}{m\+\_\+\+Ghostobject}}
+\item 
+Ogre\+::\+Scene\+Manager $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_ac4510ea71fc53298d9c084d8527e4781}{scn\+Mgr}}
+\item 
+bt\+Default\+Collision\+Configuration $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a6d159f0b3d42fbee6197bf52952b2686}{collision\+Configuration}}
+\item 
+bt\+Collision\+Dispatcher $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_aebe45c77f109773c8e27d9cb5b84cc98}{dispatcher}}
+\item 
+bt\+Broadphase\+Interface $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_aea4cf1f00aa045ebb7aa12a63631beb8}{overlapping\+Pair\+Cache}}
+\item 
+bt\+Sequential\+Impulse\+Constraint\+Solver $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a718752cb81f400ca8860bc5170dad26f}{solver}}
+\item 
+bt\+Discrete\+Dynamics\+World $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a6022399f016875f6267c6ff33abbb4c7}{dynamics\+World}}
+\item 
+bt\+Aligned\+Object\+Array$<$ bt\+Collision\+Shape $\ast$ $>$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_ae05fd751cc36eef1ff5db8d94df92e00}{collision\+Shapes}}
+\item 
+\mbox{\hyperlink{class_x_d_game_engine_1_1_player}{Player}} $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a2f806ccb580330490f1bb2b282bafcd7}{player}}
+\item 
+\mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c}{NPC}} $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_a9b707d9b6dfd971acaae0917cf70f480}{npc}}
+\item 
+Ogre\+::\+Render\+Window $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_ad56acb7ae05c53d49ee961aad0031b68}{rw}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} $>$ $>$ \mbox{\hyperlink{class_x_d_game_engine_1_1_scene_aec3d54e67f26bbe463c70a9396c21679}{m\+\_\+go}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a82531cd9c10834fbdcc1f68b95236a10}\label{class_x_d_game_engine_1_1_scene_a82531cd9c10834fbdcc1f68b95236a10}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{Scene()}{Scene()}}
+{\footnotesize\ttfamily XDGame\+Engine\+::\+Scene\+::\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Creates the object, sets all pointers to nullptr. \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a1f46b99432dba3b8fde030d50a177eb1}\label{class_x_d_game_engine_1_1_scene_a1f46b99432dba3b8fde030d50a177eb1}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!````~Scene@{$\sim$Scene}}
+\index{````~Scene@{$\sim$Scene}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{$\sim$Scene()}{~Scene()}}
+{\footnotesize\ttfamily XDGame\+Engine\+::\+Scene\+::$\sim$\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Destructor (virtual), as this is virtual that of the sub class will also be called. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a38bcfc3def8bc8e94baa437a12c95fe3}\label{class_x_d_game_engine_1_1_scene_a38bcfc3def8bc8e94baa437a12c95fe3}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!bulletInit@{bulletInit}}
+\index{bulletInit@{bulletInit}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{bulletInit()}{bulletInit()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Scene\+::bullet\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets up the bullet environment collision configuration contains default setup for memory, collision setup. Advanced users can create their own configuration.
+
+use the default collision dispatcher. For parallel processing you can use a different dispatcher (see Extras/\+Bullet\+Multi\+Threaded)
+
+bt\+Dbvt\+Broadphase is a good general purpose broadphase. You can also try out bt\+Axis3\+Sweep.
+
+the default constraint solver. For parallel processing you can use a different solver (see Extras/\+Bullet\+Multi\+Threaded)\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a0b28c99f242b97210bc09a6031947f4e}\label{class_x_d_game_engine_1_1_scene_a0b28c99f242b97210bc09a6031947f4e}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!setup@{setup}}
+\index{setup@{setup}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Scene\+::setup (\begin{DoxyParamCaption}\item[{Ogre\+::\+Root $\ast$}]{root,  }\item[{Ogre\+::\+Render\+Window $\ast$}]{nvp }\end{DoxyParamCaption})}
+
+Carries out all setup, includes lighting, scene objects. \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a2678bb3c44a0658abf2bf236d6db1e41}\label{class_x_d_game_engine_1_1_scene_a2678bb3c44a0658abf2bf236d6db1e41}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!setupCamera@{setupCamera}}
+\index{setupCamera@{setupCamera}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{setupCamera()}{setupCamera()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Scene\+::setup\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets up the camera \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a8d40a0a4bf60b06b6bad15d3599cbf69}\label{class_x_d_game_engine_1_1_scene_a8d40a0a4bf60b06b6bad15d3599cbf69}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!setupFloor@{setupFloor}}
+\index{setupFloor@{setupFloor}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{setupFloor()}{setupFloor()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Scene\+::setup\+Floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+$\ast$$\ast$ 
+
+$\ast$$\ast$ Turns on on the coffee machine. \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a6903017e1e68b64f34735ba1ce6a0c66}\label{class_x_d_game_engine_1_1_scene_a6903017e1e68b64f34735ba1ce6a0c66}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!setupLights@{setupLights}}
+\index{setupLights@{setupLights}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{setupLights()}{setupLights()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Scene\+::setup\+Lights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Creates, lights and adds them to the scene. All based on the sample code, needs moving out into a level class. \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_aa919060fcabc6f202d5da9892895e822}\label{class_x_d_game_engine_1_1_scene_aa919060fcabc6f202d5da9892895e822}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!updateFrameEnded@{updateFrameEnded}}
+\index{updateFrameEnded@{updateFrameEnded}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{updateFrameEnded()}{updateFrameEnded()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Scene\+::update\+Frame\+Ended (\begin{DoxyParamCaption}\item[{const Ogre\+::\+Frame\+Event \&}]{evt }\end{DoxyParamCaption})}
+
+Get the game update when the frame ends \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a6b10f3448cce558370c77e07f99edcc4}\label{class_x_d_game_engine_1_1_scene_a6b10f3448cce558370c77e07f99edcc4}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!updateFrameStarted@{updateFrameStarted}}
+\index{updateFrameStarted@{updateFrameStarted}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{updateFrameStarted()}{updateFrameStarted()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Scene\+::update\+Frame\+Started (\begin{DoxyParamCaption}\item[{const Ogre\+::\+Frame\+Event \&}]{evt }\end{DoxyParamCaption})}
+
+Get the game update when the frame starts 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a6d159f0b3d42fbee6197bf52952b2686}\label{class_x_d_game_engine_1_1_scene_a6d159f0b3d42fbee6197bf52952b2686}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!collisionConfiguration@{collisionConfiguration}}
+\index{collisionConfiguration@{collisionConfiguration}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{collisionConfiguration}{collisionConfiguration}}
+{\footnotesize\ttfamily bt\+Default\+Collision\+Configuration$\ast$ XDGame\+Engine\+::\+Scene\+::collision\+Configuration\hspace{0.3cm}{\ttfamily [private]}}
+
+Collision configuration. \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_ae05fd751cc36eef1ff5db8d94df92e00}\label{class_x_d_game_engine_1_1_scene_ae05fd751cc36eef1ff5db8d94df92e00}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!collisionShapes@{collisionShapes}}
+\index{collisionShapes@{collisionShapes}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{collisionShapes}{collisionShapes}}
+{\footnotesize\ttfamily bt\+Aligned\+Object\+Array$<$bt\+Collision\+Shape$\ast$$>$ XDGame\+Engine\+::\+Scene\+::collision\+Shapes\hspace{0.3cm}{\ttfamily [private]}}
+
+Keep track of the shapes, we release memory at exit. make sure to re-\/use collision shapes among rigid bodies whenever possible! \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_aebe45c77f109773c8e27d9cb5b84cc98}\label{class_x_d_game_engine_1_1_scene_aebe45c77f109773c8e27d9cb5b84cc98}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!dispatcher@{dispatcher}}
+\index{dispatcher@{dispatcher}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{dispatcher}{dispatcher}}
+{\footnotesize\ttfamily bt\+Collision\+Dispatcher$\ast$ XDGame\+Engine\+::\+Scene\+::dispatcher\hspace{0.3cm}{\ttfamily [private]}}
+
+The default collision dispatcher. For parallel processing you can use a different dispatcher (see Extras/\+Bullet\+Multi\+Threaded) \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a6022399f016875f6267c6ff33abbb4c7}\label{class_x_d_game_engine_1_1_scene_a6022399f016875f6267c6ff33abbb4c7}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!dynamicsWorld@{dynamicsWorld}}
+\index{dynamicsWorld@{dynamicsWorld}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{dynamicsWorld}{dynamicsWorld}}
+{\footnotesize\ttfamily bt\+Discrete\+Dynamics\+World$\ast$ XDGame\+Engine\+::\+Scene\+::dynamics\+World\hspace{0.3cm}{\ttfamily [private]}}
+
+The dynamics world (physics/collision world). \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_ab37045e3f6878745ceeb7227ff40a7f8}\label{class_x_d_game_engine_1_1_scene_ab37045e3f6878745ceeb7227ff40a7f8}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!m\_Ghostobject@{m\_Ghostobject}}
+\index{m\_Ghostobject@{m\_Ghostobject}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{m\_Ghostobject}{m\_Ghostobject}}
+{\footnotesize\ttfamily bt\+Ghost\+Object$\ast$ XDGame\+Engine\+::\+Scene\+::m\+\_\+\+Ghostobject\hspace{0.3cm}{\ttfamily [private]}}
+
+Test Ghost\+Object \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_aec3d54e67f26bbe463c70a9396c21679}\label{class_x_d_game_engine_1_1_scene_aec3d54e67f26bbe463c70a9396c21679}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!m\_go@{m\_go}}
+\index{m\_go@{m\_go}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{m\_go}{m\_go}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}}$>$ $>$ XDGame\+Engine\+::\+Scene\+::m\+\_\+go\hspace{0.3cm}{\ttfamily [private]}}
+
+The vector containing all gameobjects \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a9b707d9b6dfd971acaae0917cf70f480}\label{class_x_d_game_engine_1_1_scene_a9b707d9b6dfd971acaae0917cf70f480}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!npc@{npc}}
+\index{npc@{npc}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{npc}{npc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c}{NPC}}$\ast$ XDGame\+Engine\+::\+Scene\+::npc\hspace{0.3cm}{\ttfamily [private]}}
+
+The \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c}{NPC}} object \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_aea4cf1f00aa045ebb7aa12a63631beb8}\label{class_x_d_game_engine_1_1_scene_aea4cf1f00aa045ebb7aa12a63631beb8}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!overlappingPairCache@{overlappingPairCache}}
+\index{overlappingPairCache@{overlappingPairCache}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{overlappingPairCache}{overlappingPairCache}}
+{\footnotesize\ttfamily bt\+Broadphase\+Interface$\ast$ XDGame\+Engine\+::\+Scene\+::overlapping\+Pair\+Cache\hspace{0.3cm}{\ttfamily [private]}}
+
+bt\+Dbvt\+Broadphase is a good general purpose broadphase. You can also try out bt\+Axis3\+Sweep. \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a2f806ccb580330490f1bb2b282bafcd7}\label{class_x_d_game_engine_1_1_scene_a2f806ccb580330490f1bb2b282bafcd7}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!player@{player}}
+\index{player@{player}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_d_game_engine_1_1_player}{Player}}$\ast$ XDGame\+Engine\+::\+Scene\+::player\hspace{0.3cm}{\ttfamily [private]}}
+
+The \mbox{\hyperlink{class_x_d_game_engine_1_1_player}{Player}} object \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_ad56acb7ae05c53d49ee961aad0031b68}\label{class_x_d_game_engine_1_1_scene_ad56acb7ae05c53d49ee961aad0031b68}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!rw@{rw}}
+\index{rw@{rw}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{rw}{rw}}
+{\footnotesize\ttfamily Ogre\+::\+Render\+Window$\ast$ XDGame\+Engine\+::\+Scene\+::rw\hspace{0.3cm}{\ttfamily [private]}}
+
+The viewport \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_ac4510ea71fc53298d9c084d8527e4781}\label{class_x_d_game_engine_1_1_scene_ac4510ea71fc53298d9c084d8527e4781}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!scnMgr@{scnMgr}}
+\index{scnMgr@{scnMgr}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{scnMgr}{scnMgr}}
+{\footnotesize\ttfamily Ogre\+::\+Scene\+Manager$\ast$ XDGame\+Engine\+::\+Scene\+::scn\+Mgr\hspace{0.3cm}{\ttfamily [private]}}
+
+Ogre \mbox{\hyperlink{class_x_d_game_engine_1_1_scene}{Scene}} Manager. \mbox{\Hypertarget{class_x_d_game_engine_1_1_scene_a718752cb81f400ca8860bc5170dad26f}\label{class_x_d_game_engine_1_1_scene_a718752cb81f400ca8860bc5170dad26f}} 
+\index{XDGameEngine::Scene@{XDGameEngine::Scene}!solver@{solver}}
+\index{solver@{solver}!XDGameEngine::Scene@{XDGameEngine::Scene}}
+\doxysubsubsection{\texorpdfstring{solver}{solver}}
+{\footnotesize\ttfamily bt\+Sequential\+Impulse\+Constraint\+Solver$\ast$ XDGame\+Engine\+::\+Scene\+::solver\hspace{0.3cm}{\ttfamily [private]}}
+
+The default constraint solver. For parallel processing you can use a different solver (see Extras/\+Bullet\+Multi\+Threaded) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Scene.\+h\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Scene.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,68 @@
+\hypertarget{_x_d_player_8h_source}{}\doxysection{XDPlayer.\+h}
+\label{_x_d_player_8h_source}\index{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/XDPlayer.h@{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/XDPlayer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef XDPLAYER\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define XDPLAYER\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}GameObject.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}ComponentFactory.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}AComponent.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Rigibodies.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }XDGameEngine}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player}{XDPlayer}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}}
+\DoxyCodeLine{12     \{}
+\DoxyCodeLine{13     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keyword}{private}:}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17         \textcolor{keywordtype}{float} m\_forwardForce;}
+\DoxyCodeLine{18         \textcolor{keywordtype}{float} m\_turningForce;}
+\DoxyCodeLine{19         \textcolor{keywordtype}{float} m\_jumpForce;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \textcolor{keywordtype}{float} m\_linearDamping;}
+\DoxyCodeLine{22         \textcolor{keywordtype}{float} m\_angularDamping;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         btRigidBody* m\_rgbd;}
+\DoxyCodeLine{25         \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body}{RigidBody}}* body;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \textcolor{comment}{// Patrol variables}}
+\DoxyCodeLine{28         btTransform m\_target;}
+\DoxyCodeLine{29         btTransform patrolWayPoints[3];}
+\DoxyCodeLine{30         \textcolor{keywordtype}{int} currentWaypoint;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keyword}{public}:}
+\DoxyCodeLine{33         \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player}{XDPlayer}}(\textcolor{keyword}{const} btVector3 pos = btVector3(1.0f, 1.0f, 1.0f),}
+\DoxyCodeLine{34             \textcolor{keyword}{const} btQuaternion rot = btQuaternion(0.0f, 0.0f, 0.0f),}
+\DoxyCodeLine{35             \textcolor{keyword}{const} btVector3 scale = btVector3(1.0f, 1.0f, 1.0f));}
+\DoxyCodeLine{36         \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player}{\string~XDPlayer}}();}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player_a5fb7ba1060573db6a61d0d4d5bd4dc54}{Update}}();}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player_a83fef9da49da58582a29451060721fc9}{Forward}}();}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{48         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player_ad542981a181f936f6c41509ae4a5341b}{TurnRightScaled}}(\textcolor{keywordtype}{float} scalar);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 }
+\DoxyCodeLine{54         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player_a3c69e6dd614b35b6c7378ddbdaed81f8}{TurnLeftScaled}}(\textcolor{keywordtype}{float} scalar);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{60         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player_ad77dbb050f41cd421320648a3f839f6d}{Jump}}();}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{66         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player_ad3e2959b569cd4da4c314304feda198a}{Fly}}();}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{71         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player_a2cba198c184b96134e683c2270eb3fdd}{SetTarget}}(btTransform target);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{76         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player_a5dfd6e143f61c3e4d454ccf7f8e6a01b}{Arrive}}();}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{82         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player_ae9333adad0a2206379d657ec37a2feeb}{LookWhereYouAreGoing}}();}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{88         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_d_game_engine_1_1_x_d_player_acf01f49b253c4f23503e0ec5c2662cb6}{TargetInRange}}(\textcolor{keywordtype}{float} range);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \};}
+\DoxyCodeLine{91 \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

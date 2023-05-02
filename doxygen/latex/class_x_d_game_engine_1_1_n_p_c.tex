@@ -1,0 +1,150 @@
+\hypertarget{class_x_d_game_engine_1_1_n_p_c}{}\doxysection{XDGame\+Engine\+::NPC Class Reference}
+\label{class_x_d_game_engine_1_1_n_p_c}\index{XDGameEngine::NPC@{XDGameEngine::NPC}}
+Inheritance diagram for XDGame\+Engine\+::NPC\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_x_d_game_engine_1_1_n_p_c}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_ac53419be54469f73b6e91cab94a17deb}\label{class_x_d_game_engine_1_1_n_p_c_ac53419be54469f73b6e91cab94a17deb}} 
+{\bfseries NPC} (const bt\+Vector3 pos=bt\+Vector3(1.\+0f, 1.\+0f, 1.\+0f), const bt\+Quaternion rot=bt\+Quaternion(0.\+0f, 0.\+0f, 0.\+0f), const bt\+Vector3 scale=bt\+Vector3(1.\+0f, 1.\+0f, 1.\+0f))
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_aff92e0ff7ebce9e617bb18511a41f453}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_abc7e5eaa688f68b832fdf4a136138e6d}{Forward}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a7980e922fa3f6a8c5cdf6d62edc71ce2}{Turn\+Right\+Scaled}} (float scalar)
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a4661ceca2b38735b3d404d4fb93be8d3}{Turn\+Left\+Scaled}} (float scalar)
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a94af998b4cf594c5ef5c0593b5dfaa26}{Jump}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a597e96d3faf3758df7b2d6964ade613c}{Fly}} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a3038801dd3cee8e53a85d31b0cf6ea0c}\label{class_x_d_game_engine_1_1_n_p_c_a3038801dd3cee8e53a85d31b0cf6ea0c}} 
+void {\bfseries Set\+Target} (bt\+Transform target)
+\begin{DoxyCompactList}\small\item\em Target for arrive. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a0dfa83b9ed64f2f4ee621545fb5b6aa9}\label{class_x_d_game_engine_1_1_n_p_c_a0dfa83b9ed64f2f4ee621545fb5b6aa9}} 
+void {\bfseries Arrive} ()
+\begin{DoxyCompactList}\small\item\em Arrive behaviour, heads towards a target held in the class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a128aa32d5da17dbbd77aa03a76a48f39}{Look\+Where\+You\+Are\+Going}} ()
+\begin{DoxyCompactList}\small\item\em support method for arrive, look where you are going. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_ad29711aa92434e1a92f53000c10a04d8}{Target\+In\+Range}} (float range)
+\begin{DoxyCompactList}\small\item\em Check target is in range, allows re-\/use for slowing radius. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a1a32c275391ac8710658c791aabd8f6e}\label{class_x_d_game_engine_1_1_n_p_c_a1a32c275391ac8710658c791aabd8f6e}} 
+float {\bfseries m\+\_\+forward\+Force}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a5261474b5d803fa671ff3f8c3dab6402}\label{class_x_d_game_engine_1_1_n_p_c_a5261474b5d803fa671ff3f8c3dab6402}} 
+float {\bfseries m\+\_\+turning\+Force}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a6507c18a58492184f89b35b9470cb58a}\label{class_x_d_game_engine_1_1_n_p_c_a6507c18a58492184f89b35b9470cb58a}} 
+float {\bfseries m\+\_\+jump\+Force}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a9979722e130de030caf208e8aa5b3b4f}\label{class_x_d_game_engine_1_1_n_p_c_a9979722e130de030caf208e8aa5b3b4f}} 
+float {\bfseries m\+\_\+linear\+Damping}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a296860bd4f2fa5d2805b5a9e668f5844}\label{class_x_d_game_engine_1_1_n_p_c_a296860bd4f2fa5d2805b5a9e668f5844}} 
+float {\bfseries m\+\_\+angular\+Damping}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_afbb19fdfc27996f83270338de9ef5064}\label{class_x_d_game_engine_1_1_n_p_c_afbb19fdfc27996f83270338de9ef5064}} 
+bt\+Rigid\+Body $\ast$ {\bfseries m\+\_\+rgbd}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_aff94ae8462683cdd5083d31a11fa64cd}\label{class_x_d_game_engine_1_1_n_p_c_aff94ae8462683cdd5083d31a11fa64cd}} 
+\mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body}{Rigid\+Body}} $\ast$ {\bfseries body}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_ad44f01fcca207442e24813fc8eb45315}\label{class_x_d_game_engine_1_1_n_p_c_ad44f01fcca207442e24813fc8eb45315}} 
+bt\+Transform {\bfseries m\+\_\+target}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a1249b5fa1a213605f643bcafb03e1cc1}\label{class_x_d_game_engine_1_1_n_p_c_a1249b5fa1a213605f643bcafb03e1cc1}} 
+bt\+Transform {\bfseries patrol\+Way\+Points} \mbox{[}3\mbox{]}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a60b474399cc014899f55b80a67f73c06}\label{class_x_d_game_engine_1_1_n_p_c_a60b474399cc014899f55b80a67f73c06}} 
+int {\bfseries current\+Waypoint}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a496f2e563c8e2d178fde6b917a7390be}\label{class_x_d_game_engine_1_1_n_p_c_a496f2e563c8e2d178fde6b917a7390be}} 
+int {\bfseries m\+\_\+health}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a597e96d3faf3758df7b2d6964ade613c}\label{class_x_d_game_engine_1_1_n_p_c_a597e96d3faf3758df7b2d6964ade613c}} 
+\index{XDGameEngine::NPC@{XDGameEngine::NPC}!Fly@{Fly}}
+\index{Fly@{Fly}!XDGameEngine::NPC@{XDGameEngine::NPC}}
+\doxysubsubsection{\texorpdfstring{Fly()}{Fly()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+NPC\+::\+Fly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Fly \mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_abc7e5eaa688f68b832fdf4a136138e6d}\label{class_x_d_game_engine_1_1_n_p_c_abc7e5eaa688f68b832fdf4a136138e6d}} 
+\index{XDGameEngine::NPC@{XDGameEngine::NPC}!Forward@{Forward}}
+\index{Forward@{Forward}!XDGameEngine::NPC@{XDGameEngine::NPC}}
+\doxysubsubsection{\texorpdfstring{Forward()}{Forward()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+NPC\+::\+Forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Moves the player forward with maximum acceleration. \mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a94af998b4cf594c5ef5c0593b5dfaa26}\label{class_x_d_game_engine_1_1_n_p_c_a94af998b4cf594c5ef5c0593b5dfaa26}} 
+\index{XDGameEngine::NPC@{XDGameEngine::NPC}!Jump@{Jump}}
+\index{Jump@{Jump}!XDGameEngine::NPC@{XDGameEngine::NPC}}
+\doxysubsubsection{\texorpdfstring{Jump()}{Jump()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+NPC\+::\+Jump (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Jump \mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a128aa32d5da17dbbd77aa03a76a48f39}\label{class_x_d_game_engine_1_1_n_p_c_a128aa32d5da17dbbd77aa03a76a48f39}} 
+\index{XDGameEngine::NPC@{XDGameEngine::NPC}!LookWhereYouAreGoing@{LookWhereYouAreGoing}}
+\index{LookWhereYouAreGoing@{LookWhereYouAreGoing}!XDGameEngine::NPC@{XDGameEngine::NPC}}
+\doxysubsubsection{\texorpdfstring{LookWhereYouAreGoing()}{LookWhereYouAreGoing()}}
+{\footnotesize\ttfamily bool XDGame\+Engine\+::\+NPC\+::\+Look\+Where\+You\+Are\+Going (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+support method for arrive, look where you are going. 
+
+\begin{DoxyReturn}{Returns}
+true if we\textquotesingle{}re looking the right way, false otherwise (keep turning). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_ad29711aa92434e1a92f53000c10a04d8}\label{class_x_d_game_engine_1_1_n_p_c_ad29711aa92434e1a92f53000c10a04d8}} 
+\index{XDGameEngine::NPC@{XDGameEngine::NPC}!TargetInRange@{TargetInRange}}
+\index{TargetInRange@{TargetInRange}!XDGameEngine::NPC@{XDGameEngine::NPC}}
+\doxysubsubsection{\texorpdfstring{TargetInRange()}{TargetInRange()}}
+{\footnotesize\ttfamily bool XDGame\+Engine\+::\+NPC\+::\+Target\+In\+Range (\begin{DoxyParamCaption}\item[{float}]{range }\end{DoxyParamCaption})}
+
+
+
+Check target is in range, allows re-\/use for slowing radius. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em range} & distance to target. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a4661ceca2b38735b3d404d4fb93be8d3}\label{class_x_d_game_engine_1_1_n_p_c_a4661ceca2b38735b3d404d4fb93be8d3}} 
+\index{XDGameEngine::NPC@{XDGameEngine::NPC}!TurnLeftScaled@{TurnLeftScaled}}
+\index{TurnLeftScaled@{TurnLeftScaled}!XDGameEngine::NPC@{XDGameEngine::NPC}}
+\doxysubsubsection{\texorpdfstring{TurnLeftScaled()}{TurnLeftScaled()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+NPC\+::\+Turn\+Left\+Scaled (\begin{DoxyParamCaption}\item[{float}]{scalar }\end{DoxyParamCaption})}
+
+Just apply a turning force. \mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_a7980e922fa3f6a8c5cdf6d62edc71ce2}\label{class_x_d_game_engine_1_1_n_p_c_a7980e922fa3f6a8c5cdf6d62edc71ce2}} 
+\index{XDGameEngine::NPC@{XDGameEngine::NPC}!TurnRightScaled@{TurnRightScaled}}
+\index{TurnRightScaled@{TurnRightScaled}!XDGameEngine::NPC@{XDGameEngine::NPC}}
+\doxysubsubsection{\texorpdfstring{TurnRightScaled()}{TurnRightScaled()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+NPC\+::\+Turn\+Right\+Scaled (\begin{DoxyParamCaption}\item[{float}]{scalar }\end{DoxyParamCaption})}
+
+Just apply a turning force. \mbox{\Hypertarget{class_x_d_game_engine_1_1_n_p_c_aff92e0ff7ebce9e617bb18511a41f453}\label{class_x_d_game_engine_1_1_n_p_c_aff92e0ff7ebce9e617bb18511a41f453}} 
+\index{XDGameEngine::NPC@{XDGameEngine::NPC}!Update@{Update}}
+\index{Update@{Update}!XDGameEngine::NPC@{XDGameEngine::NPC}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+NPC\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Is called each frame by the scene 
+
+Reimplemented from \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a620378a6fd6ee418a97542cfb4cf40d4}{XDGame\+Engine\+::\+Game\+Object}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/NPC.\+h\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/NPC.\+cpp\end{DoxyCompactItemize}

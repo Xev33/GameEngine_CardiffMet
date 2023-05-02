@@ -1,0 +1,53 @@
+\hypertarget{_mesh_renderer_8h_source}{}\doxysection{Mesh\+Renderer.\+h}
+\label{_mesh_renderer_8h_source}\index{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/MeshRenderer.h@{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/MeshRenderer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MESH\_RENDERER\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MESH\_RENDERER\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}AComponent.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Ogre.h"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }XDGameEngine}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer}{MeshRenderer}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component}{AComponent}}}
+\DoxyCodeLine{11     \{}
+\DoxyCodeLine{12     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{13     \textcolor{keyword}{private}:}
+\DoxyCodeLine{17         Ogre::SceneManager* \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_affa6fbb45d0f88881aba19049433f6e5}{m\_scnMgr}};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{22         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_af5fb1b3eda248133aa2305a2e274edd8}{m\_meshFileName}};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{27         Ogre::Entity* \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_aad9769cd3522c75865bf0b76aa10d0dd}{m\_mesh}};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{32         Ogre::SceneNode* \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_a39fdf0a1c8c01518c8fe2c2eda67a13c}{m\_sceneNode}};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keyword}{public}:}
+\DoxyCodeLine{35         \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer}{MeshRenderer}}();}
+\DoxyCodeLine{36         \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer}{\string~MeshRenderer}}();}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{41         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_a362d8075b4a55464b72246c98fe4a0e4}{SetUpComponent}}(\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}\& go);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{46         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_ae9ba6bb17e925604ffe10ff9d7d9324e}{SetActive}}(\textcolor{keywordtype}{bool} isActive);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{51         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_ab77f3127766e8257bd4470431ca5fcd4}{UpdateComponent}}(\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}\& go) \textcolor{keyword}{final};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_ae7a775bfde74bc3b448bd56d76992039}{SetMeshFileName}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* name) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{61         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_aab667055828867507f52d1caabff4c2a}{SetMesh}}(Ogre::Entity* mesh) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{66         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_aa4e99158870851fdbe47c145168db83c}{SetSceneNode}}(Ogre::SceneNode* sceneNode) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{71         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_a80bf1adaad1ba0332f9b719911927cc6}{GetMeshFileName}}() const noexcept;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{76         Ogre::Entity* \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_aebdbb92b0653c9627b0d1e86d1b74aae}{GetMesh}}() const noexcept;}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{81         Ogre::SceneNode* \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_a5381a4198033856132e5aab9dafe7a18}{GetSceneNode}}() const noexcept;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \};}
+\DoxyCodeLine{84 \}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

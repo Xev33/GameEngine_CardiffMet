@@ -1,0 +1,100 @@
+\hypertarget{class_x_d_game_engine_1_1_player}{}\doxysection{XDGame\+Engine\+::Player Class Reference}
+\label{class_x_d_game_engine_1_1_player}\index{XDGameEngine::Player@{XDGameEngine::Player}}
+Inheritance diagram for XDGame\+Engine\+::Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_x_d_game_engine_1_1_player}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_player_a085791b9d31954644842f9bd62b73364}\label{class_x_d_game_engine_1_1_player_a085791b9d31954644842f9bd62b73364}} 
+{\bfseries Player} (const bt\+Vector3 pos=bt\+Vector3(1.\+0f, 1.\+0f, 1.\+0f), const bt\+Quaternion rot=bt\+Quaternion(0.\+0f, 0.\+0f, 0.\+0f), const bt\+Vector3 scale=bt\+Vector3(1.\+0f, 1.\+0f, 1.\+0f))
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_player_afbfea2faf244bd2c0fdde3f47216ff6b}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_player_ae3a41c70176e896b2a2f54e5b5886e4a}{Forward}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_player_ad3b0f73022dfff16ea1aa53a7a77c0ff}{Turn\+Right}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_player_a78926f43fc369637023b7b4b996a970c}{Turn\+Left}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_player_ae77800983cadb8bb11e67cf3a1ecd58f}{Jump}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_player_ada1d0be6b363ca569406cd85c3ee9965}{Fly}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_player_a12b6124cd22ec077898bf592d42e4bfd}\label{class_x_d_game_engine_1_1_player_a12b6124cd22ec077898bf592d42e4bfd}} 
+float {\bfseries m\+\_\+forward\+Force}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_player_a05795f5b83803393bfc3252026add8dd}\label{class_x_d_game_engine_1_1_player_a05795f5b83803393bfc3252026add8dd}} 
+float {\bfseries m\+\_\+turning\+Force}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_player_a65fff5c315e8f9f24534dc6d5a59aeae}\label{class_x_d_game_engine_1_1_player_a65fff5c315e8f9f24534dc6d5a59aeae}} 
+float {\bfseries m\+\_\+jump\+Force}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_player_a17b7cd8ed806da842299148c95c29dcc}\label{class_x_d_game_engine_1_1_player_a17b7cd8ed806da842299148c95c29dcc}} 
+float {\bfseries m\+\_\+linear\+Damping}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_player_a15f01c4708a5245e9cf663eb0a61dc86}\label{class_x_d_game_engine_1_1_player_a15f01c4708a5245e9cf663eb0a61dc86}} 
+float {\bfseries m\+\_\+angular\+Damping}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_player_a1816a72026a108aa7a3441e8bd065864}\label{class_x_d_game_engine_1_1_player_a1816a72026a108aa7a3441e8bd065864}} 
+bt\+Rigid\+Body $\ast$ {\bfseries m\+\_\+rgbd}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_player_aea328d4526aa114d9bf5a9aa43e6d25f}\label{class_x_d_game_engine_1_1_player_aea328d4526aa114d9bf5a9aa43e6d25f}} 
+\mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body}{Rigid\+Body}} $\ast$ {\bfseries body}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_player_ada1d0be6b363ca569406cd85c3ee9965}\label{class_x_d_game_engine_1_1_player_ada1d0be6b363ca569406cd85c3ee9965}} 
+\index{XDGameEngine::Player@{XDGameEngine::Player}!Fly@{Fly}}
+\index{Fly@{Fly}!XDGameEngine::Player@{XDGameEngine::Player}}
+\doxysubsubsection{\texorpdfstring{Fly()}{Fly()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Player\+::\+Fly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Fly \mbox{\Hypertarget{class_x_d_game_engine_1_1_player_ae3a41c70176e896b2a2f54e5b5886e4a}\label{class_x_d_game_engine_1_1_player_ae3a41c70176e896b2a2f54e5b5886e4a}} 
+\index{XDGameEngine::Player@{XDGameEngine::Player}!Forward@{Forward}}
+\index{Forward@{Forward}!XDGameEngine::Player@{XDGameEngine::Player}}
+\doxysubsubsection{\texorpdfstring{Forward()}{Forward()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Player\+::\+Forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Moves the player forward with maximum acceleration. \mbox{\Hypertarget{class_x_d_game_engine_1_1_player_ae77800983cadb8bb11e67cf3a1ecd58f}\label{class_x_d_game_engine_1_1_player_ae77800983cadb8bb11e67cf3a1ecd58f}} 
+\index{XDGameEngine::Player@{XDGameEngine::Player}!Jump@{Jump}}
+\index{Jump@{Jump}!XDGameEngine::Player@{XDGameEngine::Player}}
+\doxysubsubsection{\texorpdfstring{Jump()}{Jump()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Player\+::\+Jump (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Jump \mbox{\Hypertarget{class_x_d_game_engine_1_1_player_a78926f43fc369637023b7b4b996a970c}\label{class_x_d_game_engine_1_1_player_a78926f43fc369637023b7b4b996a970c}} 
+\index{XDGameEngine::Player@{XDGameEngine::Player}!TurnLeft@{TurnLeft}}
+\index{TurnLeft@{TurnLeft}!XDGameEngine::Player@{XDGameEngine::Player}}
+\doxysubsubsection{\texorpdfstring{TurnLeft()}{TurnLeft()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Player\+::\+Turn\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Just apply a turning force. \mbox{\Hypertarget{class_x_d_game_engine_1_1_player_ad3b0f73022dfff16ea1aa53a7a77c0ff}\label{class_x_d_game_engine_1_1_player_ad3b0f73022dfff16ea1aa53a7a77c0ff}} 
+\index{XDGameEngine::Player@{XDGameEngine::Player}!TurnRight@{TurnRight}}
+\index{TurnRight@{TurnRight}!XDGameEngine::Player@{XDGameEngine::Player}}
+\doxysubsubsection{\texorpdfstring{TurnRight()}{TurnRight()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Player\+::\+Turn\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Just apply a turning force. \mbox{\Hypertarget{class_x_d_game_engine_1_1_player_afbfea2faf244bd2c0fdde3f47216ff6b}\label{class_x_d_game_engine_1_1_player_afbfea2faf244bd2c0fdde3f47216ff6b}} 
+\index{XDGameEngine::Player@{XDGameEngine::Player}!Update@{Update}}
+\index{Update@{Update}!XDGameEngine::Player@{XDGameEngine::Player}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Player\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Is called each frame by the scene 
+
+Reimplemented from \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a620378a6fd6ee418a97542cfb4cf40d4}{XDGame\+Engine\+::\+Game\+Object}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Player.\+h\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Player.\+cpp\end{DoxyCompactItemize}
