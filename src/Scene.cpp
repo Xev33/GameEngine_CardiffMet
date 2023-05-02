@@ -99,7 +99,7 @@ namespace XDGameEngine
             {
                 auto go = it->get();
 
-                // Delete every gameObject properly
+                // Delete every gameObject properly if needed
                 if (go->ShouldBeDestroy() == true)
                     m_go.erase(it);
                 else
@@ -110,7 +110,7 @@ namespace XDGameEngine
                         go->UpdateComponents();
                     }
                 }
-                    ++it;
+                ++it;
             }
 
             dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
@@ -136,7 +136,7 @@ namespace XDGameEngine
 
 
     ////-----------------------------------------------------------------------
-    //// ALL SETUP FONCTION TO REMOVE------------------------------------------
+    //// ALL SETUP FONCTIONS --------------------------------------------------
     ////-----------------------------------------------------------------------
     void Scene::setup(Ogre::Root* root, Ogre::RenderWindow* nrw)
     {
@@ -149,10 +149,6 @@ namespace XDGameEngine
         shadergen->addSceneManager(scnMgr);
 
         bulletInit();
-
-
-
-
 
         setupCamera();
 
@@ -389,91 +385,3 @@ namespace XDGameEngine
         }
     }
 }
-
-//https://gamedev.net/forums/topic/692573-bullet-btghostobject/5358842/
-//if (m_Ghostobject == nullptr)
-//    return;
-//for (int i = 0, end = m_Ghostobject->getNumOverlappingObjects(); i != end; ++i)
-//{
-//    btCollisionObject* c = m_Ghostobject->getOverlappingObject(i);
-//    MyContactResultCallback results;
-//    dynamicsWorld->contactPairTest(m_Ghostobject, c, results);
-//    if (results.hitObject)
-//    {
-//        uint32_t* tag = static_cast<uint32_t*>(c->getUserPointer());;
-//        uint32_t kek = 'PLYR';
-//        std::cout << *tag << " ENFIN!!! " << kek << "\n";
-//        dynamicsWorld->removeCollisionObject(m_Ghostobject);
-//        delete m_Ghostobject;
-//        m_Ghostobject = nullptr;
-//        return;
-//    }
-//}
-
-    //void Scene::setupFloor()
-    //{
-
-    //    // Create a plane
-    //    Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
-
-    //    // Define the plane mesh
-    //    Ogre::MeshManager::getSingleton().createPlane(
-    //        "ground", Ogre::RGN_DEFAULT,
-    //        plane,
-    //        1500, 1500, 20, 20,
-    //        true,
-    //        1, 5, 5,
-    //        Ogre::Vector3::UNIT_Z);
-
-    //    // Create an entity for the ground
-    //    Ogre::Entity* groundEntity = scnMgr->createEntity("ground");
-
-    //    // Setup ground entity
-    //    //  Shadows off
-    //    groundEntity->setCastShadows(false);
-
-    //    // Material - Examples is the resources file,
-    //    // Rockwall (texture/properties) is defined inside it.
-    //    groundEntity->setMaterialName("Examples/Rockwall");
-
-    //    // Create a scene node to add the mesh too.
-    //    Ogre::SceneNode* thisSceneNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-    //    thisSceneNode->attachObject(groundEntity);
-
-    //    // the ground is a cube of side 100 at position y = 0.
-    //    // the sphere will hit it at y = -6, with center at -5
-    //    btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(750.), btScalar(50.), btScalar(750.)));
-
-    //    collisionShapes.push_back(groundShape);
-
-    //    btTransform groundTransform;
-    //    groundTransform.setIdentity();
-
-    //    Ogre::Vector3 pos = thisSceneNode->_getDerivedPosition();
-
-    //    // Box is 100 deep (dimensions are 1/2 heights)
-    //    // but the plane position is flat.
-    //    groundTransform.setOrigin(btVector3(pos.x, pos.y - 50.0, pos.z));
-
-    //    Ogre::Quaternion quat2 = thisSceneNode->_getDerivedOrientation();
-    //    groundTransform.setRotation(btQuaternion(quat2.x, quat2.y, quat2.z, quat2.w));
-
-    //    btScalar mass(0.);
-
-    //    // rigidbody is dynamic if and only if mass is non zero, otherwise static
-    //    bool isDynamic = (mass != 0.f);
-
-    //    btVector3 localInertia(0, 0, 0);
-    //    if (isDynamic)
-    //        groundShape->calculateLocalInertia(mass, localInertia);
-
-    //    // using motionstate is optional, it provides interpolation capabilities, and only synchronizes 'active' objects
-    //    btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
-    //    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, groundShape, localInertia);
-    //    btRigidBody* body = new btRigidBody(rbInfo);
-
-    //    //   body->setRestitution(0.0);
-
-    //    // add the body to the dynamics world
-    //    dynamicsWorld->addRigidBody(body);
-    //}

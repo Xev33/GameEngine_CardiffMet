@@ -141,12 +141,12 @@ namespace XDGameEngine
         //void setupNPC();
 
         /**
-        * Turns on on the coffee machine.
+        * Creates player and npcs.
         */
         void setupStaticObj() noexcept;
 
         /**
-        * Creates, lights and adds them to the scene.  All based on the sample code, needs moving out into a level class.
+        * Creates cube for the level's blockout and the lights for the demonstration
         */
         void setupMovingObj() noexcept;
 
