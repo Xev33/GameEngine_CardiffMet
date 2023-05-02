@@ -1,0 +1,87 @@
+\hypertarget{_collision_shape_8h_source}{}\doxysection{Collision\+Shape.\+h}
+\label{_collision_shape_8h_source}\index{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/CollisionShape.h@{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/CollisionShape.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef COLLISION\_SHAPE\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define COLLISION\_SHAPE\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}AComponent.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}btBulletCollisionCommon.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }XDGameEngine}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{12     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape}{CollisionShape}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component}{AComponent}}}
+\DoxyCodeLine{13     \{}
+\DoxyCodeLine{14     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{15         btCollisionShape* m\_colShape;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{keyword}{private}:}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \textcolor{comment}{// Empty virtual destructor for an abstract class}}
+\DoxyCodeLine{21         \textcolor{keyword}{virtual} \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape}{\string~CollisionShape}}() \{\}}
+\DoxyCodeLine{22     }
+\DoxyCodeLine{26         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape_a3181386a6d25f4a6a8b63f3014a59bb9}{SetUpComponent}}(\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}\& go) = 0;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape_aab6bb90af7371ca100425b484c367e3e}{SetColShape}}(btCollisionShape* colShape) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{36         btCollisionShape* \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape_aedc0e7ed85fa5302c5e58d62f6339845}{GetColShape}}() noexcept;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     class \mbox{\hyperlink{class_x_d_game_engine_1_1_box_collision}{BoxCollision}} : public \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape}{CollisionShape}}}
+\DoxyCodeLine{41     \{}
+\DoxyCodeLine{42         \textcolor{keyword}{public}:}
+\DoxyCodeLine{43             \mbox{\hyperlink{class_x_d_game_engine_1_1_box_collision}{BoxCollision}}()}
+\DoxyCodeLine{44             \{}
+\DoxyCodeLine{45                 \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_acb6db650823a4c16bd304027f4a53eb9}{m\_id}} = \textcolor{stringliteral}{'BXCS'};}
+\DoxyCodeLine{46                 m\_colShape = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{47             \}}
+\DoxyCodeLine{48             \mbox{\hyperlink{class_x_d_game_engine_1_1_box_collision}{\string~BoxCollision}}() \{\}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50             \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape_a3181386a6d25f4a6a8b63f3014a59bb9}{SetUpComponent}}(\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}\& go) \textcolor{keyword}{final};}
+\DoxyCodeLine{51     \};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_capsule_collision}{CapsuleCollision}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape}{CollisionShape}}}
+\DoxyCodeLine{54     \{}
+\DoxyCodeLine{55     \textcolor{keyword}{public}:}
+\DoxyCodeLine{56         \mbox{\hyperlink{class_x_d_game_engine_1_1_capsule_collision}{CapsuleCollision}}()}
+\DoxyCodeLine{57         \{}
+\DoxyCodeLine{58             m\_id = \textcolor{stringliteral}{'CPCS'};}
+\DoxyCodeLine{59             m\_colShape = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{60         \}}
+\DoxyCodeLine{61         \mbox{\hyperlink{class_x_d_game_engine_1_1_capsule_collision}{\string~CapsuleCollision}}() \{\}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} SetUpComponent(\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}\& go) \textcolor{keyword}{final};}
+\DoxyCodeLine{64     \};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_cylinder_collision}{CylinderCollision}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape}{CollisionShape}}}
+\DoxyCodeLine{67     \{}
+\DoxyCodeLine{68     \textcolor{keyword}{public}:}
+\DoxyCodeLine{69         \mbox{\hyperlink{class_x_d_game_engine_1_1_cylinder_collision}{CylinderCollision}}()}
+\DoxyCodeLine{70         \{}
+\DoxyCodeLine{71             m\_id = \textcolor{stringliteral}{'CLCS'};}
+\DoxyCodeLine{72             m\_colShape = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{73         \}}
+\DoxyCodeLine{74         \mbox{\hyperlink{class_x_d_game_engine_1_1_cylinder_collision}{\string~CylinderCollision}}() \{\}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} SetUpComponent(\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}\& go) \textcolor{keyword}{final};}
+\DoxyCodeLine{77     \};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_sphere_collision}{SphereCollision}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape}{CollisionShape}}}
+\DoxyCodeLine{80     \{}
+\DoxyCodeLine{81     \textcolor{keyword}{public}:}
+\DoxyCodeLine{82         \mbox{\hyperlink{class_x_d_game_engine_1_1_sphere_collision}{SphereCollision}}()}
+\DoxyCodeLine{83         \{}
+\DoxyCodeLine{84             m\_id = \textcolor{stringliteral}{'SPCS'};}
+\DoxyCodeLine{85             m\_colShape = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{86         \}}
+\DoxyCodeLine{87         \mbox{\hyperlink{class_x_d_game_engine_1_1_sphere_collision}{\string~SphereCollision}}() \{\}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} SetUpComponent(\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}\& go) \textcolor{keyword}{final};}
+\DoxyCodeLine{90     \};}
+\DoxyCodeLine{91 \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

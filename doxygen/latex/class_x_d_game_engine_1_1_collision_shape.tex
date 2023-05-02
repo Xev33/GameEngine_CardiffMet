@@ -1,0 +1,65 @@
+\hypertarget{class_x_d_game_engine_1_1_collision_shape}{}\doxysection{XDGame\+Engine\+::Collision\+Shape Class Reference}
+\label{class_x_d_game_engine_1_1_collision_shape}\index{XDGameEngine::CollisionShape@{XDGameEngine::CollisionShape}}
+
+
+{\ttfamily \#include $<$Collision\+Shape.\+h$>$}
+
+Inheritance diagram for XDGame\+Engine\+::Collision\+Shape\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.990521cm]{class_x_d_game_engine_1_1_collision_shape}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape_a3181386a6d25f4a6a8b63f3014a59bb9}{Set\+Up\+Component}} (\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&go)=0
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape_aab6bb90af7371ca100425b484c367e3e}{Set\+Col\+Shape}} (bt\+Collision\+Shape $\ast$col\+Shape) noexcept
+\item 
+bt\+Collision\+Shape $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape_aedc0e7ed85fa5302c5e58d62f6339845}{Get\+Col\+Shape}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_collision_shape_ac7cc2b717b53eff0e85d55235d0cf349}\label{class_x_d_game_engine_1_1_collision_shape_ac7cc2b717b53eff0e85d55235d0cf349}} 
+bt\+Collision\+Shape $\ast$ {\bfseries m\+\_\+col\+Shape}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base abstract class that any shape will inherit from 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_collision_shape_aedc0e7ed85fa5302c5e58d62f6339845}\label{class_x_d_game_engine_1_1_collision_shape_aedc0e7ed85fa5302c5e58d62f6339845}} 
+\index{XDGameEngine::CollisionShape@{XDGameEngine::CollisionShape}!GetColShape@{GetColShape}}
+\index{GetColShape@{GetColShape}!XDGameEngine::CollisionShape@{XDGameEngine::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{GetColShape()}{GetColShape()}}
+{\footnotesize\ttfamily bt\+Collision\+Shape $\ast$ XDGame\+Engine\+::\+Collision\+Shape\+::\+Get\+Col\+Shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Col\+Shape getter \mbox{\Hypertarget{class_x_d_game_engine_1_1_collision_shape_aab6bb90af7371ca100425b484c367e3e}\label{class_x_d_game_engine_1_1_collision_shape_aab6bb90af7371ca100425b484c367e3e}} 
+\index{XDGameEngine::CollisionShape@{XDGameEngine::CollisionShape}!SetColShape@{SetColShape}}
+\index{SetColShape@{SetColShape}!XDGameEngine::CollisionShape@{XDGameEngine::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{SetColShape()}{SetColShape()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Collision\+Shape\+::\+Set\+Col\+Shape (\begin{DoxyParamCaption}\item[{bt\+Collision\+Shape $\ast$}]{col\+Shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Col\+Shape setter \mbox{\Hypertarget{class_x_d_game_engine_1_1_collision_shape_a3181386a6d25f4a6a8b63f3014a59bb9}\label{class_x_d_game_engine_1_1_collision_shape_a3181386a6d25f4a6a8b63f3014a59bb9}} 
+\index{XDGameEngine::CollisionShape@{XDGameEngine::CollisionShape}!SetUpComponent@{SetUpComponent}}
+\index{SetUpComponent@{SetUpComponent}!XDGameEngine::CollisionShape@{XDGameEngine::CollisionShape}}
+\doxysubsubsection{\texorpdfstring{SetUpComponent()}{SetUpComponent()}}
+{\footnotesize\ttfamily virtual void XDGame\+Engine\+::\+Collision\+Shape\+::\+Set\+Up\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Overrided method from \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component}{AComponent}}. Create the right shape in the children classes 
+
+Reimplemented from \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_aa45d24903cdf4eab67d026839c91f00f}{XDGame\+Engine\+::\+AComponent}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_x_d_game_engine_1_1_box_collision_a1d9345cefd4d040b6a6a3bcc7fd3e0e5}{XDGame\+Engine\+::\+Box\+Collision}}, \mbox{\hyperlink{class_x_d_game_engine_1_1_capsule_collision_a6116d1dbcf198c40d51c838eae309d72}{XDGame\+Engine\+::\+Capsule\+Collision}}, \mbox{\hyperlink{class_x_d_game_engine_1_1_cylinder_collision_a4b633a924ef538fc384e3d69646751b3}{XDGame\+Engine\+::\+Cylinder\+Collision}}, and \mbox{\hyperlink{class_x_d_game_engine_1_1_sphere_collision_af1a2aef3f9fdfcb43440e3fe084a48bb}{XDGame\+Engine\+::\+Sphere\+Collision}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Collision\+Shape.\+h\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Collision\+Shape.\+cpp\end{DoxyCompactItemize}

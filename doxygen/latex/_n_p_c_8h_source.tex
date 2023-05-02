@@ -1,0 +1,73 @@
+\hypertarget{_n_p_c_8h_source}{}\doxysection{NPC.\+h}
+\label{_n_p_c_8h_source}\index{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/NPC.h@{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/NPC.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef NPC\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define NPC\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}GameObject.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}ComponentFactory.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}AComponent.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Rigibodies.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }XDGameEngine}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c}{NPC}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}}
+\DoxyCodeLine{12     \{}
+\DoxyCodeLine{13     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keyword}{private}:}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17         \textcolor{keywordtype}{float} m\_forwardForce;}
+\DoxyCodeLine{18         \textcolor{keywordtype}{float} m\_turningForce;}
+\DoxyCodeLine{19         \textcolor{keywordtype}{float} m\_jumpForce;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \textcolor{keywordtype}{float} m\_linearDamping;}
+\DoxyCodeLine{22         \textcolor{keywordtype}{float} m\_angularDamping;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         btRigidBody* m\_rgbd;}
+\DoxyCodeLine{25         \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body}{RigidBody}}* body;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{30         btTransform \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_ad44f01fcca207442e24813fc8eb45315}{m\_target}};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{35         std::vector<btTransform> \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_ac9566b1da24e55dbc9305b16683a9cbe}{m\_patrolWayPoints}};}
+\DoxyCodeLine{36         }
+\DoxyCodeLine{40         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a60b474399cc014899f55b80a67f73c06}{currentWaypoint}};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{45         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a496f2e563c8e2d178fde6b917a7390be}{m\_health}};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{keyword}{public}:}
+\DoxyCodeLine{48         \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c}{NPC}}(\textcolor{keyword}{const} btVector3 pos = btVector3(1.0f, 1.0f, 1.0f),}
+\DoxyCodeLine{49             \textcolor{keyword}{const} btQuaternion rot = btQuaternion(0.0f, 0.0f, 0.0f),}
+\DoxyCodeLine{50             \textcolor{keyword}{const} btVector3 scale = btVector3(1.0f, 1.0f, 1.0f));}
+\DoxyCodeLine{51         \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c}{\string~NPC}}();}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_aff92e0ff7ebce9e617bb18511a41f453}{Update}}();}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{58         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_abc7e5eaa688f68b832fdf4a136138e6d}{Forward}}();}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{63         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a7980e922fa3f6a8c5cdf6d62edc71ce2}{TurnRightScaled}}(\textcolor{keywordtype}{float} scalar);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{69         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a4661ceca2b38735b3d404d4fb93be8d3}{TurnLeftScaled}}(\textcolor{keywordtype}{float} scalar);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{75         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a94af998b4cf594c5ef5c0593b5dfaa26}{Jump}}();}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{81         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a597e96d3faf3758df7b2d6964ade613c}{Fly}}();}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{86         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a3038801dd3cee8e53a85d31b0cf6ea0c}{SetTarget}}(btTransform target);}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{91         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a0dfa83b9ed64f2f4ee621545fb5b6aa9}{Arrive}}();}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{97         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_a128aa32d5da17dbbd77aa03a76a48f39}{LookWhereYouAreGoing}}();}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{103         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_ad29711aa92434e1a92f53000c10a04d8}{TargetInRange}}(\textcolor{keywordtype}{float} range);}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{108         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_ac4f14bd379a23879ee9326f54d03d584}{AddWayPoint}}(btVector3 newPoint) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \};}
+\DoxyCodeLine{111 \}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

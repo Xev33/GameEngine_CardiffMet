@@ -1,0 +1,90 @@
+\hypertarget{class_x_d_game_engine_1_1_a_component}{}\doxysection{XDGame\+Engine\+::AComponent Class Reference}
+\label{class_x_d_game_engine_1_1_a_component}\index{XDGameEngine::AComponent@{XDGameEngine::AComponent}}
+
+
+{\ttfamily \#include $<$AComponent.\+h$>$}
+
+Inheritance diagram for XDGame\+Engine\+::AComponent\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.137441cm]{class_x_d_game_engine_1_1_a_component}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_aa45d24903cdf4eab67d026839c91f00f}{Set\+Up\+Component}} (\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&go)
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_afe42b718bb3b994f5eb205809147c534}{Update\+Component}} (\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&go)
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_a58dc98105286bf705be7af2ae6e8f081}{Set\+Active}} (bool is\+Active)
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_a_component_a6564578a8fab7c626e0b743e487a3a56}\label{class_x_d_game_engine_1_1_a_component_a6564578a8fab7c626e0b743e487a3a56}} 
+bool {\bfseries Is\+Active} ()
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_a_component_a034272a96c21efc761fac7d614a2cf31}\label{class_x_d_game_engine_1_1_a_component_a034272a96c21efc761fac7d614a2cf31}} 
+uint32\+\_\+t {\bfseries Get\+ID} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_a93213d912f2f6eb1b769c6cc5d379b8f}{m\+\_\+is\+Active}} = true
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_acb6db650823a4c16bd304027f4a53eb9}{m\+\_\+id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base abstract class that any new component must inherit from 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_a_component_a58dc98105286bf705be7af2ae6e8f081}\label{class_x_d_game_engine_1_1_a_component_a58dc98105286bf705be7af2ae6e8f081}} 
+\index{XDGameEngine::AComponent@{XDGameEngine::AComponent}!SetActive@{SetActive}}
+\index{SetActive@{SetActive}!XDGameEngine::AComponent@{XDGameEngine::AComponent}}
+\doxysubsubsection{\texorpdfstring{SetActive()}{SetActive()}}
+{\footnotesize\ttfamily virtual void XDGame\+Engine\+::\+AComponent\+::\+Set\+Active (\begin{DoxyParamCaption}\item[{bool}]{is\+Active }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+This method can be overriden in order to trigger behaviors (Eg\+: Register/unregister to dynamic world for the rigidbodie component) 
+
+Reimplemented in \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_ae9ba6bb17e925604ffe10ff9d7d9324e}{XDGame\+Engine\+::\+Mesh\+Renderer}}, and \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_ae8cb183edd170dfcca7add9cac614902}{XDGame\+Engine\+::\+Rigid\+Body}}.
+
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_a_component_aa45d24903cdf4eab67d026839c91f00f}\label{class_x_d_game_engine_1_1_a_component_aa45d24903cdf4eab67d026839c91f00f}} 
+\index{XDGameEngine::AComponent@{XDGameEngine::AComponent}!SetUpComponent@{SetUpComponent}}
+\index{SetUpComponent@{SetUpComponent}!XDGameEngine::AComponent@{XDGameEngine::AComponent}}
+\doxysubsubsection{\texorpdfstring{SetUpComponent()}{SetUpComponent()}}
+{\footnotesize\ttfamily virtual void XDGame\+Engine\+::\+AComponent\+::\+Set\+Up\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Setup the entire component according to the current scene 
+
+Reimplemented in \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_a362d8075b4a55464b72246c98fe4a0e4}{XDGame\+Engine\+::\+Mesh\+Renderer}}, \mbox{\hyperlink{class_x_d_game_engine_1_1_box_collision_a1d9345cefd4d040b6a6a3bcc7fd3e0e5}{XDGame\+Engine\+::\+Box\+Collision}}, \mbox{\hyperlink{class_x_d_game_engine_1_1_capsule_collision_a6116d1dbcf198c40d51c838eae309d72}{XDGame\+Engine\+::\+Capsule\+Collision}}, \mbox{\hyperlink{class_x_d_game_engine_1_1_cylinder_collision_a4b633a924ef538fc384e3d69646751b3}{XDGame\+Engine\+::\+Cylinder\+Collision}}, \mbox{\hyperlink{class_x_d_game_engine_1_1_sphere_collision_af1a2aef3f9fdfcb43440e3fe084a48bb}{XDGame\+Engine\+::\+Sphere\+Collision}}, \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a205678a142178865b1c74bb13f3782c5}{XDGame\+Engine\+::\+Rigid\+Body}}, \mbox{\hyperlink{class_x_d_game_engine_1_1_trigger_zone_a87fae0b2faa8da2e4040f5398dac08bf}{XDGame\+Engine\+::\+Trigger\+Zone}}, and \mbox{\hyperlink{class_x_d_game_engine_1_1_collision_shape_a3181386a6d25f4a6a8b63f3014a59bb9}{XDGame\+Engine\+::\+Collision\+Shape}}.
+
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_a_component_afe42b718bb3b994f5eb205809147c534}\label{class_x_d_game_engine_1_1_a_component_afe42b718bb3b994f5eb205809147c534}} 
+\index{XDGameEngine::AComponent@{XDGameEngine::AComponent}!UpdateComponent@{UpdateComponent}}
+\index{UpdateComponent@{UpdateComponent}!XDGameEngine::AComponent@{XDGameEngine::AComponent}}
+\doxysubsubsection{\texorpdfstring{UpdateComponent()}{UpdateComponent()}}
+{\footnotesize\ttfamily virtual void XDGame\+Engine\+::\+AComponent\+::\+Update\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+The method that each \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} will call each frame 
+
+Reimplemented in \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_ab77f3127766e8257bd4470431ca5fcd4}{XDGame\+Engine\+::\+Mesh\+Renderer}}, and \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_ab6d02f3a327d5121468c75f9c6813b77}{XDGame\+Engine\+::\+Rigid\+Body}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_a_component_acb6db650823a4c16bd304027f4a53eb9}\label{class_x_d_game_engine_1_1_a_component_acb6db650823a4c16bd304027f4a53eb9}} 
+\index{XDGameEngine::AComponent@{XDGameEngine::AComponent}!m\_id@{m\_id}}
+\index{m\_id@{m\_id}!XDGameEngine::AComponent@{XDGameEngine::AComponent}}
+\doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
+{\footnotesize\ttfamily uint32\+\_\+t XDGame\+Engine\+::\+AComponent\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [protected]}}
+
+The component ID is use as a reference for the component factory \mbox{\Hypertarget{class_x_d_game_engine_1_1_a_component_a93213d912f2f6eb1b769c6cc5d379b8f}\label{class_x_d_game_engine_1_1_a_component_a93213d912f2f6eb1b769c6cc5d379b8f}} 
+\index{XDGameEngine::AComponent@{XDGameEngine::AComponent}!m\_isActive@{m\_isActive}}
+\index{m\_isActive@{m\_isActive}!XDGameEngine::AComponent@{XDGameEngine::AComponent}}
+\doxysubsubsection{\texorpdfstring{m\_isActive}{m\_isActive}}
+{\footnotesize\ttfamily bool XDGame\+Engine\+::\+AComponent\+::m\+\_\+is\+Active = true\hspace{0.3cm}{\ttfamily [protected]}}
+
+used by te scene to know if it has to be updated 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/AComponent.\+h\end{DoxyCompactItemize}

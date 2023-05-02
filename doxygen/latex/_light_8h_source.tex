@@ -1,0 +1,109 @@
+\hypertarget{_light_8h_source}{}\doxysection{Light.\+h}
+\label{_light_8h_source}\index{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/Light.h@{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/Light.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef COLLISION\_SHAPE}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define COLLISION\_SHAPE}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}GameObject.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}OgreRTShaderSystem.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}OgreCameraMan.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}Ogre.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }XDGameEngine}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{15     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_light}{Light}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}}
+\DoxyCodeLine{16     \{}
+\DoxyCodeLine{17     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{18         \textcolor{comment}{/*}}
+\DoxyCodeLine{19 \textcolor{comment}{        * The light's pointer}}
+\DoxyCodeLine{20 \textcolor{comment}{        */}}
+\DoxyCodeLine{21         Ogre::Light* m\_light;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23         \textcolor{comment}{/*}}
+\DoxyCodeLine{24 \textcolor{comment}{        * The light's node}}
+\DoxyCodeLine{25 \textcolor{comment}{        */}}
+\DoxyCodeLine{26         Ogre::SceneNode* m\_lightNode;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keyword}{private}:}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keyword}{public}:}
+\DoxyCodeLine{31         \mbox{\hyperlink{class_x_d_game_engine_1_1_light}{Light}}(\textcolor{keyword}{const} btVector3 pos = btVector3(1.0f, 1.0f, 1.0f),}
+\DoxyCodeLine{32             \textcolor{keyword}{const} btQuaternion rot = btQuaternion(0.0f, 0.0f, 0.0f),}
+\DoxyCodeLine{33             \textcolor{keyword}{const} btVector3 scale = btVector3(1.0f, 1.0f, 1.0f));}
+\DoxyCodeLine{34         \mbox{\hyperlink{class_x_d_game_engine_1_1_light}{\string~Light}}() \{\}}
+\DoxyCodeLine{35     }
+\DoxyCodeLine{36         \textcolor{comment}{/*}}
+\DoxyCodeLine{37 \textcolor{comment}{        * Create the light and it node}}
+\DoxyCodeLine{38 \textcolor{comment}{        */}}
+\DoxyCodeLine{39         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} createLight() \textcolor{keyword}{noexcept} \{\}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \textcolor{comment}{/*}}
+\DoxyCodeLine{42 \textcolor{comment}{        * Modify the light pointer's diffuse}}
+\DoxyCodeLine{43 \textcolor{comment}{        */}}
+\DoxyCodeLine{44         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setDiffuseColour(\textcolor{keywordtype}{float} red, \textcolor{keywordtype}{float} green, \textcolor{keywordtype}{float} blue) \textcolor{keyword}{noexcept} \{\}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46         \textcolor{comment}{/*}}
+\DoxyCodeLine{47 \textcolor{comment}{        * Modify the light pointer's Specular}}
+\DoxyCodeLine{48 \textcolor{comment}{        */}}
+\DoxyCodeLine{49         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setSpecularColour(\textcolor{keywordtype}{float} red, \textcolor{keywordtype}{float} green, \textcolor{keywordtype}{float} blue) \textcolor{keyword}{noexcept} \{\}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52         \textcolor{comment}{/*}}
+\DoxyCodeLine{53 \textcolor{comment}{        * Set the light's type}}
+\DoxyCodeLine{54 \textcolor{comment}{        */}}
+\DoxyCodeLine{55         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setType(Ogre::Light::LightTypes type) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57         \textcolor{comment}{/*}}
+\DoxyCodeLine{58 \textcolor{comment}{        * Get the light's type}}
+\DoxyCodeLine{59 \textcolor{comment}{        */}}
+\DoxyCodeLine{60         \textcolor{keyword}{virtual} Ogre::Light::LightTypes getType() \textcolor{keyword}{const} \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62         \textcolor{comment}{/*}}
+\DoxyCodeLine{63 \textcolor{comment}{        * Get the light's adress}}
+\DoxyCodeLine{64 \textcolor{comment}{        */}}
+\DoxyCodeLine{65         \textcolor{keyword}{virtual} Ogre::Light* getLight() \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     \};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_point_light}{PointLight}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_light}{Light}}}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72     \textcolor{keyword}{private}:}
+\DoxyCodeLine{73     \textcolor{keyword}{public}:}
+\DoxyCodeLine{74         \mbox{\hyperlink{class_x_d_game_engine_1_1_point_light}{PointLight}}(\textcolor{keyword}{const} btVector3 pos = btVector3(1.0f, 1.0f, 1.0f));}
+\DoxyCodeLine{75         \mbox{\hyperlink{class_x_d_game_engine_1_1_point_light}{\string~PointLight}}() \{\}}
+\DoxyCodeLine{76         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} createLight() \textcolor{keyword}{noexcept} \textcolor{keyword}{final};}
+\DoxyCodeLine{77         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setDiffuseColour(\textcolor{keywordtype}{float} red, \textcolor{keywordtype}{float} green, \textcolor{keywordtype}{float} blue) \textcolor{keyword}{noexcept} \textcolor{keyword}{final};}
+\DoxyCodeLine{78         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setSpecularColour(\textcolor{keywordtype}{float} red, \textcolor{keywordtype}{float} green, \textcolor{keywordtype}{float} blue) \textcolor{keyword}{noexcept} \textcolor{keyword}{final};}
+\DoxyCodeLine{79     \};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_spot_light}{SpotLight}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_light}{Light}}}
+\DoxyCodeLine{82     \{}
+\DoxyCodeLine{83     \textcolor{keyword}{private}:}
+\DoxyCodeLine{84     \textcolor{keyword}{public}:}
+\DoxyCodeLine{85         \mbox{\hyperlink{class_x_d_game_engine_1_1_spot_light}{SpotLight}}(\textcolor{keyword}{const} btVector3 pos = btVector3(1.0f, 1.0f, 1.0f),}
+\DoxyCodeLine{86             \textcolor{keyword}{const} btQuaternion rot = btQuaternion(0.0f, 0.0f, 0.0f));}
+\DoxyCodeLine{87         \mbox{\hyperlink{class_x_d_game_engine_1_1_spot_light}{\string~SpotLight}}() \{\}}
+\DoxyCodeLine{88         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} createLight() \textcolor{keyword}{noexcept} \textcolor{keyword}{final};}
+\DoxyCodeLine{89         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setDiffuseColour(\textcolor{keywordtype}{float} red, \textcolor{keywordtype}{float} green, \textcolor{keywordtype}{float} blue) \textcolor{keyword}{noexcept} \textcolor{keyword}{final};}
+\DoxyCodeLine{90         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setSpecularColour(\textcolor{keywordtype}{float} red, \textcolor{keywordtype}{float} green, \textcolor{keywordtype}{float} blue) \textcolor{keyword}{noexcept} \textcolor{keyword}{final};}
+\DoxyCodeLine{91         \textcolor{keywordtype}{void} setSpotlightRange(\textcolor{keyword}{const} Ogre::Radian\& innerAngle, \textcolor{keyword}{const} Ogre::Radian\& outerAngle, Ogre::Real fallOff = 1.0F) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{92     \};}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_directional_light}{DirectionalLight}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_light}{Light}}}
+\DoxyCodeLine{95     \{}
+\DoxyCodeLine{96     \textcolor{keyword}{private}:}
+\DoxyCodeLine{97     \textcolor{keyword}{public}:}
+\DoxyCodeLine{98         \mbox{\hyperlink{class_x_d_game_engine_1_1_directional_light}{DirectionalLight}}(\textcolor{keyword}{const} btQuaternion rot = btQuaternion(0.0f, 0.0f, 0.0f));}
+\DoxyCodeLine{99         \mbox{\hyperlink{class_x_d_game_engine_1_1_directional_light}{\string~DirectionalLight}}() \{\}}
+\DoxyCodeLine{100         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} createLight() \textcolor{keyword}{noexcept} \textcolor{keyword}{final};}
+\DoxyCodeLine{101         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setDiffuseColour(\textcolor{keyword}{const} Ogre::ColourValue\& colour) \textcolor{keyword}{noexcept} \textcolor{keyword}{final};}
+\DoxyCodeLine{102         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setSpecularColour(\textcolor{keyword}{const} Ogre::ColourValue\& colour) \textcolor{keyword}{noexcept} \textcolor{keyword}{final};}
+\DoxyCodeLine{103     \};}
+\DoxyCodeLine{104 \}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,73 @@
+\hypertarget{class_x_d_game_engine_1_1_trigger_zone}{}\doxysection{XDGame\+Engine\+::Trigger\+Zone Class Reference}
+\label{class_x_d_game_engine_1_1_trigger_zone}\index{XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}}
+Inheritance diagram for XDGame\+Engine\+::Trigger\+Zone\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_x_d_game_engine_1_1_trigger_zone}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_trigger_zone_a87fae0b2faa8da2e4040f5398dac08bf}{Set\+Up\+Component}} (\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&go) final
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_x_d_game_engine_1_1_trigger_zone_a2e63f907431f9fd935fcc54a04da153a}{On\+Trigger\+Enter}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_trigger_zone_aaf7ac5d95acab371a7909509a4530064}\label{class_x_d_game_engine_1_1_trigger_zone_aaf7ac5d95acab371a7909509a4530064}} 
+bt\+Discrete\+Dynamics\+World $\ast$ {\bfseries m\+\_\+dynamics\+World}
+\item 
+bt\+Ghost\+Object $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_trigger_zone_a3400329e027e45ffd688d1cd2649679a}{m\+\_\+ghost\+Obj}}
+\item 
+bt\+Collision\+Shape $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_trigger_zone_a8cc6d0c219523948a4ba990aa66b3e19}{m\+\_\+col\+Shape}}
+\item 
+bt\+Scalar \mbox{\hyperlink{class_x_d_game_engine_1_1_trigger_zone_ac28502f4324da17854fb4cb3ca2219d2}{m\+\_\+mass}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_trigger_zone_a2e63f907431f9fd935fcc54a04da153a}\label{class_x_d_game_engine_1_1_trigger_zone_a2e63f907431f9fd935fcc54a04da153a}} 
+\index{XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}!OnTriggerEnter@{OnTriggerEnter}}
+\index{OnTriggerEnter@{OnTriggerEnter}!XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}}
+\doxysubsubsection{\texorpdfstring{OnTriggerEnter()}{OnTriggerEnter()}}
+{\footnotesize\ttfamily uint32\+\_\+t XDGame\+Engine\+::\+Trigger\+Zone\+::\+On\+Trigger\+Enter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Method working the same way as On\+Collision\+Enter but using ghost objects It has been inspired by someone else here\+: \href{https://gamedev.net/forums/topic/692573-bullet-btghostobject/5358842/}{\texttt{ https\+://gamedev.\+net/forums/topic/692573-\/bullet-\/btghostobject/5358842/}} and then twisted so it can use my tag system \mbox{\Hypertarget{class_x_d_game_engine_1_1_trigger_zone_a87fae0b2faa8da2e4040f5398dac08bf}\label{class_x_d_game_engine_1_1_trigger_zone_a87fae0b2faa8da2e4040f5398dac08bf}} 
+\index{XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}!SetUpComponent@{SetUpComponent}}
+\index{SetUpComponent@{SetUpComponent}!XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}}
+\doxysubsubsection{\texorpdfstring{SetUpComponent()}{SetUpComponent()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Trigger\+Zone\+::\+Set\+Up\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [virtual]}}
+
+Overrided method from \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component}{AComponent}}. Connect the component to the dynamic\+World 
+
+Reimplemented from \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_aa45d24903cdf4eab67d026839c91f00f}{XDGame\+Engine\+::\+AComponent}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_trigger_zone_a8cc6d0c219523948a4ba990aa66b3e19}\label{class_x_d_game_engine_1_1_trigger_zone_a8cc6d0c219523948a4ba990aa66b3e19}} 
+\index{XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}!m\_colShape@{m\_colShape}}
+\index{m\_colShape@{m\_colShape}!XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}}
+\doxysubsubsection{\texorpdfstring{m\_colShape}{m\_colShape}}
+{\footnotesize\ttfamily bt\+Collision\+Shape$\ast$ XDGame\+Engine\+::\+Trigger\+Zone\+::m\+\_\+col\+Shape\hspace{0.3cm}{\ttfamily [protected]}}
+
+Collision shape, describes the collision boundary \mbox{\Hypertarget{class_x_d_game_engine_1_1_trigger_zone_a3400329e027e45ffd688d1cd2649679a}\label{class_x_d_game_engine_1_1_trigger_zone_a3400329e027e45ffd688d1cd2649679a}} 
+\index{XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}!m\_ghostObj@{m\_ghostObj}}
+\index{m\_ghostObj@{m\_ghostObj}!XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}}
+\doxysubsubsection{\texorpdfstring{m\_ghostObj}{m\_ghostObj}}
+{\footnotesize\ttfamily bt\+Ghost\+Object$\ast$ XDGame\+Engine\+::\+Trigger\+Zone\+::m\+\_\+ghost\+Obj\hspace{0.3cm}{\ttfamily [protected]}}
+
+The rigidbody itself \mbox{\Hypertarget{class_x_d_game_engine_1_1_trigger_zone_ac28502f4324da17854fb4cb3ca2219d2}\label{class_x_d_game_engine_1_1_trigger_zone_ac28502f4324da17854fb4cb3ca2219d2}} 
+\index{XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}!m\_mass@{m\_mass}}
+\index{m\_mass@{m\_mass}!XDGameEngine::TriggerZone@{XDGameEngine::TriggerZone}}
+\doxysubsubsection{\texorpdfstring{m\_mass}{m\_mass}}
+{\footnotesize\ttfamily bt\+Scalar XDGame\+Engine\+::\+Trigger\+Zone\+::m\+\_\+mass\hspace{0.3cm}{\ttfamily [protected]}}
+
+The body mass. 0 = static mesh 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Trigger\+Zone.\+h\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Trigger\+Zone.\+cpp\end{DoxyCompactItemize}

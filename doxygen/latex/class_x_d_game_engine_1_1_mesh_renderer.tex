@@ -1,0 +1,143 @@
+\hypertarget{class_x_d_game_engine_1_1_mesh_renderer}{}\doxysection{XDGame\+Engine\+::Mesh\+Renderer Class Reference}
+\label{class_x_d_game_engine_1_1_mesh_renderer}\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+Inheritance diagram for XDGame\+Engine\+::Mesh\+Renderer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_x_d_game_engine_1_1_mesh_renderer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_a362d8075b4a55464b72246c98fe4a0e4}{Set\+Up\+Component}} (\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&go)
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_ae9ba6bb17e925604ffe10ff9d7d9324e}{Set\+Active}} (bool is\+Active)
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_ab77f3127766e8257bd4470431ca5fcd4}{Update\+Component}} (\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&go) final
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_ae7a775bfde74bc3b448bd56d76992039}{Set\+Mesh\+File\+Name}} (const char $\ast$name) noexcept
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_aab667055828867507f52d1caabff4c2a}{Set\+Mesh}} (Ogre\+::\+Entity $\ast$mesh) noexcept
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_aa4e99158870851fdbe47c145168db83c}{Set\+Scene\+Node}} (Ogre\+::\+Scene\+Node $\ast$scene\+Node) noexcept
+\item 
+const char $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_a80bf1adaad1ba0332f9b719911927cc6}{Get\+Mesh\+File\+Name}} () const noexcept
+\item 
+Ogre\+::\+Entity $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_aebdbb92b0653c9627b0d1e86d1b74aae}{Get\+Mesh}} () const noexcept
+\item 
+Ogre\+::\+Scene\+Node $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_a5381a4198033856132e5aab9dafe7a18}{Get\+Scene\+Node}} () const noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ogre\+::\+Scene\+Manager $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_affa6fbb45d0f88881aba19049433f6e5}{m\+\_\+scn\+Mgr}}
+\item 
+const char $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_af5fb1b3eda248133aa2305a2e274edd8}{m\+\_\+mesh\+File\+Name}}
+\item 
+Ogre\+::\+Entity $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_aad9769cd3522c75865bf0b76aa10d0dd}{m\+\_\+mesh}}
+\item 
+Ogre\+::\+Scene\+Node $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_mesh_renderer_a39fdf0a1c8c01518c8fe2c2eda67a13c}{m\+\_\+scene\+Node}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_aebdbb92b0653c9627b0d1e86d1b74aae}\label{class_x_d_game_engine_1_1_mesh_renderer_aebdbb92b0653c9627b0d1e86d1b74aae}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!GetMesh@{GetMesh}}
+\index{GetMesh@{GetMesh}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{GetMesh()}{GetMesh()}}
+{\footnotesize\ttfamily Ogre\+::\+Entity $\ast$ XDGame\+Engine\+::\+Mesh\+Renderer\+::\+Get\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Getter for the current mesh \mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_a80bf1adaad1ba0332f9b719911927cc6}\label{class_x_d_game_engine_1_1_mesh_renderer_a80bf1adaad1ba0332f9b719911927cc6}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!GetMeshFileName@{GetMeshFileName}}
+\index{GetMeshFileName@{GetMeshFileName}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{GetMeshFileName()}{GetMeshFileName()}}
+{\footnotesize\ttfamily const char $\ast$ XDGame\+Engine\+::\+Mesh\+Renderer\+::\+Get\+Mesh\+File\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Getter for the mesh file\textquotesingle{}s name \mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_a5381a4198033856132e5aab9dafe7a18}\label{class_x_d_game_engine_1_1_mesh_renderer_a5381a4198033856132e5aab9dafe7a18}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!GetSceneNode@{GetSceneNode}}
+\index{GetSceneNode@{GetSceneNode}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{GetSceneNode()}{GetSceneNode()}}
+{\footnotesize\ttfamily Ogre\+::\+Scene\+Node $\ast$ XDGame\+Engine\+::\+Mesh\+Renderer\+::\+Get\+Scene\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Getter for the current scene node \mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_ae9ba6bb17e925604ffe10ff9d7d9324e}\label{class_x_d_game_engine_1_1_mesh_renderer_ae9ba6bb17e925604ffe10ff9d7d9324e}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!SetActive@{SetActive}}
+\index{SetActive@{SetActive}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{SetActive()}{SetActive()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Mesh\+Renderer\+::\+Set\+Active (\begin{DoxyParamCaption}\item[{bool}]{is\+Active }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Toggle the mesh rendering in the scene manager 
+
+Reimplemented from \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_a58dc98105286bf705be7af2ae6e8f081}{XDGame\+Engine\+::\+AComponent}}.
+
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_aab667055828867507f52d1caabff4c2a}\label{class_x_d_game_engine_1_1_mesh_renderer_aab667055828867507f52d1caabff4c2a}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!SetMesh@{SetMesh}}
+\index{SetMesh@{SetMesh}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{SetMesh()}{SetMesh()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Mesh\+Renderer\+::\+Set\+Mesh (\begin{DoxyParamCaption}\item[{Ogre\+::\+Entity $\ast$}]{mesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Change the mesh entity for Ogre \mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_ae7a775bfde74bc3b448bd56d76992039}\label{class_x_d_game_engine_1_1_mesh_renderer_ae7a775bfde74bc3b448bd56d76992039}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!SetMeshFileName@{SetMeshFileName}}
+\index{SetMeshFileName@{SetMeshFileName}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{SetMeshFileName()}{SetMeshFileName()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Mesh\+Renderer\+::\+Set\+Mesh\+File\+Name (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Set the mesh file\textquotesingle{}s name to load \mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_aa4e99158870851fdbe47c145168db83c}\label{class_x_d_game_engine_1_1_mesh_renderer_aa4e99158870851fdbe47c145168db83c}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!SetSceneNode@{SetSceneNode}}
+\index{SetSceneNode@{SetSceneNode}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{SetSceneNode()}{SetSceneNode()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Mesh\+Renderer\+::\+Set\+Scene\+Node (\begin{DoxyParamCaption}\item[{Ogre\+::\+Scene\+Node $\ast$}]{scene\+Node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Set the inner scene node content \mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_a362d8075b4a55464b72246c98fe4a0e4}\label{class_x_d_game_engine_1_1_mesh_renderer_a362d8075b4a55464b72246c98fe4a0e4}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!SetUpComponent@{SetUpComponent}}
+\index{SetUpComponent@{SetUpComponent}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{SetUpComponent()}{SetUpComponent()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Mesh\+Renderer\+::\+Set\+Up\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overrided method from \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component}{AComponent}}. Connect the component to the scene manager 
+
+Reimplemented from \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_aa45d24903cdf4eab67d026839c91f00f}{XDGame\+Engine\+::\+AComponent}}.
+
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_ab77f3127766e8257bd4470431ca5fcd4}\label{class_x_d_game_engine_1_1_mesh_renderer_ab77f3127766e8257bd4470431ca5fcd4}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!UpdateComponent@{UpdateComponent}}
+\index{UpdateComponent@{UpdateComponent}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{UpdateComponent()}{UpdateComponent()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Mesh\+Renderer\+::\+Update\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [virtual]}}
+
+Update the position of rendering according to the game\+Object\textquotesingle{}s transform 
+
+Reimplemented from \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component_afe42b718bb3b994f5eb205809147c534}{XDGame\+Engine\+::\+AComponent}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_aad9769cd3522c75865bf0b76aa10d0dd}\label{class_x_d_game_engine_1_1_mesh_renderer_aad9769cd3522c75865bf0b76aa10d0dd}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!m\_mesh@{m\_mesh}}
+\index{m\_mesh@{m\_mesh}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_mesh}{m\_mesh}}
+{\footnotesize\ttfamily Ogre\+::\+Entity$\ast$ XDGame\+Engine\+::\+Mesh\+Renderer\+::m\+\_\+mesh\hspace{0.3cm}{\ttfamily [private]}}
+
+The mesh pointer to render \mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_af5fb1b3eda248133aa2305a2e274edd8}\label{class_x_d_game_engine_1_1_mesh_renderer_af5fb1b3eda248133aa2305a2e274edd8}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!m\_meshFileName@{m\_meshFileName}}
+\index{m\_meshFileName@{m\_meshFileName}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_meshFileName}{m\_meshFileName}}
+{\footnotesize\ttfamily const char$\ast$ XDGame\+Engine\+::\+Mesh\+Renderer\+::m\+\_\+mesh\+File\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+The file\textquotesingle{}s name to load \mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_a39fdf0a1c8c01518c8fe2c2eda67a13c}\label{class_x_d_game_engine_1_1_mesh_renderer_a39fdf0a1c8c01518c8fe2c2eda67a13c}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!m\_sceneNode@{m\_sceneNode}}
+\index{m\_sceneNode@{m\_sceneNode}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_sceneNode}{m\_sceneNode}}
+{\footnotesize\ttfamily Ogre\+::\+Scene\+Node$\ast$ XDGame\+Engine\+::\+Mesh\+Renderer\+::m\+\_\+scene\+Node\hspace{0.3cm}{\ttfamily [private]}}
+
+The scene node holding the mesh \mbox{\Hypertarget{class_x_d_game_engine_1_1_mesh_renderer_affa6fbb45d0f88881aba19049433f6e5}\label{class_x_d_game_engine_1_1_mesh_renderer_affa6fbb45d0f88881aba19049433f6e5}} 
+\index{XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}!m\_scnMgr@{m\_scnMgr}}
+\index{m\_scnMgr@{m\_scnMgr}!XDGameEngine::MeshRenderer@{XDGameEngine::MeshRenderer}}
+\doxysubsubsection{\texorpdfstring{m\_scnMgr}{m\_scnMgr}}
+{\footnotesize\ttfamily Ogre\+::\+Scene\+Manager$\ast$ XDGame\+Engine\+::\+Mesh\+Renderer\+::m\+\_\+scn\+Mgr\hspace{0.3cm}{\ttfamily [private]}}
+
+The current scene manager 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Mesh\+Renderer.\+h\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Mesh\+Renderer.\+cpp\end{DoxyCompactItemize}

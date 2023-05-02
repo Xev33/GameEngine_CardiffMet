@@ -1,0 +1,73 @@
+\hypertarget{_rigibodies_8h_source}{}\doxysection{Rigibodies.\+h}
+\label{_rigibodies_8h_source}\index{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/Rigibodies.h@{D:/Cardiff Courses/03\_GameEngine/GameEngine\_Repo\_XavierDavid/src/Rigibodies.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef RigidBody\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define RigidBody\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}AComponent.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}btBulletDynamicsCommon.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }XDGameEngine}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9     \textcolor{keyword}{class }\mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body}{RigidBody}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component}{AComponent}}}
+\DoxyCodeLine{10     \{}
+\DoxyCodeLine{11     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{12     \textcolor{keyword}{private}:}
+\DoxyCodeLine{13         btDiscreteDynamicsWorld* m\_dynamicsWorld;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15         btRigidBody* \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_ad868cc603514775054e88d6e3747e03b}{m\_rigidbody}}; }
+\DoxyCodeLine{16         btCollisionShape* \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_af911b8a4e342dbda272d7c3e8d7dfb7d}{m\_colShape}};  }
+\DoxyCodeLine{18         btScalar \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_adedc841933d53687d434c2cfea87b241}{m\_mass}}; }
+\DoxyCodeLine{19         btScalar \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a617a1c16399c8cc6bc605ba455750a7e}{m\_linearDamping}}; }
+\DoxyCodeLine{20         btScalar \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a2ae42bf1ee366e4f358465a10c13c352}{m\_angularDamping}}; }
+\DoxyCodeLine{21         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a4f5cff5ff93d6dc6ff3b31a1ab6db0ad}{m\_isDynamic}}; }
+\DoxyCodeLine{23         \textcolor{comment}{// these values should have help to disable the component}}
+\DoxyCodeLine{24         \textcolor{comment}{// without removing it from the dynamic world but it doesn't work}}
+\DoxyCodeLine{25         \textcolor{comment}{// and I don't have more time to spend on that}}
+\DoxyCodeLine{26         \textcolor{comment}{//btVector3 m\_prevVelocity;}}
+\DoxyCodeLine{27         \textcolor{comment}{//btVector3 m\_prevPosition;}}
+\DoxyCodeLine{28         \textcolor{comment}{//btQuaternion m\_prevRotation;}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keyword}{public}:}
+\DoxyCodeLine{31         \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body}{RigidBody}}();}
+\DoxyCodeLine{32         \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body}{\string~RigidBody}}();}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{37         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a205678a142178865b1c74bb13f3782c5}{SetUpComponent}}(\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}\& go) \textcolor{keyword}{final};}
+\DoxyCodeLine{38         }
+\DoxyCodeLine{42         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_ae8cb183edd170dfcca7add9cac614902}{SetActive}}(\textcolor{keywordtype}{bool} isActive) \textcolor{keyword}{final};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{47         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_ab6d02f3a327d5121468c75f9c6813b77}{UpdateComponent}}(\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{GameObject}}\& go) \textcolor{keyword}{final};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keywordtype}{void} SetUserPointer(\textcolor{keywordtype}{void}* userPointer);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{54         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a9c074063be852ddbe3dd67e8f024fba9}{SetMass}}(\textcolor{keywordtype}{float} mass) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{59         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a40a0b386704adabf2da3acbc95226d10}{SetLinearDamping}}(\textcolor{keywordtype}{float} linearDamping) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{64         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_aa670910af9a2651c83cd40f5f6ff1d56}{SetAngularDamping}}(\textcolor{keywordtype}{float} angularDamping) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{69         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a8cd60ce65b6116e7826a3d44737e3685}{SetRigidBody}}(btRigidBody* body) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{74         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a4b23d0cbbdd43ebf64419f1310aa6f49}{GetMass}}() const noexcept;}
+\DoxyCodeLine{75         }
+\DoxyCodeLine{79         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_af6f6d13d3fa71dc658262934c5bbc91e}{GetLinearDamping}}() const noexcept;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{84         \textcolor{keywordtype}{float} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a64a74e4bce0b02455aff8512ce556999}{GetAngularDamping}}() const noexcept;}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{89         btRigidBody* \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a5c74d9c88a4c8281986a2b42bf72f2e6}{GetRigidbody}}() noexcept;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{94         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a6eda490341fea3790eb72a71bc6ee3ba}{IsDynamic}}() const noexcept;}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{100         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_x_d_game_engine_1_1_rigid_body_a8b871da5d07aa1c14d2ddf957e72a7cd}{IsGrounded}}() const noexcept;}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102         \textcolor{comment}{/*}}
+\DoxyCodeLine{103 \textcolor{comment}{        * Check if the solid body enter in a collision and retrieve the collision obj tag}}
+\DoxyCodeLine{104 \textcolor{comment}{        */}}
+\DoxyCodeLine{105         uint32\_t OnCollisionEnter(uint32\_t tag, btCollisionObject* col) const noexcept;}
+\DoxyCodeLine{106     \};}
+\DoxyCodeLine{107 \}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,230 @@
+\hypertarget{class_x_d_game_engine_1_1_game_object}{}\doxysection{XDGame\+Engine\+::Game\+Object Class Reference}
+\label{class_x_d_game_engine_1_1_game_object}\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+Inheritance diagram for XDGame\+Engine\+::Game\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.068965cm]{class_x_d_game_engine_1_1_game_object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a7534062123129b6f308211ffd30b1598}\label{class_x_d_game_engine_1_1_game_object_a7534062123129b6f308211ffd30b1598}} 
+{\bfseries Game\+Object} (const bt\+Vector3 pos, const bt\+Quaternion rot, const bt\+Vector3 scale)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a3280f6c45556856df2889c1432cd8b19}{get\+Tag}} ()
+\item 
+\mbox{\hyperlink{class_x_d_game_engine_1_1_transform}{Transform}} $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_aeebf4ae6ebfe0dad549c73422fe6a706}{Get\+Transform}} () noexcept
+\item 
+{\footnotesize template$<$typename T $>$ }\\T $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_acbd88fc3612ed571ad7ebaa6bd14f228}{Get\+Component}} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a9a7b95f4521b77ecb8cd6324a8c847d7}{Remove\+Component}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_ad110c0ddab83bca9ee6f861958a85cb8}{Add\+Component}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component}{XDGame\+Engine\+::\+AComponent}} $>$ component)
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a96579afdc32af3bfd05ab8a7cb758646}{Setup\+All\+Components}} () noexcept
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a67077e89a37ff182f929ebf841c612cb}{Set\+Active}} (bool is\+Active)
+\item 
+bool \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a8c5b0647822b3a4c52f0a228ad7894d2}{Is\+Active}} () const noexcept
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a0e2b8e95eb99d7a9319150de86512856}{Start}} ()
+\item 
+virtual void \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a620378a6fd6ee418a97542cfb4cf40d4}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_acf147b18bcc048b1814d7d8fb66f8fef}{Activate\+Should\+Destroy}} () noexcept
+\item 
+bool \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a0aa2cd6dbffd153f2dc7a0a53f48f971}{Should\+Be\+Destroy}} () const noexcept
+\item 
+bool \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a8b296675a5d43e2b4e19bf56facc2c34}{Should\+Be\+Scaled}} () const noexcept
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_ad73e67625dfa3b20a5966074c0d0f5d7}{Reset\+Should\+Be\+Scaled}} () noexcept
+\item 
+void \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a46f101a73c29c622e9e8be7c2d823238}{Update\+Components}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a893dbc9021d1887e52d6bc002a77202b}{Destroy}} (\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&go) noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component}{XDGame\+Engine\+::\+AComponent}} $>$ $>$ \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_aa3a62c43cf5340dca7f7efd5cc94fcc6}{m\+\_\+components}}
+\item 
+bool \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a5c69a94871119841400a7dd1db718b85}{m\+\_\+is\+Active}} = true
+\item 
+bool \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_ad80612cae6002d2ef8ce0f3005b2a842}{m\+\_\+should\+Be\+Destroyed}} = false
+\item 
+bool \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a69bb336c90f3a7f6d9cdad415d838552}{m\+\_\+should\+Be\+Updated}} = false
+\item 
+bool \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a3c9a0ccc521530d712dae31db22e6449}{m\+\_\+should\+Be\+Scaled}} = true
+\item 
+\mbox{\hyperlink{class_x_d_game_engine_1_1_transform}{Transform}} $\ast$ \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a14cdc3d620725157d3fe79625cfb1cf7}{m\+\_\+transform}}
+\item 
+std\+::string \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a863586e3aca79498e05a2c7ba11b2c61}{m\+\_\+name}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_x_d_game_engine_1_1_game_object_a028bcc39de3ebaaf724b5b75e25b31ec}{m\+\_\+tag}} = \textquotesingle{}GOBJ\textquotesingle{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_acf147b18bcc048b1814d7d8fb66f8fef}\label{class_x_d_game_engine_1_1_game_object_acf147b18bcc048b1814d7d8fb66f8fef}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!ActivateShouldDestroy@{ActivateShouldDestroy}}
+\index{ActivateShouldDestroy@{ActivateShouldDestroy}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{ActivateShouldDestroy()}{ActivateShouldDestroy()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Game\+Object\+::\+Activate\+Should\+Destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+this section is made for the scene to manage all the gameobjects lifetime \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_ad110c0ddab83bca9ee6f861958a85cb8}\label{class_x_d_game_engine_1_1_game_object_ad110c0ddab83bca9ee6f861958a85cb8}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!AddComponent@{AddComponent}}
+\index{AddComponent@{AddComponent}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{AddComponent()}{AddComponent()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Game\+Object\+::\+Add\+Component (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_x_d_game_engine_1_1_a_component}{XDGame\+Engine\+::\+AComponent}} $>$}]{component }\end{DoxyParamCaption})}
+
+Method to push a new component into the vector \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a893dbc9021d1887e52d6bc002a77202b}\label{class_x_d_game_engine_1_1_game_object_a893dbc9021d1887e52d6bc002a77202b}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!Destroy@{Destroy}}
+\index{Destroy@{Destroy}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{Destroy()}{Destroy()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Game\+Object\+::\+Destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_d_game_engine_1_1_game_object}{Game\+Object}} \&}]{go }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+Method to enable the boolean in order to tell to the scene to destroy the given gameobject \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_acbd88fc3612ed571ad7ebaa6bd14f228}\label{class_x_d_game_engine_1_1_game_object_acbd88fc3612ed571ad7ebaa6bd14f228}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!GetComponent@{GetComponent}}
+\index{GetComponent@{GetComponent}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{GetComponent()}{GetComponent()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T $\ast$ XDGame\+Engine\+::\+Game\+Object\+::\+Get\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Method to get a component from the vector (gives nullptr if the component doesn\textquotesingle{}t exist \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a3280f6c45556856df2889c1432cd8b19}\label{class_x_d_game_engine_1_1_game_object_a3280f6c45556856df2889c1432cd8b19}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!getTag@{getTag}}
+\index{getTag@{getTag}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{getTag()}{getTag()}}
+{\footnotesize\ttfamily uint32\+\_\+t XDGame\+Engine\+::\+Game\+Object\+::get\+Tag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Tag\textquotesingle{}s getter \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_aeebf4ae6ebfe0dad549c73422fe6a706}\label{class_x_d_game_engine_1_1_game_object_aeebf4ae6ebfe0dad549c73422fe6a706}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!GetTransform@{GetTransform}}
+\index{GetTransform@{GetTransform}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{GetTransform()}{GetTransform()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_d_game_engine_1_1_transform}{Transform}} $\ast$ XDGame\+Engine\+::\+Game\+Object\+::\+Get\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Getter for the game\+Object\textquotesingle{}s inner transform \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a8c5b0647822b3a4c52f0a228ad7894d2}\label{class_x_d_game_engine_1_1_game_object_a8c5b0647822b3a4c52f0a228ad7894d2}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!IsActive@{IsActive}}
+\index{IsActive@{IsActive}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{IsActive()}{IsActive()}}
+{\footnotesize\ttfamily bool XDGame\+Engine\+::\+Game\+Object\+::\+Is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Method to know if the gameobject should be update by the scene \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a9a7b95f4521b77ecb8cd6324a8c847d7}\label{class_x_d_game_engine_1_1_game_object_a9a7b95f4521b77ecb8cd6324a8c847d7}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!RemoveComponent@{RemoveComponent}}
+\index{RemoveComponent@{RemoveComponent}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{RemoveComponent()}{RemoveComponent()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void XDGame\+Engine\+::\+Game\+Object\+::\+Remove\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Method to remove a component from the vector (call it destructor) \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_ad73e67625dfa3b20a5966074c0d0f5d7}\label{class_x_d_game_engine_1_1_game_object_ad73e67625dfa3b20a5966074c0d0f5d7}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!ResetShouldBeScaled@{ResetShouldBeScaled}}
+\index{ResetShouldBeScaled@{ResetShouldBeScaled}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{ResetShouldBeScaled()}{ResetShouldBeScaled()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Game\+Object\+::\+Reset\+Should\+Be\+Scaled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Stop the potentiel mesh renderer to rescale the mesh (There is surely a better way but I am running out of time) \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a67077e89a37ff182f929ebf841c612cb}\label{class_x_d_game_engine_1_1_game_object_a67077e89a37ff182f929ebf841c612cb}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!SetActive@{SetActive}}
+\index{SetActive@{SetActive}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{SetActive()}{SetActive()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Game\+Object\+::\+Set\+Active (\begin{DoxyParamCaption}\item[{bool}]{is\+Active }\end{DoxyParamCaption})}
+
+Method to toggle the gameobject\textquotesingle{}s components activity on the scene \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a96579afdc32af3bfd05ab8a7cb758646}\label{class_x_d_game_engine_1_1_game_object_a96579afdc32af3bfd05ab8a7cb758646}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!SetupAllComponents@{SetupAllComponents}}
+\index{SetupAllComponents@{SetupAllComponents}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{SetupAllComponents()}{SetupAllComponents()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Game\+Object\+::\+Setup\+All\+Components (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Trigger the Setup\+Component for each component in the m\+\_\+components vector \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a0aa2cd6dbffd153f2dc7a0a53f48f971}\label{class_x_d_game_engine_1_1_game_object_a0aa2cd6dbffd153f2dc7a0a53f48f971}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!ShouldBeDestroy@{ShouldBeDestroy}}
+\index{ShouldBeDestroy@{ShouldBeDestroy}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{ShouldBeDestroy()}{ShouldBeDestroy()}}
+{\footnotesize\ttfamily bool XDGame\+Engine\+::\+Game\+Object\+::\+Should\+Be\+Destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Notify the scene if it must be remove from its vector (trigger the Dtor) \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a8b296675a5d43e2b4e19bf56facc2c34}\label{class_x_d_game_engine_1_1_game_object_a8b296675a5d43e2b4e19bf56facc2c34}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!ShouldBeScaled@{ShouldBeScaled}}
+\index{ShouldBeScaled@{ShouldBeScaled}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{ShouldBeScaled()}{ShouldBeScaled()}}
+{\footnotesize\ttfamily bool XDGame\+Engine\+::\+Game\+Object\+::\+Should\+Be\+Scaled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Notify the potential mesh renderer if it must be rescaled (There is surely a better way but I am running out of time) \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a0e2b8e95eb99d7a9319150de86512856}\label{class_x_d_game_engine_1_1_game_object_a0e2b8e95eb99d7a9319150de86512856}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!Start@{Start}}
+\index{Start@{Start}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Game\+Object\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Is called when created \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a620378a6fd6ee418a97542cfb4cf40d4}\label{class_x_d_game_engine_1_1_game_object_a620378a6fd6ee418a97542cfb4cf40d4}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!Update@{Update}}
+\index{Update@{Update}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Game\+Object\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Is called each frame by the scene 
+
+Reimplemented in \mbox{\hyperlink{class_x_d_game_engine_1_1_n_p_c_aff92e0ff7ebce9e617bb18511a41f453}{XDGame\+Engine\+::\+NPC}}, and \mbox{\hyperlink{class_x_d_game_engine_1_1_player_afbfea2faf244bd2c0fdde3f47216ff6b}{XDGame\+Engine\+::\+Player}}.
+
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a46f101a73c29c622e9e8be7c2d823238}\label{class_x_d_game_engine_1_1_game_object_a46f101a73c29c622e9e8be7c2d823238}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!UpdateComponents@{UpdateComponents}}
+\index{UpdateComponents@{UpdateComponents}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{UpdateComponents()}{UpdateComponents()}}
+{\footnotesize\ttfamily void XDGame\+Engine\+::\+Game\+Object\+::\+Update\+Components (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Called by the scene each frame to apply what has been modify in the previous Update function 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_aa3a62c43cf5340dca7f7efd5cc94fcc6}\label{class_x_d_game_engine_1_1_game_object_aa3a62c43cf5340dca7f7efd5cc94fcc6}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!m\_components@{m\_components}}
+\index{m\_components@{m\_components}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{m\_components}{m\_components}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_x_d_game_engine_1_1_a_component}{XDGame\+Engine\+::\+AComponent}}$>$ $>$ XDGame\+Engine\+::\+Game\+Object\+::m\+\_\+components\hspace{0.3cm}{\ttfamily [protected]}}
+
+The vector holding every gameobject\textquotesingle{}s components \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a5c69a94871119841400a7dd1db718b85}\label{class_x_d_game_engine_1_1_game_object_a5c69a94871119841400a7dd1db718b85}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!m\_isActive@{m\_isActive}}
+\index{m\_isActive@{m\_isActive}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{m\_isActive}{m\_isActive}}
+{\footnotesize\ttfamily bool XDGame\+Engine\+::\+Game\+Object\+::m\+\_\+is\+Active = true\hspace{0.3cm}{\ttfamily [protected]}}
+
+Boolean to notify the scene if it should be updated \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a863586e3aca79498e05a2c7ba11b2c61}\label{class_x_d_game_engine_1_1_game_object_a863586e3aca79498e05a2c7ba11b2c61}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily std\+::string XDGame\+Engine\+::\+Game\+Object\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [protected]}}
+
+the game object\textquotesingle{}s name \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_ad80612cae6002d2ef8ce0f3005b2a842}\label{class_x_d_game_engine_1_1_game_object_ad80612cae6002d2ef8ce0f3005b2a842}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!m\_shouldBeDestroyed@{m\_shouldBeDestroyed}}
+\index{m\_shouldBeDestroyed@{m\_shouldBeDestroyed}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{m\_shouldBeDestroyed}{m\_shouldBeDestroyed}}
+{\footnotesize\ttfamily bool XDGame\+Engine\+::\+Game\+Object\+::m\+\_\+should\+Be\+Destroyed = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+Boolean to notify the scene if it should be destroyed \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a3c9a0ccc521530d712dae31db22e6449}\label{class_x_d_game_engine_1_1_game_object_a3c9a0ccc521530d712dae31db22e6449}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!m\_shouldBeScaled@{m\_shouldBeScaled}}
+\index{m\_shouldBeScaled@{m\_shouldBeScaled}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{m\_shouldBeScaled}{m\_shouldBeScaled}}
+{\footnotesize\ttfamily bool XDGame\+Engine\+::\+Game\+Object\+::m\+\_\+should\+Be\+Scaled = true\hspace{0.3cm}{\ttfamily [protected]}}
+
+Boolean to notify the potential mesh renderer if it should update the scale \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a69bb336c90f3a7f6d9cdad415d838552}\label{class_x_d_game_engine_1_1_game_object_a69bb336c90f3a7f6d9cdad415d838552}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!m\_shouldBeUpdated@{m\_shouldBeUpdated}}
+\index{m\_shouldBeUpdated@{m\_shouldBeUpdated}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{m\_shouldBeUpdated}{m\_shouldBeUpdated}}
+{\footnotesize\ttfamily bool XDGame\+Engine\+::\+Game\+Object\+::m\+\_\+should\+Be\+Updated = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+Boolean allowing the current scene to know if it should go into the Game\+Object\+To\+Update list \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a028bcc39de3ebaaf724b5b75e25b31ec}\label{class_x_d_game_engine_1_1_game_object_a028bcc39de3ebaaf724b5b75e25b31ec}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!m\_tag@{m\_tag}}
+\index{m\_tag@{m\_tag}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{m\_tag}{m\_tag}}
+{\footnotesize\ttfamily uint32\+\_\+t XDGame\+Engine\+::\+Game\+Object\+::m\+\_\+tag = \textquotesingle{}GOBJ\textquotesingle{}\hspace{0.3cm}{\ttfamily [protected]}}
+
+Tag will come later. Very low priority \mbox{\Hypertarget{class_x_d_game_engine_1_1_game_object_a14cdc3d620725157d3fe79625cfb1cf7}\label{class_x_d_game_engine_1_1_game_object_a14cdc3d620725157d3fe79625cfb1cf7}} 
+\index{XDGameEngine::GameObject@{XDGameEngine::GameObject}!m\_transform@{m\_transform}}
+\index{m\_transform@{m\_transform}!XDGameEngine::GameObject@{XDGameEngine::GameObject}}
+\doxysubsubsection{\texorpdfstring{m\_transform}{m\_transform}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_d_game_engine_1_1_transform}{Transform}}$\ast$ XDGame\+Engine\+::\+Game\+Object\+::m\+\_\+transform\hspace{0.3cm}{\ttfamily [protected]}}
+
+The only component that EVERY game\+Object have 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Game\+Object.\+h\item 
+D\+:/\+Cardiff Courses/03\+\_\+\+Game\+Engine/\+Game\+Engine\+\_\+\+Repo\+\_\+\+Xavier\+David/src/Game\+Object.\+cpp\end{DoxyCompactItemize}
