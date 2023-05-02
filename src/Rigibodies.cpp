@@ -18,7 +18,7 @@ namespace XDGameEngine
 		m_colShape = nullptr;
 
 		m_mass = 1.0f;
-		m_linearDamping = 0.6f;
+		m_linearDamping = 0.0f;
 		m_angularDamping = 0.1f;
 	}
 
@@ -202,19 +202,23 @@ namespace XDGameEngine
 		}
 	}
 
-	uint32_t RigidBody::OnCollisionEnter(uint32_t tag) const noexcept
+	uint32_t RigidBody::OnCollisionEnter(uint32_t tag, btCollisionObject* col) const noexcept
 	{
-		// according to here 
+		// How to detect a collision between two tag according to here:
 		// https://stackoverflow.com/questions/11175694/bullet-physics-simplest-collision-example
+
 		for (int i = 0; i < m_dynamicsWorld->getDispatcher()->getNumManifolds(); i++)
 		{
+			//bool non = false;
 			btPersistentManifold* manifold = m_dynamicsWorld->getDispatcher()->getManifoldByIndexInternal(i);
 			btCollisionObject* objA = (btCollisionObject*)manifold->getBody0();
 			btCollisionObject* objB = (btCollisionObject*)manifold->getBody1();
+
+
 			uint32_t* tag1 = static_cast<uint32_t*>(objA->getUserPointer());
 			uint32_t* tag2 = static_cast<uint32_t*>(objB->getUserPointer());
 
-			if (tag1 != nullptr && tag2 != nullptr)
+			if (tag1 != nullptr && tag2 != nullptr && objB == col)
 			{
 				if (*tag2 == tag)
 				{

@@ -102,7 +102,7 @@ namespace XDGameEngine
         /*
         * Check if the solid body enter in a collision and retrieve the collision obj tag
         */
-        uint32_t OnCollisionEnter(uint32_t tag) const noexcept;
+        uint32_t OnCollisionEnter(uint32_t tag, btCollisionObject* col) const noexcept;
     };
 }
 
