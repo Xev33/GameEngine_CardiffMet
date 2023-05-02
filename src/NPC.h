@@ -24,11 +24,24 @@ namespace XDGameEngine
         btRigidBody* m_rgbd;
         RigidBody* body;
 
-        // Patrol variables
+        /**
+        * The target the npc wants to reach
+        */
         btTransform m_target;
+
+        /**
+        * All the target the npc can have and will swap between
+        */
         std::vector<btTransform> m_patrolWayPoints;
+        
+        /**
+        * The vector index tracker
+        */
         int currentWaypoint;
 
+        /**
+        * The npc's health
+        */
         int m_health;
 
     public:

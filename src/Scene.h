@@ -167,6 +167,11 @@ namespace XDGameEngine
         void UseInputTest();
 	};
 
+    /*
+    * The class who creates an output of two colliding objects
+    * This class has been inspired by someone's else here:
+    * https://stackoverflow.com/questions/20300615/bullet-collision-callback-between-2-bodies
+    */
     class MyContactResultCallback : public btCollisionWorld::ContactResultCallback
     {
     public:

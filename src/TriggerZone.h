@@ -27,6 +27,12 @@ namespace XDGameEngine
         */
         virtual void SetUpComponent(GameObject& go) final;
 
+        /**
+        * Method working the same way as OnCollisionEnter but using ghost objects
+        * It has been inspired by someone else here:
+        * https://gamedev.net/forums/topic/692573-bullet-btghostobject/5358842/
+        * and then twisted so it can use my tag system
+        */
         uint32_t OnTriggerEnter() const noexcept;
     };
 }

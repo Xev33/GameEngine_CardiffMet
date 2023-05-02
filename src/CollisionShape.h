@@ -1,5 +1,5 @@
-#ifndef COLLISION_SHAPE
-#define COLLISION_SHAPE
+#ifndef COLLISION_SHAPE_
+#define COLLISION_SHAPE_
 
 #include "AComponent.h"
 #include "btBulletCollisionCommon.h"
@@ -25,8 +25,14 @@ namespace XDGameEngine
 		*/
 		virtual void SetUpComponent(GameObject& go) = 0;
 
+		/**
+		* ColShape setter
+		*/
 		void SetColShape(btCollisionShape* colShape) noexcept;
 
+		/**
+		* ColShape getter
+		*/
 		btCollisionShape* GetColShape() noexcept;
 
 	};

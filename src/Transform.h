@@ -42,8 +42,6 @@ namespace XDGameEngine
         btVector3 getPosition() const;
         btVector3 getScale() const;
 
-        void printUnAutreTruc();
-
     private:
         btQuaternion m_rotation;
         btVector3 m_position;

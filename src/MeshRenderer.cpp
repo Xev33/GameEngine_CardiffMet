@@ -22,14 +22,6 @@ namespace XDGameEngine
 		m_scnMgr->destroyMovableObject(m_mesh);
 		m_scnMgr = nullptr;
 
-		// Throw error by access violation
-		//if (m_mesh != nullptr)
-		//	delete m_mesh;
-		//m_mesh = nullptr;
-
-		//if (m_sceneNode != nullptr)
-		//	delete m_sceneNode;
-		//m_sceneNode = nullptr;
 		std::cout << " MESH RENDERER DESTRUCTED\n";
 	}
 

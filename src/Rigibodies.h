@@ -18,7 +18,7 @@ namespace XDGameEngine
         btScalar m_mass; /**< The body mass. 0 = static mesh */
         btScalar m_linearDamping; /**< Damping force on the linear motion of the body, kind of air/friction */
         btScalar m_angularDamping; /**< Damping force on the angular motion of the body, kind of air/friction */
-        bool m_isDynamic;
+        bool m_isDynamic; /**< Boolean notifying the dynamic world if the body becomes static or not */
 
         // these values should have help to disable the component
         // without removing it from the dynamic world but it doesn't work
