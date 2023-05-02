@@ -143,12 +143,12 @@ namespace XDGameEngine
         /**
         * Turns on on the coffee machine.
         */
-        void setupFloor();
+        void setupStaticObj() noexcept;
 
         /**
         * Creates, lights and adds them to the scene.  All based on the sample code, needs moving out into a level class.
         */
-        void setupLights();
+        void setupMovingObj() noexcept;
 
 
         //-----------------------------------------------------------------------

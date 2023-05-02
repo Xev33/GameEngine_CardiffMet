@@ -9,7 +9,7 @@
 #include "Transform.h"
 #include <iostream>
 
-#include "XDPlayer.h"
+#include "Cube.h"
 #include "CollisionShape.h"
 #include "MeshRenderer.h"
 #include "OgreBullet.h"
@@ -109,8 +109,8 @@ namespace XDGameEngine
                         go->Update();
                         go->UpdateComponents();
                     }
-                    ++it;
                 }
+                    ++it;
             }
 
             dynamicsWorld->stepSimulation((float)evt.timeSinceLastFrame, 10);
@@ -151,27 +151,14 @@ namespace XDGameEngine
         bulletInit();
 
 
-        m_go.push_back(std::make_unique<Player>(
-            btVector3(200.0f, 80.0f, 0.0f),
-            btQuaternion(0, 0, 30),
-            btVector3(1.0f, 2.0f, 1.0f)));
 
-        m_go.push_back(std::make_unique<NPC>(
-            btVector3(-500.0f, 80.0f, 500.0f),
-            btQuaternion(0, 0, 0),
-            btVector3(1.0f, 1.0f, 1.0f)));
 
-        m_go.push_back(std::make_unique<PointLight>(btVector3(0, 150, 250)));
-
-        m_go.push_back(std::make_unique<DirectionalLight>(btQuaternion(0, 1, 1)));
-
-        m_go.push_back(std::make_unique<SpotLight>(
-            btVector3(200, 200, 0),
-            btQuaternion(-1, -1, 0)));
 
         setupCamera();
 
-        setupFloor();
+        setupMovingObj();
+
+        setupStaticObj();
     }
 
     void Scene::bulletInit()
@@ -222,97 +209,184 @@ namespace XDGameEngine
         cam->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
     }
 
-    void Scene::setupFloor()
+    void Scene::setupMovingObj() noexcept
     {
+        /*
+        * It is easy to use an XML doc parser to put all these datas in
+        * It should use a GameObject factory
+        * Unfortunately I am running out of time
+        */
+        m_go.push_back(std::make_unique<Player>(
+            btVector3(0.0f, 80.0f, 200.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(1.0f, 2.0f, 1.0f)));
+        //npc1
+        auto& npc1 = std::make_unique<NPC>(
+            btVector3(500.0f, 80.0f, -1000.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(1.0f, 1.0f, 1.0f));
+        npc1->AddWayPoint(btVector3(-500.0f, 80.0f, -1000.0f));
+        m_go.push_back(std::move(npc1));
+        //npc2
+        auto& npc2 = std::make_unique<NPC>(
+            btVector3(-500.0f, 80.0f, -800.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(1.0f, 1.0f, 1.0f));
+        npc2->AddWayPoint(btVector3(500.0f, 80.0f, -800.0f));
+        m_go.push_back(std::move(npc2));
+        //npc3
+        auto& npc3 = std::make_unique<NPC>(
+            btVector3(-3300.0f, 680.0f, -3500.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(1.0f, 1.0f, 1.0f));
+        npc3->AddWayPoint(btVector3(-3300.0f, 680.0f, -2500.0f));
+        npc3->AddWayPoint(btVector3(-2800.0f, 680.0f, -2500.0f));
+        npc3->AddWayPoint(btVector3(-2800.0f, 680.0f, -3500.0f));
+        m_go.push_back(std::move(npc3));
+        //npc4
+        auto& npc4 = std::make_unique<NPC>(
+            btVector3(-2800.0f, 680.0f, -2500.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(1.0f, 1.0f, 1.0f));
+        npc4->AddWayPoint(btVector3(-2800.0f, 680.0f, -3500.0f));
+        npc4->AddWayPoint(btVector3(-3300.0f, 680.0f, -3500.0f));
+        npc4->AddWayPoint(btVector3(-3300.0f, 680.0f, -2500.0f));
+        m_go.push_back(std::move(npc4));
+    }
 
-        // Create a plane
-        Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+    void Scene::setupStaticObj() noexcept
+    {
+        /*
+        * As the moving object: It should use an XML doc, parse it
+        * Create each gameObject with a GameObject factory
+        * Unfortunately I am running out of time
+        */
+        //Ground
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(0.0f, 1.0f, 0.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(15.0f, 0.5f, 15.0f)));
+        //Ground2
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(0.0f, 1.0f, -1500.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(15.0f, 0.5f, 15.0f)));
+        //Ground3
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(0.0f, 200.0f, -3000.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(15.0f, 4.0f, 15.0f)));
+        //Ground4
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(-2500.0f, 1.0f, -3000.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(35.0f, 0.5f, 15.0f)));
+        //Ground5
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(-5000.0f, 200.0f, -3000.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(15.0f, 4.0f, 15.0f)));
+        //Ground6
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(-3000.0f, 600.0f, -3000.0f),
+            btQuaternion(0, 0, 45),
+            btVector3(10.0f, 0.5f, 15.0f)));
 
-        // Define the plane mesh
-        Ogre::MeshManager::getSingleton().createPlane(
-            "ground", Ogre::RGN_DEFAULT,
-            plane,
-            1500, 1500, 20, 20,
-            true,
-            1, 5, 5,
-            Ogre::Vector3::UNIT_Z);
 
-        // Create an entity for the ground
-        Ogre::Entity* groundEntity = scnMgr->createEntity("ground");
+        //Roof
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(0.0f, 800.0f, 0.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(15.0f, 0.5f, 15.0f)));
+        //Roof2
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(0.0f, 800.0f, -1500.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(15.0f, 0.5f, 15.0f)));
+        //Roof3
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(0.0f, 800.0f, -3000.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(15.0f, 0.5f, 15.0f)));
+        //Roof4
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(-2500.0f, 1200.0f, -3000.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(35.0f, 0.5f, 15.0f)));
+        //Roof5
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(-5000.0f, 1200.0f, -3000.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(15.0f, 0.5f, 15.0f)));
 
-        // Setup ground entity
-        //  Shadows off
-        groundEntity->setCastShadows(false);
 
-        // Material - Examples is the resources file,
-        // Rockwall (texture/properties) is defined inside it.
-        groundEntity->setMaterialName("Examples/Rockwall");
+        //left
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(750.0f, 400.0f, -750.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(0.5f, 8.0f, 30.0f)));
+        //left2
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(750.0f, 400.0f, -3000.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(0.5f, 8.0f, 15.0f)));
+        //left3
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(-5750.0f, 600.0f, -3000.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(0.5f, 12.0f, 15.0f)));
 
-        // Create a scene node to add the mesh too.
-        Ogre::SceneNode* thisSceneNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-        thisSceneNode->attachObject(groundEntity);
 
-        // the ground is a cube of side 100 at position y = 0.
-        // the sphere will hit it at y = -6, with center at -5
-        btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(750.), btScalar(50.), btScalar(750.)));
+        //right
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(-750.0f, 400.0f, -750.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(0.5f, 8.0f, 30.0f)));
 
-        collisionShapes.push_back(groundShape);
 
-        btTransform groundTransform;
-        groundTransform.setIdentity();
+        //back
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(0.0f, 400.0f, 750.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(15.f, 8.0f, 0.5f)));
+        //back2
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(0.0f, 400.0f, -3750.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(15.f, 8.0f, 0.5f)));
+        //back3
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(-3250.0f, 600.0f, -3750.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(50.f, 12.0f, 0.5f)));
 
-        Ogre::Vector3 pos = thisSceneNode->_getDerivedPosition();
+        //back3
+        m_go.push_back(std::make_unique<Cube>(
+            btVector3(-3250.0f, 600.0f, -2250.0f),
+            btQuaternion(0, 0, 0),
+            btVector3(50.f, 12.0f, 0.5f)));
 
-        // Box is 100 deep (dimensions are 1/2 heights)
-        // but the plane position is flat.
-        groundTransform.setOrigin(btVector3(pos.x, pos.y - 50.0, pos.z));
 
-        Ogre::Quaternion quat2 = thisSceneNode->_getDerivedOrientation();
-        groundTransform.setRotation(btQuaternion(quat2.x, quat2.y, quat2.z, quat2.w));
+        //Lights setup
+        m_go.push_back(std::make_unique<PointLight>(btVector3(0, 250, 250)));
 
-        btScalar mass(0.);
+        m_go.push_back(std::make_unique<DirectionalLight>(btQuaternion(1, 45, 1)));
 
-        // rigidbody is dynamic if and only if mass is non zero, otherwise static
-        bool isDynamic = (mass != 0.f);
-
-        btVector3 localInertia(0, 0, 0);
-        if (isDynamic)
-            groundShape->calculateLocalInertia(mass, localInertia);
-
-        // using motionstate is optional, it provides interpolation capabilities, and only synchronizes 'active' objects
-        btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
-        btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, groundShape, localInertia);
-        btRigidBody* body = new btRigidBody(rbInfo);
-
-        //   body->setRestitution(0.0);
-
-        // add the body to the dynamics world
-        dynamicsWorld->addRigidBody(body);
+        m_go.push_back(std::make_unique<SpotLight>(
+            btVector3(1000, 1000, -3000),
+            btQuaternion(45, 1, 0)));
     }
 
     void Scene::UseInputTest()
     {
-        //if (XDGameEngine::Input::Instance().GetKeyDown("a"))
-        //{
-        //    for (auto& it = m_go.begin(); it != m_go.end(); ++it)
-        //    {
-        //        auto go = it->get();
-        //        GameObject::Destroy(*go);
-        //    }
-        //}
-
-        //if (XDGameEngine::Input::Instance().GetKeyDown("a"))
-        //{
-        //}
-
-        //if (XDGameEngine::Input::Instance().GetKeyDown("f"))
-        //{
-        //    for (auto& it = m_go.begin(); it != m_go.end(); ++it)
-        //    {
-        //        auto go = it->get();
-        //        go->SetActive(!go->IsActive());
-        //    }
-        //}
+        if (XDGameEngine::Input::Instance().GetKeyDown("f"))
+        {
+            for (auto& it = m_go.begin(); it != m_go.end(); ++it)
+            {
+                auto go = it->get();
+                go->SetActive(!go->IsActive());
+            }
+        }
     }
 }
 
@@ -335,3 +409,71 @@ namespace XDGameEngine
 //        return;
 //    }
 //}
+
+    //void Scene::setupFloor()
+    //{
+
+    //    // Create a plane
+    //    Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+
+    //    // Define the plane mesh
+    //    Ogre::MeshManager::getSingleton().createPlane(
+    //        "ground", Ogre::RGN_DEFAULT,
+    //        plane,
+    //        1500, 1500, 20, 20,
+    //        true,
+    //        1, 5, 5,
+    //        Ogre::Vector3::UNIT_Z);
+
+    //    // Create an entity for the ground
+    //    Ogre::Entity* groundEntity = scnMgr->createEntity("ground");
+
+    //    // Setup ground entity
+    //    //  Shadows off
+    //    groundEntity->setCastShadows(false);
+
+    //    // Material - Examples is the resources file,
+    //    // Rockwall (texture/properties) is defined inside it.
+    //    groundEntity->setMaterialName("Examples/Rockwall");
+
+    //    // Create a scene node to add the mesh too.
+    //    Ogre::SceneNode* thisSceneNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+    //    thisSceneNode->attachObject(groundEntity);
+
+    //    // the ground is a cube of side 100 at position y = 0.
+    //    // the sphere will hit it at y = -6, with center at -5
+    //    btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(750.), btScalar(50.), btScalar(750.)));
+
+    //    collisionShapes.push_back(groundShape);
+
+    //    btTransform groundTransform;
+    //    groundTransform.setIdentity();
+
+    //    Ogre::Vector3 pos = thisSceneNode->_getDerivedPosition();
+
+    //    // Box is 100 deep (dimensions are 1/2 heights)
+    //    // but the plane position is flat.
+    //    groundTransform.setOrigin(btVector3(pos.x, pos.y - 50.0, pos.z));
+
+    //    Ogre::Quaternion quat2 = thisSceneNode->_getDerivedOrientation();
+    //    groundTransform.setRotation(btQuaternion(quat2.x, quat2.y, quat2.z, quat2.w));
+
+    //    btScalar mass(0.);
+
+    //    // rigidbody is dynamic if and only if mass is non zero, otherwise static
+    //    bool isDynamic = (mass != 0.f);
+
+    //    btVector3 localInertia(0, 0, 0);
+    //    if (isDynamic)
+    //        groundShape->calculateLocalInertia(mass, localInertia);
+
+    //    // using motionstate is optional, it provides interpolation capabilities, and only synchronizes 'active' objects
+    //    btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
+    //    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, groundShape, localInertia);
+    //    btRigidBody* body = new btRigidBody(rbInfo);
+
+    //    //   body->setRestitution(0.0);
+
+    //    // add the body to the dynamics world
+    //    dynamicsWorld->addRigidBody(body);
+    //}
