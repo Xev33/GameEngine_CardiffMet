@@ -21,7 +21,7 @@ find_package(Threads)
 set(HDRS
 	./src/Game.h
 	./src/Player.h
-	./src/XDPlayer.h
+	./src/Cube.h
 	./src/NPC.h
 	./src/AComponent.h
 	./src/CollisionShape.h
@@ -39,7 +39,7 @@ set(HDRS
 set(SRCS
 	./src/Game.cpp
 	./src/Player.cpp
-	./src/XDPlayer.cpp
+	./src/Cube.cpp
 	./src/NPC.cpp
 	./src/main.cpp
 	./src/Scene.cpp
