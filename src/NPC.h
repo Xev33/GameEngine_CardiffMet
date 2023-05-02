@@ -26,7 +26,7 @@ namespace XDGameEngine
 
         // Patrol variables
         btTransform m_target;
-        btTransform patrolWayPoints[3];
+        std::vector<btTransform> m_patrolWayPoints;
         int currentWaypoint;
 
         int m_health;
@@ -88,6 +88,11 @@ namespace XDGameEngine
         * @param range distance to target.
         */
         bool TargetInRange(float range);
+
+        /**
+        * Adda new patrol waypoint
+        */
+        void AddWayPoint(btVector3 newPoint) noexcept;
 
     };
 }

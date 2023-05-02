@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "Scene.h"
 #include "TriggerZone.h"
+#include "CollisionShape.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -40,17 +41,11 @@ namespace XDGameEngine
 
         // Setup the patrol
         btTransform target1;
-        btTransform target2;
-        btTransform target3;
-        target1.setOrigin(btVector3(200.0f, 80.0f, 200.0f));
-        target2.setOrigin(btVector3(-200.0f, 80.0f, 200.0f));
-        target3.setOrigin(btVector3(200.0f, 80.0f, -400.0f));
+        target1.setOrigin(pos);
 
-        patrolWayPoints[0] = target1;
-        patrolWayPoints[1] = target2;
-        patrolWayPoints[2] = target3;
+        m_patrolWayPoints.push_back(target1);
         currentWaypoint = 0;
-        SetTarget(patrolWayPoints[currentWaypoint]);
+        SetTarget(m_patrolWayPoints.at(currentWaypoint));
     }
 
     NPC::~NPC()
@@ -66,7 +61,7 @@ namespace XDGameEngine
         Arrive();
         
         // We retrieve the colliding tag if it exist
-        uint32_t currentCol = body->OnCollisionEnter('NPC');
+        uint32_t currentCol = body->OnCollisionEnter(m_tag, m_rgbd);
 
         // Then we can check what type of object it is
         // The NPC must check if he collide with the player
@@ -75,11 +70,14 @@ namespace XDGameEngine
         {
         case 'PLYR':
             std::cout << "Should damage the player\n";
+            this->m_health--;
+        if (m_health <= 0)
+            this->m_shouldBeDestroyed = true;
             break;
         case 'BLLT':
-            m_health--;
+            this->m_health--;
             if (m_health <= 0)
-                m_shouldBeDestroyed = true;
+                this->m_shouldBeDestroyed = true;
             break;
         default:
             break;
@@ -217,9 +215,9 @@ namespace XDGameEngine
 
 
             currentWaypoint++;
-            if (currentWaypoint >= 3)
+            if (currentWaypoint >= m_patrolWayPoints.size())
                 currentWaypoint = 0;
-            SetTarget(patrolWayPoints[currentWaypoint]);
+            SetTarget(m_patrolWayPoints.at(currentWaypoint));
             // stop the npc!
         }
         else
@@ -298,5 +296,13 @@ namespace XDGameEngine
             return true;
         else
             return false;
+    }
+
+    void NPC::AddWayPoint(btVector3 newPoint) noexcept
+    {
+        btTransform localTrans;
+        localTrans.setOrigin(newPoint);
+        m_patrolWayPoints.push_back(localTrans);
+        SetTarget(localTrans);
     }
 }
