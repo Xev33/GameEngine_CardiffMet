@@ -32,7 +32,7 @@ namespace XDGameEngine
         btDiscreteDynamicsWorld* dynamicsWorld = nullptr;
 
         // npc 
-        npc = nullptr;
+        //npc = nullptr;
 
     }
 
@@ -385,7 +385,8 @@ namespace XDGameEngine
             for (auto& it = m_go.begin(); it != m_go.end(); ++it)
             {
                 auto go = it->get();
-                go->SetActive(!go->IsActive());
+                if (go->getTag() == 'NPC')
+                    go->SetActive(!go->IsActive());
             }
         }
     }

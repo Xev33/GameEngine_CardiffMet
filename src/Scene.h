@@ -28,11 +28,6 @@ namespace XDGameEngine
 	{
 	private:
         /**
-        * Test GhostObject
-        */
-        btGhostObject* m_Ghostobject;
-
-        /**
         * Ogre Scene Manager.
         */
         Ogre::SceneManager* scnMgr;
@@ -67,16 +62,6 @@ namespace XDGameEngine
         * make sure to re-use collision shapes among rigid bodies whenever possible!
         */
         btAlignedObjectArray<btCollisionShape*> collisionShapes;
-
-        /**
-        * The Player object
-        */
-        Player* player;
-
-        /**
-         * The NPC object
-         */
-        NPC* npc;
 
         /**
          * The viewport
@@ -130,16 +115,6 @@ namespace XDGameEngine
         */
         void setupCamera();
 
-        ///**
-        //* Player setup
-        //*/
-        //void setupPlayer();
-
-        ///**
-        //* NPC setup
-        //*/
-        //void setupNPC();
-
         /**
         * Creates player and npcs.
         */
@@ -156,8 +131,6 @@ namespace XDGameEngine
         //-----------------------------------------------------------------------
 
         Ogre::SceneManager*                     getSceneManager() { return scnMgr; }
-        Player*                                 getPlayer() { return player; }
-        NPC*                                    getNPC() { return npc; }
         btDefaultCollisionConfiguration*        getCollisionConfiguration() { return collisionConfiguration; }
         btCollisionDispatcher*                  getDispatcher() { return dispatcher; }
         btBroadphaseInterface*                  getOverlappingPairCache() { return overlappingPairCache; }
