@@ -150,11 +150,12 @@ namespace XDGameEngine
 
         bulletInit();
 
-        setupCamera();
-
         setupMovingObj();
 
         setupStaticObj();
+
+        setupCamera();
+
     }
 
     void Scene::bulletInit()
@@ -216,6 +217,7 @@ namespace XDGameEngine
             btVector3(0.0f, 80.0f, 200.0f),
             btQuaternion(0, 0, 0),
             btVector3(1.0f, 2.0f, 1.0f)));
+
         //npc1
         auto& npc1 = std::make_unique<NPC>(
             btVector3(500.0f, 80.0f, -1000.0f),
@@ -223,6 +225,7 @@ namespace XDGameEngine
             btVector3(1.0f, 1.0f, 1.0f));
         npc1->AddWayPoint(btVector3(-500.0f, 80.0f, -1000.0f));
         m_go.push_back(std::move(npc1));
+
         //npc2
         auto& npc2 = std::make_unique<NPC>(
             btVector3(-500.0f, 80.0f, -800.0f),
@@ -230,6 +233,7 @@ namespace XDGameEngine
             btVector3(1.0f, 1.0f, 1.0f));
         npc2->AddWayPoint(btVector3(500.0f, 80.0f, -800.0f));
         m_go.push_back(std::move(npc2));
+
         //npc3
         auto& npc3 = std::make_unique<NPC>(
             btVector3(-3300.0f, 680.0f, -3500.0f),
@@ -239,6 +243,7 @@ namespace XDGameEngine
         npc3->AddWayPoint(btVector3(-2800.0f, 680.0f, -2500.0f));
         npc3->AddWayPoint(btVector3(-2800.0f, 680.0f, -3500.0f));
         m_go.push_back(std::move(npc3));
+
         //npc4
         auto& npc4 = std::make_unique<NPC>(
             btVector3(-2800.0f, 680.0f, -2500.0f),
