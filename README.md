@@ -3,7 +3,7 @@
 ### Project summary ###
 
 The project has been made in 2 weeks.
-Here is the game engine I produced for the eponymous module in the "Computer Game Design & Development" section of Cardiff Metropolitan University during the year I spent in Cardiff Wales.
+It is the game engine I produced for the eponymous module in the "Computer Game Design & Development" section of Cardiff Metropolitan University during the year I spent in Cardiff Wales.
 This engine uses "Ogre3D" as 3D rendering engine and "Bullet physics" as physics engine.
 
 The project has been submitted alongside with a Doxygen documentation and a written document summarising the game engine's architecture.
